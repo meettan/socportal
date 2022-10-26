@@ -1,0 +1,176 @@
+
+
+.loginmainDiv {
+    background: #008080;
+    padding: 45px 0 70px 0;
+    position: relative;
+    width: 100%;
+    flex: 1 0 auto;
+	align-items: center;
+	display: flex;
+}
+
+.loginBox{max-width: 600px; background: #fff; margin: 0 auto; width: 100%; padding: 15px; border-radius: 10px; box-shadow:0 0 8px 0px #13c8c8;}
+.adminLogo {margin-bottom: 45px; text-align: center;}
+.loginBox h3.adTitle {
+    font-weight: 500 !important;
+    text-align: left;
+    font-size: 16px;
+	margin: 0;}
+
+.loginBox .fieldSec{}
+.fieldSec input[type="text"]{border: 1px solid #f3f3f3;
+background: #fff;
+border-radius: 2px;
+font-size: 17px;
+padding: 12px 15px;
+height: 52px;}
+
+.fieldSec input[type="password"]{border: 1px solid #f3f3f3;
+background: #fff;
+border-radius: 2px;
+font-size: 17px;
+padding: 12px 15px;
+height: 52px;}
+
+.fieldSec input[type="submit"]{background: #333; border: none;
+border-radius: 2px; font-size: 17px; padding: 12px 15px;}
+
+
+.btn-primary:not(:disabled):not(.disabled):active{background: #000;}
+.fieldSec input.btn-primary:focus[type="submit"]{box-shadow: none;}
+.btn-primary:not(:disabled):not(.disabled):active:focus{box-shadow: none;}
+
+.samllWrapper{max-width: 1200px; margin: 0 auto; width: 100%;}
+
+
+.contentHeaderTop{text-align: center; width: 100%; margin-bottom: 35px;}
+
+.contentHeaderTop p{font-size: 16px;
+line-height: 20px;
+color: #1e1f21;
+margin: 0 0 7px 0;
+padding: 0;}
+
+.contentHeaderTop h2{font-size: 32px; line-height: 40px; font-weight: 300; color: #1e1f21;}
+
+a.closeMenu {
+  color: #fff;
+  font-size: 16px;
+  position: absolute;
+  right: 20px;
+  top: 41%;
+}
+
+
+
+.twoColomSec{width: 100%; display: flex; margin-bottom: 25px;}
+
+.boxSecMain{border: #ccc solid 1px; width: 100%; border-radius: 5px; padding: 15px; display: inline-block; height: 100%; position: relative;}
+
+.boxSecMain h2{color: #000;
+font-size: 19px;
+font-weight: 300;
+margin: 0 0 22px 0;
+padding: 0;}
+.boxSecMainDescrip{font-size: 16px; color: #6d6e6f;}
+
+.price{font-size: 21px;}
+.price i{color: #333;}
+
+.boxSecMain a.buttonBoxOut{background: #106fd0;
+margin-top: 15px;
+border: #106fd0 solid 1px;
+color: #fff;
+width: auto;
+padding: 6px 9px;
+border-radius: 3px;
+display: inline-block;
+float: right; position: absolute; bottom: 15px; right: 15px;}
+
+.boxSecMain a.buttonBoxOut:hover{background: #0b54da;
+border: #0b54da solid 1px;
+color: #fff;
+border-radius: 3px;}
+
+
+.crCus{color: #CD1114;}
+.drCus{color: #3C8608;}
+
+
+.boxSecMainDescrip ul.downList{margin: 0; padding: 0; list-style-type: none;}
+.boxSecMainDescrip ul.downList li{  font-size: 16px; color: #6d6e6f; margin-bottom: 15px; width: 50%; float: left;} 
+.boxSecMainDescrip ul.downList li a{display: flex; align-items: center; width: 100%; color: #6d6e6f;}
+.boxSecMainDescrip ul.downList li a .iconSec{ border-radius: 10px;
+  background: #ccc; width: 44px; height: 44px; margin-right: 12px; align-items: center; display: flex;}
+
+.boxSecMainDescrip ul.downList li a .iconSec img{margin: 0 auto;}
+
+
+.boxSecMainDescrip ul.downList li a .boxColor1{background: #f26fb2;}
+
+.boxSecMainDescrip ul.downList li a .boxColor2{background: #ec8d71;}
+
+.boxSecMainDescrip ul.downList li a .boxColor3{background: #4573d2;}
+
+.boxSecMainDescrip ul.downList li a .boxColor4{background: #9ee7e3;}
+
+.boxSecMainDescrip ul.downList li a:hover{}
+
+
+.reportBoxMain{display: flex; width: 100%;}
+
+.reportBoxMainList{border: #ccc solid 1px;
+width: 100%;
+border-radius: 5px;
+padding: 35px 15px;
+display: inline-block;
+height: 100%;
+position: relative; text-align: center; background: #ececec;}
+
+.reportBoxMainList .imgsec{font-size: 32px;
+background: #259fe8;
+height: 64px;
+line-height: 64px;
+min-width: 64px;
+width: 64px;
+margin: 0 auto 25px auto;
+overflow: hidden;
+border-radius: 50px;}
+
+.reportBoxMainList h5{color: #333;
+font-size: 16px;
+font-weight: 400;
+margin: 0 0 6px 0;
+padding: 0;}
+
+.reportBoxMainList p{color: #333;font-size: 14px; margin: 0 0 35px 0; padding: 0;}
+
+.reportBoxMainList button.viewMore{font-size: 12px;
+line-height: 23px;
+padding: 5px 15px;
+border: 1px solid #ccc;
+display: inline-block;
+border-radius: 5px;}
+
+
+.reportBoxMainList button.viewMore:hover{background: #259fe8; color: #fff; border: 1px solid #fff;}
+
+.calenderSec{padding-right: 15px; display: flex;}
+
+label.dateCustom{margin: 0;}
+label.dateCustom span{float: left;
+  line-height: 29px;
+  padding-right: 10px;
+}
+
+.floatNone{float: none !important;}
+
+
+
+
+
+
+
+
+
