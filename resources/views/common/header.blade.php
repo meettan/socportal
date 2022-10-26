@@ -34,7 +34,7 @@
 	<div class="link"><a href="{{route('report')}}"><i class="fa fa-code"></i>Report</a></div>
 	</li>
 	<li>
-	<div class="link"><a href="#"><i class="fa fa-sign-out"></i>Log out</a></div>
+	<div class="link"><a href="{{route('logout')}}"><i class="fa fa-sign-out"></i>Log out</a></div>
 	</li>
   <li>
     <div class="link"><i class="fa fa-mobile"></i>Dropdown 1<i class="fa fa-chevron-down"></i></div>

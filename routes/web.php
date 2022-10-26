@@ -31,4 +31,4 @@ Route::get('/socadvReport', [App\Http\Controllers\AdvanceController::class,'soca
 Route::get('/socpayment', [App\Http\Controllers\MoneyreceiptController::class,'socpayment'])->name('socpayment');
 Route::get('/moneyrecpt', [App\Http\Controllers\MoneyreceiptController::class,'moneyrecpt'])->name('moneyrecpt');
 
-//Route::get('/logout', 'LoginController@logout')->name('logout');
+Route::get('/logout', 'UserController@logout')->name('logout');
