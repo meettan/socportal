@@ -25,7 +25,46 @@ class SaleController extends Controller
           order by a.do_dt desc");
         return view('sale_list', ['sales' => $payrct]);
     }
+
+   
     public function print_receipt(Request $request){
+
+        $irns ='2957a947a6de732642eb6d39fb4ec789a5bfa305440f3684dc2815b597107ebf';
+        $filename = $irns . '.pdf';
+        $curl = curl_init();
+        curl_setopt($curl, CURLOPT_SSL_VERIFYPEER, false);
+        curl_setopt_array($curl, array(
+            /*****************for test server ******************* */
+        //CURLOPT_URL => 'https://einvoicing.internal.cleartax.co/v2/eInvoice/download?template=62cfd0a9-d1ed-47b0-b260-fe21f57e9c5e&format=PDF&irns=' . $irns,
+        
+        CURLOPT_URL => 'https://api-einv.cleartax.in/v2/eInvoice/download?template=62cfd0a9-d1ed-47b0-b260-fe21f57e9c5e&format=PDF&irns=' . $irns,
+        
+        CURLOPT_RETURNTRANSFER => true,
+        CURLOPT_ENCODING => '',
+        CURLOPT_MAXREDIRS => 10,
+        CURLOPT_TIMEOUT => 0,
+        CURLOPT_FOLLOWLOCATION => true,
+        CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
+        CURLOPT_CUSTOMREQUEST => 'GET',
+        CURLOPT_HTTPHEADER => array(
+            'x-cleartax-auth-token: 1.249874fd-e3cd-402c-a503-b0a47cb0711f_3d64af076bfe30480c2e74d59d4d5017d2fd57d429bc3364908b5f0ae91a7a51',
+            'x-cleartax-product: EInvoice' ,
+            'owner_id: fded77f8-4880-4dc6-8b6c-9d23f3374517',
+            'gstin: 19AABAT0010H2ZY'
+        ),
+        ));
+
+        $response = curl_exec($curl);
+
+        curl_close($curl);
+   
+        return response()->streamDownload(function () use ($response) {
+            echo $response;
+        }, $filename);
+    
+      
+    }
+    public function print_receipt1(Request $request){
 
             $irns ='2957a947a6de732642eb6d39fb4ec789a5bfa305440f3684dc2815b597107ebf';
             $filename = $irns . '.pdf';
