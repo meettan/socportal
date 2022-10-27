@@ -30,5 +30,6 @@ Route::get('/advancefilter', [App\Http\Controllers\AdvanceController::class,'adv
 Route::get('/socadvReport', [App\Http\Controllers\AdvanceController::class,'socadvReport'])->name('socadvReport');
 Route::get('/socpayment', [App\Http\Controllers\MoneyreceiptController::class,'socpayment'])->name('socpayment');
 Route::get('/moneyrecpt', [App\Http\Controllers\MoneyreceiptController::class,'moneyrecpt'])->name('moneyrecpt');
-
+Route::get('/salesfilter', [App\Http\Controllers\SaleController::class,'salesfilter'])->name('salesfilter');
+Route::get('/print_receipt', [App\Http\Controllers\SaleController::class,'print_receipt'])->name('print_receipt');
 Route::get('/logout', 'UserController@logout')->name('logout');

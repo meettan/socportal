@@ -26,7 +26,7 @@
 				
 					<ul class="downList">
 					<li>
-						<a href="#"><div class="iconSec boxColor1"><img src="{{ url('public/images/sale.png') }}" alt=""/></div> Sale</a>
+						<a href="{{'salesfilter'}}"><div class="iconSec boxColor1"><img src="{{ url('public/images/sale.png') }}" alt=""/></div> Sale</a>
 					</li>
 						
 					<li>
