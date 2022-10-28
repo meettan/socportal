@@ -12,13 +12,12 @@
 <link rel="stylesheet" type="text/css" href="{{ url('public/css/res.css') }}">
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>	
-	
+<script src="https://cdn.jsdelivr.net/npm/jquery-validation@1.19.3/dist/jquery.validate.js" type="text/javascript"></script>	
 <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap" rel="stylesheet"> 
 <!--font-family: 'Roboto', sans-serif;-->
 <link href="https://fonts.googleapis.com/css2?family=Gorditas:wght@400;700&display=swap" rel="stylesheet"> 
 <!--font-family: 'Gorditas', cursive;-->
 </head>
-
 <body>
 
  <div class="headerTop">
@@ -30,12 +29,10 @@
 	
 	<div class="innerPageSecSignUp">
 	<div class="signUpLeftInner">
-	
 		<div class="signUpLeftForm">
 		<h2>Sign up</h2>
-			
 			<p>By signing up, I agree to the Asana Privacy Policy and Terms of Service.</p>
-		<form method="POST" action="{{ url('validatesocdetail') }}" id='signupForm'>
+		<form method="POST" action="{{ url('validatesocdetail') }}" id='signupForm' class="validatedForm">
 		   @csrf
 		<label class="full_fieldSign">
 			<span>Pan No.</span>
@@ -50,12 +47,12 @@
 			
 			<label class="full_fieldSign">
 			<span>Password</span>
-			<input type="password" name="password">
+			<input type="password" name="password" id="password" required>
 			</label>
 			
 			<label class="full_fieldSign">
 			<span>Confirm Password</span>
-			<input type="password" name="cpassword" >
+			<input type="password" name="password_confirm" required>
 			</label>
 			
 			
@@ -126,21 +123,19 @@ Email: info@benfed.org</p>
 </html>
 
 <script>
-// $("#signupForm").submit(function (e) {
-// 	event.preventDefault();
-// 			$.ajaxSetup({
-// 			headers: {
-// 				'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-// 			}
-// 		});
+jQuery('.validatedForm').validate({
+			rules : {
+				password : {
+					minlength : 4
+				},
+				password_confirm : {
+					minlength : 4,
+					equalTo : "#password"
+				}
+			}
+		});
 
-// 		$.ajax({
-//                   url: "{{ url('validatesocdetail') }}",
-//                   method: 'post',
-//                   data: $('#signupForm').serialize(),
-//                   success: function(result){
-//                      console.log(result);
-//                   }
-// 				});
-// 	})
+$('#submit').click(function(){
+    console.log($('.validatedForm').valid());
+});
 </script>

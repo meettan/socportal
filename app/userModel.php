@@ -8,7 +8,7 @@ class userModel extends Model
 {
     protected $table = 'td_users';
     protected $fillable = [
-        'name','pan', 'email', 'password','soc_name','soc_address','gstin','mfms','created_by','updated_by'
+        'name','pan', 'email','soc_id','password','soc_name','soc_address','gstin','mfms','created_by','updated_by'
     ];
     /**
      * The attributes that should be hidden for arrays.

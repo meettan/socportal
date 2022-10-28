@@ -55,14 +55,11 @@ class SaleController extends Controller
         ));
 
         $response = curl_exec($curl);
-
         curl_close($curl);
-   
         return response()->streamDownload(function () use ($response) {
             echo $response;
         }, $filename);
     
-      
     }
     public function print_receipt1(Request $request){
 
@@ -73,7 +70,6 @@ class SaleController extends Controller
             curl_setopt_array($curl, array(
                 /*****************for test server ******************* */
             //CURLOPT_URL => 'https://einvoicing.internal.cleartax.co/v2/eInvoice/download?template=62cfd0a9-d1ed-47b0-b260-fe21f57e9c5e&format=PDF&irns=' . $irns,
-            
             CURLOPT_URL => 'https://api-einv.cleartax.in/v2/eInvoice/download?template=62cfd0a9-d1ed-47b0-b260-fe21f57e9c5e&format=PDF&irns=' . $irns,
             
             CURLOPT_RETURNTRANSFER => true,
@@ -92,11 +88,8 @@ class SaleController extends Controller
             ));
 
             $response = curl_exec($curl);
-
             curl_close($curl);
-
             $data = $response;
-           
             $set_mime = FALSE;
         if ($filename === '' OR $data === '')
 		{
@@ -136,7 +129,6 @@ class SaleController extends Controller
 
 			// Load the mime types
 			$mimes =& get_mimes();
-
 			// Only change the default MIME if we can find one
 			if (isset($mimes[$extension]))
 			{
@@ -186,10 +178,8 @@ class SaleController extends Controller
 		{
 			echo $data;
 		}
-
 		fclose($fp);
-		exit;
-          
+		exit;    
     }    
     
 }

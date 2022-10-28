@@ -37,11 +37,13 @@ class UserController extends Controller
     public function validatesocdetail(Request $request)
     {
         $result = SocietyModel::where(['pan'=> $request->pan,'email'=>$request->email])->get();
+        
         if (count($result) > 0) {
             session(['soctemp_detail' => $result]);
             $User = new userModel;
             $User->pan = request('pan');
             $User->email = request('email');
+            $User->soc_id = $result[0]->soc_id;
             $User->password = Hash::make(request('password'));
             $User->created_by =request('email');
             $User->save();
