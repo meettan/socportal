@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-App\Http\Controllers\PDF
+App\Http\Controllers\PDF;
 use Auth;
 use DB;
 class SocietyController extends Controller
