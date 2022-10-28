@@ -32,6 +32,6 @@ Route::get('/socpayment', [App\Http\Controllers\MoneyreceiptController::class,'s
 Route::get('/moneyrecpt', [App\Http\Controllers\MoneyreceiptController::class,'moneyrecpt'])->name('moneyrecpt');
 Route::get('/salesfilter', [App\Http\Controllers\SaleController::class,'salesfilter'])->name('salesfilter');
 Route::get('/print_receipt', [App\Http\Controllers\SaleController::class,'print_receipt'])->name('print_receipt');
-//Route::get('/socledger', [App\Http\Controllers\SocietyController::class,'socledger'])->name('socledger');
+Route::post('/socledgerrep', [App\Http\Controllers\SocietyController::class,'socledgerrep'])->name('socledgerrep');
 Route::any('socledger', 'SocietyController@socledger')->name('socledger');
 Route::get('/logout', 'UserController@logout')->name('logout');

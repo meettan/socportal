@@ -6,10 +6,10 @@
 
                         <h2>THE WEST BENGAL STATE CO.OP.MARKETING FEDERATION LTD.</h2>
                         <h4>HEAD OFFICE: SOUTHEND CONCLAVE, 3RD FLOOR, 1582 RAJDANGA MAIN ROAD, KOLKATA-700107.</h4>
-                        <h4>Society Ledger Between: <?php echo $_SESSION['date']; ?></h4>
-                        <h5 style="text-align:left"><label>District: </label> <?php echo $br_name->district_name; ?></h5>
+                        <h4>Society Ledger Between: <?php //echo $_SESSION['date']; ?></h4>
+                        <h5 style="text-align:left"><label>District: </label> <?php //echo $br_name->district_name; ?></h5>
 						<h5 style="text-align:left"><label>Society: </label> <?php if($all_data) { foreach($all_data as $prodtls);echo $prodtls->soc_name; }?></h5>
-						<h5 style="text-align:left"><label>Gst No: </label> <?php if($all_data) {  echo $gstno; }?></h5>
+						<h5 style="text-align:left"><label>Gst No: </label> <?php if($all_data) ?></h5>
 
                     </div>
                     <br>  
@@ -53,7 +53,7 @@
 
                             <?php
 
-                                if($product){ 
+                                if($all_data){ 
 									
                                     $i = 1;
                                     $total = 0.00;
@@ -79,7 +79,7 @@
                                      <td class="report opening" id="opening">                               <!--Date--->
                                         <?php echo date('d/m/Y',strtotime($prodtls->trans_dt)); ?>
 									 </td>
-                                     <td><?php echo $prodtls->prod; ?></td>                                 <!--Product--->
+                                     <td><?php echo $prodtls->prod; ?></td>                               
                                      <td><?= $prodtls->inv_no; ?></td>                                      <!--Invoice/Receipt no.--->
                                      <td class="report"><?php echo $prodtls->ro_no; ?></td>                 <!--RO--->
                                      <td class="report opening" id="opening">                               <!--Ro Date/Deposit Date--->
@@ -156,9 +156,8 @@
                                            
                                         }
 
-                                    }elseif(/*$prodtls->remarks=='Advance/Cr.Note Adj'||*/ $prodtls->remarks=='NEFT Adj' || $prodtls->remarks=='Pay Order Adj' || $prodtls->remarks=='Draft Adj'|| $prodtls->remarks=='Cheque Adj'){
-                                        //echo $prodtls->remarks .' '.$totalamt;
-                                        //$totalamt -= (($prodtls->tot_recv) +($prodtls->tot_paid));
+                                    }elseif( $prodtls->remarks=='NEFT Adj' || $prodtls->remarks=='Pay Order Adj' || $prodtls->remarks=='Draft Adj'|| $prodtls->remarks=='Cheque Adj'){
+                                        
 										$totalamt -= (($prodtls->tot_recv));
                                         if($totalamt>0){
                                             $totVal=round($totalamt, 2);
@@ -172,13 +171,10 @@
                                            
                                         }
 
-                                        // echo $totalamt;
                                      }elseif($prodtls->remarks=='Sale'){
                                       
                                       $totalamt += $prodtls->tot_payble +$prodtls->cgst + $prodtls->sgst;
-
-                                     
-                                      
+  
                                         if($totalamt>0){
                                            
                                             $totVal=round($totalamt, 2);
@@ -193,55 +189,30 @@
                                         }
                                      }
                                      ?>
-                                     
-
-                                     
-                                  
-                                                                      
                                 </tr>
  
                                 <?php  
                                                         
                                     }
                                 ?>
-
  
                                 <?php 
                                        }
                                 else{
 
-                                    echo "<tr> 
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
-                                     <td  style='text-align:center;'>No Data Found</td>
-                                     <td></td>
-                                     <td></td>
-                                     <td></td>
-                                     
+                                    echo "<tr> <td></td><td></td><td></td>
+                                    <td></td><td></td><td></td><td></td>
+                                    <td></td><td></td><td></td>
+                                    <td></td><td  style='text-align:center;'>No Data Found</td>
+                                     <td></td><td></td><td></td>
                                      </tr>";
 
                                 }   
-
                             ?>
 							<tr style="font-weight: bold;">
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
+                            <td></td><td></td><td></td><td></td>
+                            <td></td><td></td><td></td>
                                <td class="report" style="text-align:right">Total</td> 
-                              
                                <td class="report"><?=$taxable?></td>
                                 <td class="report"><?=$tot_cgst?></td>  
                                 <td class="report"><?=$tot_sgst?></td>  
@@ -257,10 +228,7 @@
                 </div>   
                 
                 <div style="text-align: center;">
-
                     <button class="btn btn-primary" type="button" onclick="printDiv();">Print</button>
                    <!-- <button class="btn btn-primary" type="button" id="btnExport" >Excel</button> -->
-
                 </div>
-
             </div>
