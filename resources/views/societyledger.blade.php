@@ -185,9 +185,8 @@
                                            
                                         }
 
-                                    }elseif(/*$prodtls->remarks=='Advance/Cr.Note Adj'||*/ $prodtls->remarks=='NEFT Adj' || $prodtls->remarks=='Pay Order Adj' || $prodtls->remarks=='Draft Adj'|| $prodtls->remarks=='Cheque Adj'){
-                                        //echo $prodtls->remarks .' '.$totalamt;
-                                        //$totalamt -= (($prodtls->tot_recv) +($prodtls->tot_paid));
+                                    }elseif( $prodtls->remarks=='NEFT Adj' || $prodtls->remarks=='Pay Order Adj' || $prodtls->remarks=='Draft Adj'|| $prodtls->remarks=='Cheque Adj'){
+                                        
 										$totalamt -= (($prodtls->tot_recv));
                                         if($totalamt>0){
                                             $totVal=round($totalamt, 2);
@@ -201,13 +200,10 @@
                                            
                                         }
 
-                                        // echo $totalamt;
                                      }elseif($prodtls->remarks=='Sale'){
                                       
                                       $totalamt += $prodtls->tot_payble +$prodtls->cgst + $prodtls->sgst;
-
-                                     
-                                      
+  
                                         if($totalamt>0){
                                            
                                             $totVal=round($totalamt, 2);
@@ -222,55 +218,30 @@
                                         }
                                      }
                                      ?>
-                                     
-
-                                     
-                                  
-                                                                      
                                 </tr>
  
                                 <?php  
                                                         
                                     }
                                 ?>
-
  
                                 <?php 
                                        }
                                 else{
 
-                                    echo "<tr> 
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
-                                     <td  style='text-align:center;'>No Data Found</td>
-                                     <td></td>
-                                     <td></td>
-                                     <td></td>
-                                     
+                                    echo "<tr> <td></td><td></td><td></td>
+                                    <td></td><td></td><td></td><td></td>
+                                    <td></td><td></td><td></td>
+                                    <td></td><td  style='text-align:center;'>No Data Found</td>
+                                     <td></td><td></td><td></td>
                                      </tr>";
 
                                 }   
-
                             ?>
 							<tr style="font-weight: bold;">
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
+                            <td></td><td></td><td></td><td></td>
+                            <td></td><td></td><td></td>
                                <td class="report" style="text-align:right">Total</td> 
-                              
                                <td class="report"><?=$taxable?></td>
                                 <td class="report"><?=$tot_cgst?></td>  
                                 <td class="report"><?=$tot_sgst?></td>  
@@ -286,12 +257,9 @@
                 </div>   
                 
                 <div style="text-align: center;">
-
                     <button class="btn btn-primary" type="button" onclick="printDiv();">Print</button>
                    <!-- <button class="btn btn-primary" type="button" id="btnExport" >Excel</button> -->
-
                 </div>
-
             </div>
                               </div>
                         </div>
