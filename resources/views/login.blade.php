@@ -19,7 +19,13 @@
 <div class="LoginCardLayout">
 	<div class="LoginCardLayout-card">
 	<div class="LoginCardLayout-LoginLogoContainer "><img src="{{ url('public/images/logo.png') }}" alt="" class="LoginCardLayout-LogoLogo"/></div>
-	<div class="LoginDefaultView-content">	
+	<div class="LoginDefaultView-content">
+		<div class="alert alert-success" role="alert">
+		    @if(Session::has('msg'))
+				{{Session::get('msg')}}
+			@endif
+		</div>
+	   	
 	<form class="LoginEmailPasswordForm" method="POST" action="{{ url('login') }}" id='signupForm'>
 		<div class="LoginEmailPasswordForm-emailAndPassword">
 		

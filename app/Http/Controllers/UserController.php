@@ -21,14 +21,9 @@ class UserController extends Controller
         return view('signup2',['id'=>$id]);
         //echo Hash::make('123');
     }
-
     public function dashboard()
     {
         return view('dashboard');
-    }
-    public function report()
-    {
-        return view('report');
     }
     public function receipt()
     {
@@ -67,6 +62,7 @@ class UserController extends Controller
         $User->status = '1';
         $User->updated_by =Session::get('soctemp_detail')[0]->email;
         $User->save();
+        Session::flash('msg','Registration is successfully');
         return view('login');
 
     }

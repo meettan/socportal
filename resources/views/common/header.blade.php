@@ -27,31 +27,24 @@
   <li>
     <div class="link"><a href="{{route('dashboard')}}"><i class="fa fa-tachometer"></i>Dashboard</a></div>
   </li>
-  <li>
+  <!-- <li>
     <div class="link"><a href="{{route('receipt')}}"><i class="fa fa-code"></i>Receipt </a></div>
-  </li>
-	<li>
+  </li> -->
+	<!-- <li>
 	<div class="link"><a href="{{route('report')}}"><i class="fa fa-code"></i>Report</a></div>
-	</li>
-	<li>
+	</li> -->
+	
+  <li>
+    <div class="link"><i class="fa fa-mobile"></i>Report<i class="fa fa-chevron-down"></i></div>
+    <ul class="submenu">
+      <li><a href="#">Society Ledger</a></li>
+      <li><a href="#">Purchase History</a></li>
+      <li><a href="#">Payment History</a></li>
+    </ul>
+  </li>
+  <li>
 	<div class="link"><a href="{{route('logout')}}"><i class="fa fa-sign-out"></i>Log out</a></div>
 	</li>
-  <li>
-    <div class="link"><i class="fa fa-mobile"></i>Dropdown 1<i class="fa fa-chevron-down"></i></div>
-    <ul class="submenu">
-      <li><a href="#">Menu 1</a></li>
-      <li><a href="#">Menu 2</a></li>
-      <li><a href="#">Menu 3</a></li>
-    </ul>
-  </li>
-  <li>
-    <div class="link"><i class="fa fa-globe"></i>Dropdown 2<i class="fa fa-chevron-down"></i></div>
-    <ul class="submenu">
-      <li><a href="#">Menu 1</a></li>
-      <li><a href="#">Menu 2</a></li>
-      <li><a href="#">Menu 3</a></li>
-    </ul>
-  </li>
 </ul>
 </nav>	
 	<div class="main-panel">
@@ -62,7 +55,7 @@
 		<div class="topDateRight">
 		<ul class="nav topDateRight">
 			<li class="nav-item dropdown">
-                    <a href="#" class="nav-link">Branch Office <i class="fa fa-user-circle" aria-hidden="true"></i> </a>
+                    <a href="#" class="nav-link"><?php $soc_name = Auth::user()->soc_name; echo $soc_name;?><i class="fa fa-user-circle" aria-hidden="true"></i> </a>
                 </li>
             </ul>
 		</div>
