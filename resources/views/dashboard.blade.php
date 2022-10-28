@@ -18,7 +18,6 @@
 		<div class="col-sm-6 float-left">
 			<div class="boxSecMain">
 				<h2>Download Invoice / Receipts</h2>
-				
 				<div class="boxSecMainDescrip">
 					<ul class="downList">
 					<li>

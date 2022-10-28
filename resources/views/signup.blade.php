@@ -55,7 +55,6 @@
 			<input type="password" name="password_confirm" required>
 			</label>
 			
-			
 			<input type="submit" value="Continue" class="signUpBtn" id="submit">
 		</div>
      </form>
