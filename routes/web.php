@@ -28,7 +28,7 @@ Route::get('/dashboard', [App\Http\Controllers\UserController::class,'dashboard'
 
 Route::get('/report', [App\Http\Controllers\UserController::class,'report'])->name('report');
 Route::get('/receipt', [App\Http\Controllers\UserController::class,'receipt'])->name('receipt');
-Route::get('/drcrnote', [App\Http\Controllers\CreditnoteController::class,'drcrnote'])->name('drcrnote');
+Route::any('/drcrnote', [App\Http\Controllers\CreditnoteController::class,'drcrnote'])->name('drcrnote');
 Route::get('/drnoteReport', [App\Http\Controllers\CreditnoteController::class,'drnoteReport'])->name('drnoteReport');
 Route::get('/advancefilter', [App\Http\Controllers\AdvanceController::class,'advancefilter'])->name('advancefilter');
 Route::get('/socadvReport', [App\Http\Controllers\AdvanceController::class,'socadvReport'])->name('socadvReport');
