@@ -61,8 +61,7 @@
                             <h2>THE WEST BENGAL STATE CO.OP.MARKETING FEDERATION LTD.</h2>
                             <h4>HEAD OFFICE: SOUTHEND CONCLAVE, 3RD FLOOR, 1582 RAJDANGA MAIN ROAD, KOLKATA-700107.</h4>
                             <h4>Purchase Between: <?php echo date('d/m/Y',strtotime($frmDt)); ?> To <?php echo date('d/m/Y',strtotime($toDt)); ?></h4>
-                            <h5 style="text-align:left"><label>District: </label> <?php //echo $br_name->district_name; ?></h5>
-                            <h5 style="text-align:left"><label>Gst No: </label> <?php if($all_data) ?></h5>
+                            <h5 style="text-align:left"><label>Gst No: </label> <?php $gstin = Auth::user()->gstin; echo $gstin;?></h5>
                         </div>
                         <br>  
                         <table style="width: 100%;">

@@ -61,7 +61,7 @@ class SocietyController extends Controller
             group by soc_id,soc_name,ro_no,ro_dt,inv_no,trans_dt,remarks,prod 
             ORDER BY `a`.`trans_dt`,`a`.`inv_no`");
 
-        return view('societyledger', ['all_data' => $data]);
+        return view('societyledger', ['all_data' => $data,'frmDt'=>$frmDt,'toDt'=>$toDt]);
         
       }else{
          return view('societyledger', ['all_data' => '']);
@@ -119,9 +119,6 @@ class SocietyController extends Controller
             group by soc_id,soc_name,ro_no,ro_dt,inv_no,trans_dt,remarks,prod 
             ORDER BY `a`.`trans_dt`,`a`.`inv_no`");
 
-       // return view('societyledgerrep', ['all_data' => $data]);
-
-        //view()->share('employee',$data);
       $pdf = PDF::loadView('societyledgerrep', ['all_data' => $data]);
       // download PDF file with download method
       return $pdf->download('pdf_file.pdf');
@@ -140,8 +137,8 @@ class SocietyController extends Controller
                      and    a.soc_id   = '1470'
                      and    a.do_dt between '$frmDt' and '$toDt'
                      order by c.short_name, a.do_dt");
-                   //  print_r($data);
-         return view('societypur', ['all_data' => $data,'frmDt'=>$frmDt,'toDt'=>$toDt]);
+           
+      return view('societypur', ['all_data' => $data,'frmDt'=>$frmDt,'toDt'=>$toDt]);
 
       }else{
 
