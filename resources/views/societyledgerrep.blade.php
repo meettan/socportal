@@ -1,33 +1,4 @@
-<?php echo View::make('common/header'); ?>
-    <div class="content-wrapper">
-		<div class="card">
-            <div class="card-body">
-                <div class="titleSec">
-                    <h2>{{ Helper::test() }}</h2>
-                    <div class="dateCalenderSec"></div>
-                </div>
-                <div class="row">
-                    <div class="col-sm-12"> 
-                        <div id="divToPrint">
-                            <div class="wrapper_fixed">
-                            <form method="POST" action="{{ url('socledger') }}" id='signupForm' class="validatedForm">
-		                          @csrf
-                                <div class="row">
-                               
-                                <label for="to_date" class="col-sm-1 col-form-label">From Date:</label>
-                                <div class="col-md-3">
-                                <input type="date" name="from_date" class="form-control required" value="<?php echo '2022-04-01'?>" min='' max="" readonly/>  
-                                </div>
-                                <label for="to_date" class="col-sm-1 col-form-label">To Date:</label>
-                                <div class="col-md-3">
-                                    <input type="date" name="to_date" class="form-control required" value=""  min='' max=""/> 
-                                </div>
-                                <div class="col-md-2"><input type="submit" class="form-control required"></div>
-                                </div>
-                              </form>
-                              <div class="row">
-
-                              <div class="col-lg-12 contant-wraper">
+<div class="col-lg-12 contant-wraper">
                 
                 <div id="divToPrint">
 
@@ -50,18 +21,18 @@
                                 <th>Sl No.</th>
                                 <th>Remarks</th>
                                 <th>Date</th>
-                                <!-- <th>Product</th> -->
+                                <th>Product</th>
                                 <th>Invoice/
                                     Receipt No.</th>
-                                <!-- <th>RO</th>
+                                <th>RO</th>
                                 <th>RO/
                                     Deposit Date</th>
                                 <th>Qty</th>
                                 <th>Taxable 
                                     Amount</th>
                                 <th>CGST</th>
-                                <th>SGST</th> -->
-								<th>Sale 
+                                <th>SGST</th>
+								<th>Total 
                                     Amount</th>
                                 <th>Advance/
 								    Credit Note</th>
@@ -108,27 +79,27 @@
                                      <td class="report opening" id="opening">                               <!--Date--->
                                         <?php echo date('d/m/Y',strtotime($prodtls->trans_dt)); ?>
 									 </td>
-                                     <!-- <td><?php //echo $prodtls->prod; ?></td>                                -->
+                                     <td><?php echo $prodtls->prod; ?></td>                               
                                      <td><?= $prodtls->inv_no; ?></td>                                      <!--Invoice/Receipt no.--->
-                                     <!-- <td class="report"><?php //echo $prodtls->ro_no; ?></td>              
-                                     <td class="report opening" id="opening">                            
-                                        <?php //if($prodtls->remarks!='Opening'){ echo date('d/m/Y',strtotime($prodtls->ro_dt));} ?>
+                                     <td class="report"><?php echo $prodtls->ro_no; ?></td>                 <!--RO--->
+                                     <td class="report opening" id="opening">                               <!--Ro Date/Deposit Date--->
+                                        <?php if($prodtls->remarks!='Opening'){ echo date('d/m/Y',strtotime($prodtls->ro_dt));} ?>
 									 </td>
-                                     <td class="report purchase" id="purchase">                           
-                                        <?php //echo $prodtls->qty; $qty+=$prodtls->qty; ?>
+                                     <td class="report purchase" id="purchase">                             <!--Quantity--->
+                                        <?php echo $prodtls->qty; $qty+=$prodtls->qty; ?>
                                      </td>
-									 <td class="report purchase" id="purchase">                            
-                                        <?php //echo $prodtls->tot_payble;
-                                            //  $taxable += $prodtls->tot_payble  ?>
+									 <td class="report purchase" id="purchase">                            <!--Taxable Amount--->
+                                        <?php echo $prodtls->tot_payble;
+                                              $taxable += $prodtls->tot_payble  ?>
                                      </td>
-									 <td class="report sale" id="sale">                                     
-                                        <?php //echo $prodtls->cgst; 
-                                            //$tot_cgst += $prodtls->cgst;?>
+									 <td class="report sale" id="sale">                                     <!--CGST--->
+                                        <?php echo $prodtls->cgst; 
+                                            $tot_cgst += $prodtls->cgst;?>
                                      </td>
-                                     <td class="report sale" id="sale">                                  
-                                        <?php //echo $prodtls->sgst; 
-                                       // $tot_sgst += $prodtls->sgst ;?>
-                                     </td> -->
+                                     <td class="report sale" id="sale">                                     <!--SGST--->
+                                        <?php echo $prodtls->sgst; 
+                                        $tot_sgst += $prodtls->sgst ;?>
+                                     </td>
                                      <td class="report sale" id="sale">                                     <!--Total Amount--->
                                         <?php  echo  $prodtls->tot_payble +$prodtls->cgst + $prodtls->sgst;  
                                                 $totalamount += $prodtls->tot_payble +$prodtls->cgst + $prodtls->sgst;
@@ -239,12 +210,12 @@
                                 }   
                             ?>
 							<tr style="font-weight: bold;">
-                            <td></td><td></td>
-                            <td></td>
+                            <td></td><td></td><td></td><td></td>
+                            <td></td><td></td><td></td>
                                <td class="report" style="text-align:right">Total</td> 
-                               <!-- <td class="report"><?=$taxable?></td>
+                               <td class="report"><?=$taxable?></td>
                                 <td class="report"><?=$tot_cgst?></td>  
-                                <td class="report"><?=$tot_sgst?></td>   -->
+                                <td class="report"><?=$tot_sgst?></td>  
                                 <td class="report"><?=$totalamount?></td>  
                                 <td class="report"><?=$advCrnote?></td>  
                                 <td class="report"><?=$adjustable?></td> 
@@ -261,40 +232,3 @@
                    <!-- <button class="btn btn-primary" type="button" id="btnExport" >Excel</button> -->
                 </div>
             </div>
-           
-                              </div>
-                        </div>
-                    </div>
-                </div>
-		    </div>
-        </div>
-<?php echo View::make('common/footer'); ?>
-<script>
- function printDiv() {
-        var divToPrint = document.getElementById('divToPrint');
-        var WindowObject = window.open('', 'Print-Window');
-        WindowObject.document.open();
-        WindowObject.document.writeln('<!DOCTYPE html>');
-        WindowObject.document.writeln('<html><head><title></title><style type="text/css">');
-
-        WindowObject.document.writeln('@media print { .center { text-align: center;}' +
-            '                                         .inline { display: inline; }' +
-            '                                         .underline { text-decoration: underline; }' +
-            '                                         .left { margin-left: 315px;} ' +
-            '                                         .right { margin-right: 375px; display: inline; }' +
-            '                                          table { border-collapse: collapse; font-size: 12px;}' +
-            '                                          th, td { border: 1px solid black; border-collapse: collapse; padding: 6px;}' +
-            '                                           th, td {text-align: left;}' +
-            '                                         .border { border: 1px solid black; } ' +
-            '                                         .bottom { bottom: 5px; width: 100%; position: fixed ' +
-            '                                       ' +
-            '                                   } } </style>');
-        WindowObject.document.writeln('</head><body onload="window.print()">');
-        WindowObject.document.writeln(divToPrint.innerHTML);
-        WindowObject.document.writeln('</body></html>');
-        WindowObject.document.close();
-        setTimeout(function () {
-            WindowObject.close();
-        }, 10);
-  }
-  </script>

@@ -59,7 +59,7 @@ class SocietyController extends Controller
             group by soc_id,soc_name,ro_no,ro_dt,inv_no,trans_dt,remarks,prod 
             ORDER BY `a`.`trans_dt`,`a`.`inv_no`");
 
-        return view('societyledger');
+        return view('societyledger', ['all_data' => $data]);
         //dd(DB::getQueryLog());
 
     }
