@@ -1,7 +1,5 @@
 <?php
-
 namespace App\Http\Controllers;
-use App\Helper;
 use Illuminate\Http\Request;
 use Auth;
 use DB;

@@ -71,13 +71,11 @@ class UserController extends Controller
 
     public function login(Request $request)
     {                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    
-        
         // $validator = Validator::make($request->all(), [
         //     'pan' => 'required',
         //     'password' => 'required',
         //                                                                                                                     'captcha' => 'required|captcha'                                                                                                                                                                                                     
-        // ]);
-                                                                                                                                                                                                                     
+        // ]);                                                                                                                                                                                                     
         $request->validate([
             'pan' => 'required',
             'password' => 'required',

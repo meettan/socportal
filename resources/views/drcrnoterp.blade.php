@@ -79,7 +79,7 @@ foreach($data as $key2)
 </tr>
 
 <tr>
-  <th align="left" scope="row"><strong>Amount (In Words):</strong> <?php //echo "INR ".getIndianCurrency(round($tot_amount));?></th>
+  <th align="left" scope="row"><strong>Amount (In Words):</strong>{{ Helper::displaywords($tot_amount)}} </th>
   <td></td>
 </tr>
 <?php

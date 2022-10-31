@@ -46,9 +46,8 @@
               </tr>
               <tr>
                 <th align="left" scope="row"><strong>The sum of :</strong></th>
-                <th><?php //echo "INR ".getIndianCurrency(round($data->adv_amt));?></th>
-                    <!-- Cheque/DD - 3-Aug-2020 1,02,5000</td> -->
-                    <!-- <td rowspan="3" style="width: 67%;padding: 4px;" ><?php //echo getIndianCurrency(round($net_amt-$tot_dis));?></td> -->
+                <th>{{ Helper::displaywords($data->adv_amt)}}</th>
+                    
               </tr>
               <tr>
                 <th align="left" scope="row"><strong>By:</strong></th>

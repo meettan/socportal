@@ -1,14 +1,11 @@
 <?php echo View::make('common/header'); ?>
-
 <div class="content-wrapper">
 			<div class="card">
         <div class="card-body">
-          
           <div class="titleSec">
-            <h2>{{ Helper::test() }}</h2>
+            <h2></h2>
             <div class="dateCalenderSec"></div>
           </div>
-          
           <div class="row">
               <div class="col-sm-12"> 
                 <div id="divToPrint">
@@ -87,7 +84,7 @@
                             <?php echo  $data->sale_invoice_no;?>.<?php echo  $data->remarks;?> <br>
                           </p>
                           <p style="margin: 0; padding: 0;"><strong>Amount (In Word):</strong> INR
-                            <?php //echo getIndianCurrency(round($data->amt));?> </p>
+                             {{ Helper::displaywords($data->amt)}}</p>
                         </td>
                         <td style="vertical-align: bottom !important;">
                           <strong><?php echo "&#2352;".$data->amt;?></strong></td>
