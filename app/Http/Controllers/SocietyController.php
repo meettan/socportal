@@ -3,9 +3,9 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-App\Http\Controllers\PDF;
 use Auth;
 use DB;
+use PDF;
 class SocietyController extends Controller
 {
     public function socledger(Request $request){
