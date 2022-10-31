@@ -34,4 +34,5 @@ Route::get('/salesfilter', [App\Http\Controllers\SaleController::class,'salesfil
 Route::get('/print_receipt', [App\Http\Controllers\SaleController::class,'print_receipt'])->name('print_receipt');
 Route::post('/socledgerrep', [App\Http\Controllers\SocietyController::class,'socledgerrep'])->name('socledgerrep');
 Route::any('socledger', 'SocietyController@socledger')->name('socledger');
+Route::any('purrep', 'SocietyController@purrep')->name('purrep');
 Route::get('/logout', 'UserController@logout')->name('logout');

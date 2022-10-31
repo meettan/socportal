@@ -38,7 +38,7 @@
     <div class="link"><i class="fa fa-mobile"></i>Report<i class="fa fa-chevron-down"></i></div>
     <ul class="submenu">
       <li><a href="{{'socledger'}}">Society Ledger</a></li>
-      <li><a href="#">Purchase History</a></li>
+      <li><a href="{{'purrep'}}">Purchase History</a></li>
       <li><a href="#">Payment History</a></li>
     </ul>
   </li>

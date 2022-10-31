@@ -13,7 +13,6 @@
                             <form method="POST" action="{{ url('socledger') }}" id='signupForm' class="validatedForm">
 		                          @csrf
                                 <div class="row">
-                               
                                 <label for="to_date" class="col-sm-1 col-form-label">From Date:</label>
                                 <div class="col-md-3">
                                 <input type="date" name="from_date" class="form-control required" value="<?php echo '2022-04-01'?>" min='' max="" readonly/>  
@@ -26,7 +25,7 @@
                                 </div>
                               </form>
                               <div class="row">
-
+                <?php   if($all_data) {    ?>
                               <div class="col-lg-12 contant-wraper">
                 
                 <div id="divToPrint">
@@ -261,7 +260,7 @@
                    <!-- <button class="btn btn-primary" type="button" id="btnExport" >Excel</button> -->
                 </div>
             </div>
-           
+            <?php } ?>
                               </div>
                         </div>
                     </div>

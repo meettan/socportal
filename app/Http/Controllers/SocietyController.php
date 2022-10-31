@@ -10,6 +10,8 @@ class SocietyController extends Controller
 {
     public function socledger(Request $request){
         DB::enableQueryLog();
+
+        if ($request->isMethod('post')) {
         //$soc_id =   Auth::user()->soc_id; 
         $soc_id = 1470; 
         $frmDt  =   $request->from_date;
@@ -60,7 +62,11 @@ class SocietyController extends Controller
             ORDER BY `a`.`trans_dt`,`a`.`inv_no`");
 
         return view('societyledger', ['all_data' => $data]);
-        //dd(DB::getQueryLog());
+        
+      }else{
+         return view('societyledger', ['all_data' => '']);
+      }
+      
 
     }
     public function socledgerrep(Request $request){
@@ -120,5 +126,26 @@ class SocietyController extends Controller
       // download PDF file with download method
       return $pdf->download('pdf_file.pdf');
         
+    }
+    public function purrep(Request $request){
+      if ($request->isMethod('post')) {
+      $soc_id = 1470; 
+      $frmDt  =   $request->from_date;
+      $toDt  =   $request->to_date;
+      $data = DB::select("select a.trans_do,a.do_dt,a.trans_type,a.sale_ro,a.qty,a.soc_id,b.unit,b.QTY_PER_BAG as qty_per_bag,
+      a.sale_rt,a.taxable_amt,a.cgst,a.sgst,a.dis,a.tot_amt,c.short_name,b.PROD_DESC
+                     from v_sale a,v_product b,v_company_dtls c
+                     where  a.prod_id = b.PROD_ID
+                     and    a.comp_id = c.COMP_ID
+                     and    a.soc_id   = '1470'
+                     and    a.do_dt between '$frmDt' and '$toDt'
+                     order by c.short_name, a.do_dt");
+                   //  print_r($data);
+         return view('societypur', ['all_data' => $data,'frmDt'=>$frmDt,'toDt'=>$toDt]);
+
+      }else{
+
+         return view('societypur', ['all_data' => '']);
+      }
     }
 }
