@@ -6,7 +6,6 @@
                 <h2>Credit Note</h2>
                 <div class="dateCalenderSec">
                     <div class="calenderSec">
-                       
                         <form method="POST" action="{{ url('drcrnote') }}" id='' class="">
 		                          @csrf
                         <label class="dateCustom"><span>Start Date:</span><span>

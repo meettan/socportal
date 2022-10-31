@@ -9,14 +9,24 @@ class AdvanceController extends Controller
 {
     public function advancefilter(Request $request)
     {   DB::enableQueryLog();
-        $soc_id =   Auth::user()->soc_id;  
+        if ($request->isMethod('post')) {
+        $soc_id =   Auth::user()->soc_id; 
+        $frmDt  =   $request->from_date;
+        $todt   =   $request->to_date;  
         $dr_notes = DB::select("select a.trans_dt,a.receipt_no,a.soc_id,a.trans_type,b.soc_name,a.adv_amt,a.forward_flag forward_flag,
         (SELECT count(*) no_of_rcpt FROM v_adv_details c where a.receipt_no=c.receipt_no)as no_of_rcpt
          FROM v_advance a, v_ferti_soc b
             WHERE a.soc_id = b.soc_id
-            AND a.soc_id = $soc_id");
+            AND  a.trans_dt >= '$frmDt'
+            AND  a.trans_dt <= '$todt'
+            AND  a.soc_id = $soc_id");
                    
-        return view('advance', ['data' => $dr_notes]);
+            return view('advance', ['data' => $dr_notes]);
+
+        }else{
+
+            return view('advance', ['data' => '']);
+        }
     }
     public function socadvReport(Request $request){
         DB::enableQueryLog();
