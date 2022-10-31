@@ -3,7 +3,7 @@
 		<div class="card">
             <div class="card-body">
                 <div class="titleSec">
-                    <h2>{{ Helper::test() }}</h2>
+                    <h2>Ledger</h2>
                     <div class="dateCalenderSec"></div>
                 </div>
                 <div class="row">
@@ -15,7 +15,7 @@
                                 <div class="row">
                                 <label for="to_date" class="col-sm-1 col-form-label">From Date:</label>
                                 <div class="col-md-3">
-                                <input type="date" name="from_date" class="form-control required" value="<?php echo '2022-04-01'?>" min='' max="" readonly/>  
+                                <input type="date" name="from_date" class="form-control required" value="" min='' max="" />  
                                 </div>
                                 <label for="to_date" class="col-sm-1 col-form-label">To Date:</label>
                                 <div class="col-md-3">
@@ -29,9 +29,7 @@
                               <div class="col-lg-12 contant-wraper">
                 
                 <div id="divToPrint">
-
                     <div style="text-align:center;">
-
                         <h2>THE WEST BENGAL STATE CO.OP.MARKETING FEDERATION LTD.</h2>
                         <h4>HEAD OFFICE: SOUTHEND CONCLAVE, 3RD FLOOR, 1582 RAJDANGA MAIN ROAD, KOLKATA-700107.</h4>
                         <h4>Society Ledger Between: <?php echo date('d/m/Y',strtotime($frmDt)); ?> To <?php echo date('d/m/Y',strtotime($toDt)); ?></h4>

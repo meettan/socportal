@@ -31,7 +31,7 @@
 		<div class="card">
             <div class="card-body">
                 <div class="titleSec">
-                    <h2>Please Give valid date range</h2>
+                    <h2>Purchase</h2>
                     <div class="dateCalenderSec"></div>
                 </div>
                 <div class="row">
