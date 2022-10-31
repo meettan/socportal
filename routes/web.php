@@ -13,9 +13,13 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('login');
+    // return view('login');
+    return redirect()->route('login');
 });
-Route::post('/login',[App\Http\Controllers\UserController::class,'login']);
+
+Route::get('/login',[App\Http\Controllers\UserController::class,'Show'])->name('login');
+Route::post('/login',[App\Http\Controllers\UserController::class,'login'])->name('loginConfrim');
+Route::get('/reload-captcha', [App\Http\Controllers\UserController::class, 'reloadCaptcha']);
 Route::get('/register', [App\Http\Controllers\UserController::class,'register'])->name('register');
 Route::post('/validatesocdetail',[App\Http\Controllers\UserController::class,'validatesocdetail']);
 Route::get('/registerse/{id?}', [App\Http\Controllers\UserController::class,'register_second'])->name('registerse');
