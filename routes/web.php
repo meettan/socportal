@@ -22,9 +22,10 @@ Route::post('/login',[App\Http\Controllers\UserController::class,'login'])->name
 Route::get('/reload-captcha', [App\Http\Controllers\UserController::class, 'reloadCaptcha']);
 Route::get('/register', [App\Http\Controllers\UserController::class,'register'])->name('register');
 Route::post('/validatesocdetail',[App\Http\Controllers\UserController::class,'validatesocdetail']);
+Route::get('/panvalidate', [App\Http\Controllers\UserController::class, 'panvalidate']);
 Route::get('/registerse/{id?}', [App\Http\Controllers\UserController::class,'register_second'])->name('registerse');
 Route::post('/registercomplete',[App\Http\Controllers\UserController::class,'registercomplete']);
-Route::get('/dashboard', [App\Http\Controllers\UserController::class,'dashboard'])->name('dashboard');
+Route::get('/dashboard', [App\Http\Controllers\DashboardController::class,'dashboard'])->name('dashboard');
 
 Route::get('/report', [App\Http\Controllers\UserController::class,'report'])->name('report');
 Route::get('/receipt', [App\Http\Controllers\UserController::class,'receipt'])->name('receipt');

@@ -6,7 +6,11 @@ use Hash;
 use Auth;
 use DB;
 class CreditnoteController extends Controller
-{
+{   
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
     public function drcrnote(Request $request)
     {   DB::enableQueryLog();
 

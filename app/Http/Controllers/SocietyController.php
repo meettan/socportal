@@ -7,7 +7,11 @@ use Auth;
 use DB;
 use PDF;
 class SocietyController extends Controller
-{
+{  
+   public function __construct()
+    {
+        $this->middleware('auth');
+    }
     public function socledger(Request $request){
         DB::enableQueryLog();
 

@@ -9,7 +9,11 @@ use Illuminate\Support\Facades\Http;
 use PDF;
 
 class SaleController extends Controller
-{
+{   
+	public function __construct()
+    {
+        $this->middleware('auth');
+    }
     
     public function salesfilter(){
 

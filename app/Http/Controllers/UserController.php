@@ -23,33 +23,32 @@ class UserController extends Controller
         return view('signup2',['id'=>$id]);
         //echo Hash::make('123');
     }
-    public function dashboard()
-    {
-        return view('dashboard');
-    }
-    public function receipt()
-    {
-        return view('receipt');
-    }
+    
     public function validatesocdetail(Request $request)
     {
-        $result = SocietyModel::where(['pan'=> $request->pan,'email'=>$request->email])->get();
-        
-        if (count($result) > 0) {
-            session(['soctemp_detail' => $result]);
-            $User = new userModel;
-            $User->pan = request('pan');
-            $User->email = request('email');
-            $User->soc_id = $result[0]->soc_id;
-            $User->password = Hash::make(request('password'));
-            $User->created_by =request('email');
-            $User->save();
-            $id = $User->id;
-          return redirect()->route('registerse',['id'=>$id]);
-          // return view('signup2.blade',['id'=>$id]);
-        }else{
-            return redirect()->route('register');
+        $user = userModel::where(['pan'=> $request->pan])->get();
+        if (count($user) > 0) {
+            Session::flash('msg','You already registered');
+            return view('login');
         }
+        else{
+            $result = SocietyModel::where(['pan'=> $request->pan])->get();
+            if (count($result) > 0) {
+                session(['soctemp_detail' => $result]);
+                $User = new userModel;
+                $User->pan = request('pan');
+                $User->email = request('email');
+                $User->soc_id = $result[0]->soc_id;
+                $User->password = Hash::make(request('password'));
+                $User->created_by =request('email');
+                $User->save();
+                $id = $User->id;
+            return redirect()->route('registerse',['id'=>$id]);
+            // return view('signup2.blade',['id'=>$id]);
+            }else{
+                return redirect()->route('register');
+            }
+       }
     }
 
     public function registercomplete(){
@@ -63,7 +62,8 @@ class UserController extends Controller
         $User->registration_status = '2';
         $User->status = '1';
         $User->updated_by =Session::get('soctemp_detail')[0]->email;
-        $User->save();                                  
+        $User->save();
+        Session::forget('soctemp_detail') ;                            
         Session::flash('msg','Registration is successfully');
         return view('login');
 
@@ -106,6 +106,17 @@ class UserController extends Controller
     public function reloadCaptcha()
     {
         return response()->json(['captcha'=> captcha_img()]);
+    }
+    public function panvalidate(Request $request){
+        $pan = $request->pan;
+        $user = userModel::where(['pan'=> $request->pan])->get();
+        if (count($user) > 0) {
+            return response()->json(['status'=> 1]);
+        }else{
+            return response()->json(['status'=> 0]);
+        }
+        
+
     }
     public function logout(){
 

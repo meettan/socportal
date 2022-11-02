@@ -5,8 +5,13 @@ use Illuminate\Http\Request;
 use Auth;
 use DB;
 
+
 class AdvanceController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
     public function advancefilter(Request $request)
     {   DB::enableQueryLog();
         if ($request->isMethod('post')) {

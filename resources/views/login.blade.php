@@ -48,7 +48,7 @@
                         <span class="Typography Typography--colorDarkGray1 Typography--s">Pan No.</span>
                         <input type="text"
                             class="TextInputBase SizedTextInput SizedTextInput--medium TextInput LoginEmailPasswordForm-emailInput"
-                            placeholder="Pan No." name="pan" value="" autocomplete="username" autofocus="">
+                            placeholder="Pan No." name="pan" value="" autocomplete="username" autofocus="" id ="pan">
                         <span class="Typography Typography--colorDarkGray1 Typography--s">Password</span>
                         <input type="password"
                             class="TextInputBase SizedTextInput SizedTextInput--medium TextInput ValidatedTextInput-input OnBlurValidatedTextInput-input LoginEmailPasswordForm-passwordInput"
@@ -111,4 +111,5 @@ $('#reload').click(function() {
         }
     });
 });
+
 </script>

@@ -17,23 +17,23 @@
 			<input type="hidden" class="nonEdit" name="id" value="{{$id}}">
 			<label class="full_fieldSign">
 			<span>Name Of Society</span>
-			<input type="text" class="nonEdit" name="soc_name">
+			<input type="text" class="nonEdit" name="soc_name" value="{{Session::get('soctemp_detail')[0]->soc_name}}">
 			</label>
 			<label class="full_fieldSign">
 			<span>Address</span>
-			<textarea class="nonEdit" name="soc_address"></textarea>
+			<textarea class="nonEdit" name="soc_address">{{Session::get('soctemp_detail')[0]->soc_add}}</textarea>
 			</label>
 			<label class="full_fieldSignHalf_1"><span>GSTIN</span>
-			<input type="text" class="nonEdit" name="gstin"></label>
+			<input type="text" class="nonEdit" name="gstin" value="{{Session::get('soctemp_detail')[0]->gstin}}"></label>
 			
 			<label class="full_fieldSignHalf_2"><span>mFMS</span>
-			<input type="text" class="nonEdit" name="mfms"></label>
+			<input type="text" class="nonEdit" name="mfms" value="{{Session::get('soctemp_detail')[0]->mfms}}"></label>
 			
 			<label class="full_fieldSign">
 			<span>Phone Number</span>
-			<input type="tel" class="nonEdit" name="ph_number">
+			<input type="tel" class="nonEdit" name="ph_number" value="{{Session::get('soctemp_detail')[0]->ph_no}}">
 			</label>
-			<input type="submit" value="Continue" class="signUpBtn">
+			<input type="submit" value="Submit" class="signUpBtn">
         </form>
 		</div>
 		
