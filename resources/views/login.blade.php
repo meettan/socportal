@@ -18,6 +18,8 @@
     </head>
 <body>
     <div class="LoginCardLayout">
+<div class="loginLeftSec">dfdsfgfdfgfdg</div>
+
         <div class="LoginCardLayout-card">
        <a href="{{route('login')}}"> <div class="LoginCardLayout-LoginLogoContainer "><img src="{{ url('public/images/logo.png') }}" alt=""
                     class="LoginCardLayout-LogoLogo" /></div></a>

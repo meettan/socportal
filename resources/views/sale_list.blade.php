@@ -40,7 +40,7 @@
             <td ><?php echo date("d/m/Y",strtotime($value->do_dt)); ?></td>
             <td><?php echo $value->trans_do; ?></td>
             <td>
-                <button type="button" name="download_<?= $i ?>" class="download_" id="download"    
+                <button type="button" name="download_<?= $i ?>" class="btn download_custom" id="download"    
                 data-toggle="tooltip" data-placement="bottom" title="download_" <?= $enable_btn; ?>>
                 <a href="{{ route('print_receipt',['irn'=>$value->irn])}}" id="down_clk_td_<?= $i ?>" title="Download"><i class="fa fa-download fa-2x" style="color:green;"></i></a>
             </td>

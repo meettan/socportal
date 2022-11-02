@@ -119,13 +119,15 @@ img {
 
 .LoginCardLayout {
     align-items: center;
-    background: #f6f8f9;
-    display: flex;
+    /* background: #f6f8f9; */
+    background: #000;
     flex-direction: column;
+    /* display: flex;
+    flex-direction: column; */
 	min-height: 100vh;}
 
 
-.LoginCardLayout-card {
+/* .LoginCardLayout-card {
     background: #fff;
     border-radius: 8px;
     box-shadow: 0 5px 20px 0 rgba(21,27,38,.08);
@@ -138,6 +140,25 @@ img {
     padding: 24px 48px 48px;
     padding-bottom: 48px;
     width: calc(100% - 16px);
+} */
+
+.loginLeftSec{width: 70%; float: left; background: #000; color: #fff;
+  padding: 15px; height: 100vh;}
+
+.LoginCardLayout-card {
+  background: #fff;
+  border-radius: 0;
+  box-shadow: 0 5px 20px 0 rgba(21,27,38,.08);
+  box-sizing: border-box;
+  /* display: flex;
+  flex-direction: column;
+  justify-content: center;
+  margin-top: 80px;
+  max-width: 440px; */
+  padding: 24px 48px 48px;
+  padding-bottom: 48px; height: 100vh;
+  /* width: calc(100% - 16px); */
+  width: 30%; float: left;
 }
 
 
@@ -156,7 +177,7 @@ img {
     align-self: center;
     display: flex;
     flex-direction: column;
-    margin-bottom: 16px; margin-top: 30px;
+    margin-bottom: 16px; margin-top: 0;
 }
 .LoginCardLayout-LogoLogo {
     height: 80px;
@@ -244,7 +265,7 @@ img {
     display: flex;
     flex-direction: column;
     justify-content: center;
-    margin-top: 32px;
+    margin-top: 0;
 }
 
 .SizedTextInput.SizedTextInput--medium {
@@ -288,7 +309,7 @@ img {
 
 
 .loginBtn {
-    background: #106fd0; margin-top: 32px;
+    background: #106fd0; margin-top: 20px;
     border:#106fd0 solid 1px;
     color: #fff;
     width: 100%; padding: 9px; border-radius: 3px;
@@ -331,7 +352,7 @@ img {
 .captureSec{margin-top: 15px;}
 .captureSec input{width: 100%;}
 
-span.captureImg{display: block; margin-top: 5px;}
+span.captureImg{display: inline-block; margin-top: 5px;}
 
 
 
@@ -549,6 +570,7 @@ line-height: 30px;}
 .navRightSec button.navbar-toggler{border: none; color: #333; background: #fff; font-size: 21px; padding: 0;}
 .navRightSec .topDate{list-style-type: none; margin:0 auto 0 0;}
 .navRightSec .topDate li{display: inline-block; font-size: 18px; font-weight: 400; margin-right: 15px; line-height: 16px; color: #333;}
+.navRightSec .topDate li#openSideBar_Li{display: none;}
 .navRightSec .topDate li a{text-decoration: none; color: #333;}
 
 .navRightSec .topDateRight{}

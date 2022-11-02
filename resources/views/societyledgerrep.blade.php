@@ -1,6 +1,6 @@
 <div class="col-lg-12 contant-wraper">
                 
-                <div id="divToPrint">
+                <div id="divToPrint" class="divToPrintClass">
 
                     <div style="text-align:center;">
 

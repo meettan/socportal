@@ -8,16 +8,16 @@
                 </div>
                 <div class="row">
                     <div class="col-sm-12"> 
-                        <div id="divToPrint">
+                        <div id="divToPrint" class="divToPrintClass">
                             <div class="wrapper_fixed">
                             <form method="POST" action="{{ url('socledger') }}" id='signupForm' class="validatedForm">
 		                          @csrf
-                                <div class="row">
-                                <label for="to_date" class="col-sm-1 col-form-label">From Date:</label>
+                                <div class="row groupDataStatFrom">
+                                <label for="to_date" class="col-sm-2 col-form-label">From Date:</label>
                                 <div class="col-md-3">
                                 <input type="date" name="from_date" class="form-control required" value="" min='' max="" />  
                                 </div>
-                                <label for="to_date" class="col-sm-1 col-form-label">To Date:</label>
+                                <label for="to_date" class="col-sm-2 col-form-label">To Date:</label>
                                 <div class="col-md-3">
                                     <input type="date" name="to_date" class="form-control required" value=""  min='' max=""/> 
                                 </div>
@@ -28,7 +28,7 @@
                 <?php   if($all_data) {    ?>
                               <div class="col-lg-12 contant-wraper">
                 
-                <div id="divToPrint">
+                <div id="divToPrint" class="divToPrintClass">
                     <div style="text-align:center;">
                         <h2>THE WEST BENGAL STATE CO.OP.MARKETING FEDERATION LTD.</h2>
                         <h4>HEAD OFFICE: SOUTHEND CONCLAVE, 3RD FLOOR, 1582 RAJDANGA MAIN ROAD, KOLKATA-700107.</h4>
@@ -62,7 +62,7 @@
 								    Credit Note</th>
                                 <th>Adjusted 
                                     Amount
-                                    (Cheque/Draft/
+                                    (Cheque/<br>Draft/
                                     Payorder/NEFT/
                                     RTGS)
                                  </th>
