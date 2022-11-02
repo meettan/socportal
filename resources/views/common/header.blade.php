@@ -27,21 +27,30 @@
   <li>
     <div class="link"><a href="{{route('dashboard')}}"><i class="fa fa-tachometer"></i>Dashboard</a></div>
   </li>
-  <!-- <li>
-    <div class="link"><a href="{{route('receipt')}}"><i class="fa fa-code"></i>Receipt </a></div>
-  </li> -->
-	<!-- <li>
-	<div class="link"><a href="{{route('report')}}"><i class="fa fa-code"></i>Report</a></div>
-	</li> -->
-	
   <li>
+    <div class="link"><a href="{{'salesfilter'}}"><i class="fa fa-tachometer"></i>Sale</a></div>
+  </li>
+  <li>
+    <div class="link"><a href="{{'drcrnote'}}"><i class="fa fa-tachometer"></i>Credit Note</a></div>
+  </li>
+  <li>
+    <div class="link"><a href="{{'advancefilter'}}"><i class="fa fa-tachometer"></i>Advance</a></div>
+  </li>
+  <li>
+    <div class="link"><a href="{{'socpayment'}}"><i class="fa fa-tachometer"></i>Money Receipt</a></div>
+  </li>
+  <li>
+    <div class="link"><a href="{{'socledger'}}"><i class="fa fa-tachometer"></i>Society Ledger</a></div>
+  </li>
+  <li>
+    <div class="link"><a href="{{'purrep'}}"><i class="fa fa-tachometer"></i>Purchase History</a></div>
+  </li>
+  <!-- <li>
     <div class="link"><i class="fa fa-mobile"></i>Report<i class="fa fa-chevron-down"></i></div>
     <ul class="submenu">
-      <li><a href="{{'socledger'}}">Society Ledger</a></li>
-      <li><a href="{{'purrep'}}">Purchase History</a></li>
       <li><a href="#">Payment History</a></li>
     </ul>
-  </li>
+  </li> -->
   <li>
 	<div class="link"><a href="{{route('logout')}}"><i class="fa fa-sign-out"></i>Log out</a></div>
 	</li>
