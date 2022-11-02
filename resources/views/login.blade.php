@@ -22,8 +22,8 @@
 <body>
     <div class="LoginCardLayout">
         <div class="LoginCardLayout-card">
-            <div class="LoginCardLayout-LoginLogoContainer "><img src="{{ url('public/images/logo.png') }}" alt=""
-                    class="LoginCardLayout-LogoLogo" /></div>
+       <a href="{{route('login')}}"> <div class="LoginCardLayout-LoginLogoContainer "><img src="{{ url('public/images/logo.png') }}" alt=""
+                    class="LoginCardLayout-LogoLogo" /></div></a>
             <div class="LoginDefaultView-content">
                 @if(Session::has('msg'))
                 <div class="alert alert-success" role="alert">

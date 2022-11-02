@@ -20,7 +20,7 @@
 <body>
  <div class="headerTop">
    <div class="wrapperCus headerTopSub">
-	 <div class="topLogo"><img src="{{ url('public/images/logo.png') }}" alt=""/></div>
+	 <a href="{{route('login')}}"><div class="topLogo"><img src="{{ url('public/images/logo.png') }}" alt=""/></div></a>
 	 <div class="userDetailsRight"></div>
    </div>
 	</div>
