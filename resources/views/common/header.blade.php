@@ -53,6 +53,9 @@
   <li>
     <div class="link"><a href="{{'purrep'}}"><i class="fa fa-tachometer"></i>Purchase History</a></div>
   </li>
+  <li>
+    <div class="link"><a href="javascript:void(0)"><i class="fa fa-tachometer"></i>Payment History</a></div>
+  </li>
   <!-- <li>
     <div class="link"><i class="fa fa-mobile"></i>Report<i class="fa fa-chevron-down"></i></div>
     <ul class="submenu">
