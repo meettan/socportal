@@ -24,6 +24,7 @@
        <a href="{{route('login')}}"> <div class="LoginCardLayout-LoginLogoContainer "><img src="{{ url('public/images/logo.png') }}" alt=""
                     class="LoginCardLayout-LogoLogo" /></div></a>
             <div class="LoginDefaultView-content">
+                
                 @if(Session::has('msg'))
                 <div class="alert alert-success" role="alert">
                     {{Session::get('msg')}}
@@ -56,7 +57,7 @@
                     <span class="Typography Typography--colorDarkGray1 Typography--s"><a href="#">Forgot your
                             password?</a></span>
                     <div class="captureSec">
-                        <span class="Typography Typography--colorDarkGray1 Typography--s"><strong>Enter the text as
+                        <!-- <span class="Typography Typography--colorDarkGray1 Typography--s"><strong>Enter the text as
                                 shown in the image</strong> </span>
                         <input type="text"
                             class="TextInputBase SizedTextInput SizedTextInput--medium TextInput ValidatedTextInput-input OnBlurValidatedTextInput-input LoginEmailPasswordForm-passwordInput"
@@ -65,7 +66,7 @@
 
                         <button type="button" class="btn btn-danger" class="reload" id="reload">
                             &#x21bb;
-                        </button>
+                        </button> -->
 
                     </div>
                     <input type="submit" value="Log in" class="loginBtn">
@@ -76,13 +77,7 @@
                         up</a>
                 </div>
             </div>
-            <span
-                class="LoginCardLayout-captchaNotice Typography Typography--colorDarkGray1 Typography--s Typography--textAlignCenter">This
-                site is protected by reCAPTCHA and the Google
-                <a target="_blank" rel="noreferrer noopener" class="SecondaryLink BaseLink" href="#">Privacy Policy</a>
-                and
-                <a target="_blank" rel="noreferrer noopener" class="SecondaryLink BaseLink" href="#">Terms of Service
-                </a> apply. </span>
+          
         </div>
     </div>
 

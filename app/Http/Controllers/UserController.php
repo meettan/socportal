@@ -46,6 +46,7 @@ class UserController extends Controller
             return redirect()->route('registerse',['id'=>$id]);
             // return view('signup2.blade',['id'=>$id]);
             }else{
+                Session::flash('error','Pan not available');
                 return redirect()->route('register');
             }
        }
@@ -71,19 +72,13 @@ class UserController extends Controller
 
     public function login(Request $request)
     {                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    
-        // $validator = Validator::make($request->all(), [
+                                                                                                                                                                                                           
+        // $request->validate([
         //     'pan' => 'required',
         //     'password' => 'required',
-        //                                                                                                                     'captcha' => 'required|captcha'                                                                                                                                                                                                     
-        // ]);                                                                                                                                                                                                     
-        $request->validate([
-            'pan' => 'required',
-            'password' => 'required',
-            'captcha' => 'required|captcha',
-        ]);
-        // If ($validator->fails()){
-        //     return view('login');
-        // }else{
+        //     'captcha' => 'required|captcha',
+        // ]);
+        
             $user = userModel::where(['pan'=> $request->pan])->get();
             if (count($user) > 0) {
                 if (Auth::attempt(['pan' => $request->pan, 'password' => $request->password])) {
@@ -99,7 +94,7 @@ class UserController extends Controller
             } else {
                 return redirect()->back()->with('account_active_error', 'error');
             }
-        // }
+       
         
 
     }
@@ -109,11 +104,16 @@ class UserController extends Controller
     }
     public function panvalidate(Request $request){
         $pan = $request->pan;
-        $user = userModel::where(['pan'=> $request->pan])->get();
-        if (count($user) > 0) {
-            return response()->json(['status'=> 1]);
+        $panexist = SocietyModel::where(['pan'=> $request->pan])->get();
+        if (count($panexist) > 0) {
+            $user = userModel::where(['pan'=> $request->pan])->get();
+            if (count($user) > 0) {
+                return response()->json(['status'=> 1]);
+            }else{
+                return response()->json(['status'=> 0]);
+            }
         }else{
-            return response()->json(['status'=> 0]);
+            return response()->json(['status'=> 2]);
         }
         
 

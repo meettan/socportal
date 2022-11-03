@@ -7,13 +7,18 @@
 	<div class="signUpLeftInner">
 		<div class="signUpLeftForm">
 		<h2>Sign up</h2>
-			<p>By signing up, I agree to the Asana Privacy Policy and Terms of Service.</p>
+		@if(Session::has('error'))
+<div class="alert alert-danger">
+  {{ Session::get('error')}}
+</div>
+@endif
+			<p>By signing up, I agree to the Benfed Privacy Policy and Terms of Service.</p>
 		<form method="POST" action="{{ url('validatesocdetail') }}" id='signupForm' class="validatedForm">
 		   @csrf
 		<label class="full_fieldSign">
 			<span>Pan No.</span>
 			<input type="text" placeholder="Pan No." name="pan" required id="pan">
-			<span class="error_p" style="color:red"></span>
+			<span class="error_p" style="color:red;font-size: 14px;"></span>
 			</label>
 			<label class="full_fieldSign">
 			<span>Email Id</span>
@@ -23,13 +28,13 @@
 			<label class="full_fieldSign">
 			<span>Password</span>
 			<input type="password" name="password" id="password" required  >
-			<span class="error"></span>
+			<span class="error" style="color:red;font-size: 14px;"></span>
 			</label>
 			
 			<label class="full_fieldSign">
 			<span>Confirm Password</span>
 			<input type="password" name="password_confirm" id="confirm_password" required>
-			<span class="errors"></span>
+			<span class="errors" style="color:red;font-size: 14px;"></span>
 			</label>
 			
 			<input type="submit" value="Continue" class="signUpBtn" id="submit">
@@ -124,6 +129,12 @@ $('#pan').change(function() {
 				console.log('sdsdfds');
 				$(".error_p").html("You already registered.");
 				$("#pan").val("");
+			}else if(data.status == 2){
+				$(".error_p").html("Pan not available");
+				//$("#pan").val("");
+			}else{
+				$(".error_p").html("");
+				
 			}
             
         }

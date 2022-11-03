@@ -322,17 +322,104 @@ span.userNameTopRihght{color: #fff;
 
 
 .loginLeftSec{width: 70%; float: left; 
-  background: #000; 
-  /* background: url("../images/dec30d.png") no-repeat left center; */
+  /* background: #000;  */
+  background:#104072 url("../images/img_aa.png") no-repeat center center; 
   color: #fff;
   padding: 15px; height: 100vh;}
 
 .loginRightSec{
-  background: url("../images/dec30d.png") no-repeat left center; 
+  /* background: url("../images/dec30d.png") no-repeat left center;  */
 
 }
 
 
+.signUpCardLayoutMain{padding: 0 1px;}
+
+.signUpCardLayout-card {
+  max-width: 100%;
+  width: 100%;
+  margin: 0 auto;
+  background: none;
+  border: none;
+  border-radius: 7px;
+  padding: 0;
+  min-height: 330px;
+}
+
+.LoginCardLayout-LoginLogoContainer {
+  align-items: center;
+  align-self: center;
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 48px; 
+}
+.LoginCardLayout-LogoLogo {
+  height: 80px;
+}
+
+.LoginDefaultView-content {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+
+
+.memberShipArea ul.tabUl{list-style-type:none; margin-top:0; display: inline-block; width:100%; border: none; padding: 0 18px;}
+.memberShipArea ul.tabUl li{margin-right:16px; float:left;}
+.memberShipArea ul.tabUl li a{padding: 8px 22px; font-size:15px; font-weight:400; text-decoration:none; background:#106fd0; color:#fff;
+/*	border-radius: 50px;*/ border-radius: 26px 0;
+border: none; display: inline-block; margin: 0;}
+.memberShipArea ul.tabUl li a:focus, .memberShipArea ul.tabUl li a:hover{border: none; background:#110104; color:#fff;}
+
+.memberShipArea ul.tabUl li a i{margin-right: 5px;}
+
+.memberShipArea ul.tabUl li:last-child{margin-right: 0;}
+/*
+.memberShipArea ul.tabUl li:last-child a{padding:12px 18px 12px 18px; font-size:15px; font-weight:400; text-decoration:none; background:#686868; color:#fff;
+border-radius:5px 5px 0 0; border: none; display: inline-block; }
+*/
+
+
+.memberShipArea ul.tabUl li:last-child a:focus, .memberShipArea ul.tabUl li:last-child a:hover{border: none; background:#110104; color:#fff;}
+
+
+.memberShipArea .tabContent{ background:#fff; margin-top:0; padding: 0 5px;}
+
+.signUpCardLayout-card .tab-content{margin-top: 16px; display: inline-block; width: 100%;}
+
+/*.signUpCardLayout-card .tab-content .full_field_col3Group*/
+.signUpCardLayout-card .tab-content .full_field_col3{margin-bottom: 18px; width: 33%; float: left; padding: 0 15px; font-size: 14px;}
+
+.signUpCardLayout-card .tab-content .full_field_col3 .textFieldSec{border-bottom:#b7b4b4 solid 1px; width: 100%; padding-bottom: 7px;}
+.signUpCardLayout-card .tab-content .full_field_col3 span{display: block; font-weight: 600;}
+.signUpCardLayout-card .tab-content .full_field_col3 input[type="email"],.signUpCardLayout-card .tab-content .full_field_col3 input[type="text"], 
+.signUpCardLayout-card .tab-content .full_field_col3 input[type="password"], .signUpCardLayout-card .tab-content .full_field_col3 input[type="date"]{border: #dbdde1 solid 1px; border-radius: 5px; 
+color: #5f6368; font-size: 15px; padding: 10px 12px; width: 100%;}
+
+.signUpCardLayout-card .tab-content .full_field_col3_full{margin-bottom: 18px; width: 100%; float: left; padding: 0 15px; font-size: 14px;}
+
+.signUpCardLayout-card .tab-content .full_field_col3_full .textFieldSec{border-bottom:#b7b4b4 solid 1px; width: 100%; padding-bottom: 7px;}
+.signUpCardLayout-card .tab-content .full_field_col3_full span{display: block; font-weight: 600;}
+
+
+.signUpCardLayout-card .tab-content .full_field_col3_full textarea{border: #dbdde1 solid 1px; border-radius: 5px; 
+color: #5f6368; font-size: 15px; padding: 10px 12px; width: 100%; height: 60px;}
+.signUpCardLayout-card .tab-content .full_field_col3_full input[type="password"]{border: #dbdde1 solid 1px; border-radius: 5px; 
+color: #5f6368; font-size: 15px; padding: 10px 12px; width: 100%;}
 
 
 
+
+.signUpCardLayout-card .tab-content .full_field_col3_full input[type="submit"]{background: #106fd0; border: none; border-radius: 5px; color: #fff; font-size: 16px; padding:10px 24px; 
+width: 100%; margin: 0 0 0 auto;	font-weight: 700;}
+
+
+.signUpCardLayout-card .tab-content .full_field_col3Half{margin-bottom: 18px; width:50%; float: left; padding: 0 15px;}
+.signUpCardLayout-card .tab-content .full_field_col3Half input[type="email"],.signUpCardLayout-card .tab-content .full_field_col3Half input[type="text"], 
+.signUpCardLayout-card .tab-content .full_field_col3Half input[type="password"], .signUpCardLayout-card .tab-content .full_field_col3Half input[type="date"]{border: #dbdde1 solid 1px; border-radius: 5px; 
+color: #5f6368; font-size: 15px; padding: 10px 12px; width: 100%;}
+
+
+.tab-content .show {
+  display: inherit! important;
+}

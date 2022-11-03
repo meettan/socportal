@@ -26,6 +26,7 @@ Route::get('/panvalidate', [App\Http\Controllers\UserController::class, 'panvali
 Route::get('/registerse/{id?}', [App\Http\Controllers\UserController::class,'register_second'])->name('registerse');
 Route::post('/registercomplete',[App\Http\Controllers\UserController::class,'registercomplete']);
 Route::get('/dashboard', [App\Http\Controllers\DashboardController::class,'dashboard'])->name('dashboard');
+Route::get('/profile', [App\Http\Controllers\DashboardController::class,'profile'])->name('profile');
 
 Route::get('/report', [App\Http\Controllers\UserController::class,'report'])->name('report');
 Route::get('/receipt', [App\Http\Controllers\UserController::class,'receipt'])->name('receipt');
