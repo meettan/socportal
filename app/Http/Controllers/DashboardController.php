@@ -1,9 +1,9 @@
 <?php
 
 namespace App\Http\Controllers;
-
+use Session;
 use Illuminate\Http\Request;
-
+use App\userModel;
 use Auth;
 use DB;
 
@@ -145,5 +145,20 @@ class DashboardController extends Controller
     public function profile()
     {
       return view('profile');
+    }
+    public function profile_update(Request $request){
+
+        $User = userModel::find(request('id'));
+        $User->soc_name = request('soc_name');
+        $User->email = request('email');
+        $User->soc_address = request('soc_address');
+        $User->gstin = request('gstin');
+        $User->mfms =request('mfms');
+        $User->ph_number =request('ph_number');
+        $User->updated_by =Auth::user()->pan;
+        $User->save();                        
+        Session::flash('msg','Registration is successfully');
+        return view('profile');
+
     }
 }

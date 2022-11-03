@@ -27,6 +27,7 @@ Route::get('/registerse/{id?}', [App\Http\Controllers\UserController::class,'reg
 Route::post('/registercomplete',[App\Http\Controllers\UserController::class,'registercomplete']);
 Route::get('/dashboard', [App\Http\Controllers\DashboardController::class,'dashboard'])->name('dashboard');
 Route::get('/profile', [App\Http\Controllers\DashboardController::class,'profile'])->name('profile');
+Route::post('/profile_update', [App\Http\Controllers\DashboardController::class,'profile_update'])->name('profile_update');
 
 Route::get('/report', [App\Http\Controllers\UserController::class,'report'])->name('report');
 Route::get('/receipt', [App\Http\Controllers\UserController::class,'receipt'])->name('receipt');
