@@ -254,10 +254,49 @@ label.dateCustom span{float: left;
     border-radius: 0.2rem;
 }
 
+.topPrintHeadMain{width: 100%; display: flex;}
+.topPrintLogo{padding-right: 15px; width: 12%;}
+.topPrintLogoRight{padding-left: 15px; width: 88%; text-align: center;}
 
-.divToPrintClass h2{color: #333; font-size: 22px; margin: 0; padding: 0;}
-.divToPrintClass h4{color: #333; font-size: 16px; margin: 0; padding: 0;}
-.divToPrintClass h5{color: #000; font-size: 15px; margin: 0; padding: 0;}
+.topPrintLogoRight h2{color: #333;
+  font-size: 20px;
+  margin: 0 0 6px 0;
+  padding: 0; text-align: center;}
+.topPrintLogoRight h4{    color: #333;
+  font-size: 14px;
+  margin: 0 0 16px 0;
+  padding: 0;
+  line-height: 19px;
+  text-align: center;}
+.topPrintLogoRight h4.h4CustomPrintTop{    color: #333;
+  font-size: 16px;}
+  
+.topPrintLogoRight h5{color: #000;
+  font-size: 14px;
+  margin: 0 0 11px 0;
+  padding: 0;
+  line-height: 18px;}
+
+.topPrintLogoRight h5 label{padding: 0; margin: 0;} 
+
+.gstNumberSec{width: 100%; text-align: left;}
+.gstNumberSec h5{color: #000;
+  font-size: 14px;
+  margin: 0 0 11px 0;
+  padding: 0;
+  line-height: 18px;}
+  .gstNumberSec h5 label{padding: 0; margin: 0;} 
+
+
+.printBtnSec{width: 100%;}
+.printBtnSec button.btnCustonPrint{float: left; margin: 0 8px;}
+.printBtnSec button.downloadBtn{float: right; margin: 0 8px;}
+
+span.userNameTopRihght{color: #fff;
+  font-weight: 700;
+  background: #333;
+  padding: 5px 14px;
+  border-radius: 5px;}
 
 .divToPrintClass table.dataTable>thead>tr>th:not(.sorting_disabled), 
 .divToPrintClass table.dataTable>thead>tr>td:not(.sorting_disabled) {
@@ -267,9 +306,29 @@ label.dateCustom span{float: left;
 .divToPrintClass table.dataTable td, .divToPrintClass table.dataTable th {
   -webkit-box-sizing: content-box;
   box-sizing: content-box;
-  padding-right: 10px;
-  font-size: 12px;
+  padding: 8px;
+  font-size: 14px;
   color: #333;
 }
 
 .groupDataStatFrom{margin-bottom: 26px;}
+
+.calenderSecCustome form.formCustom{display: flex;}
+
+.dataTables_paginate {}
+.dataTables_paginate a{color: #333; font-size: 13px; font-weight: 500; margin: 0 5px;cursor: pointer;}
+.dataTables_paginate span a.paginate_button{padding: 3px 7px;
+  background: #106fd0;
+  border-radius: 3px;
+  cursor: pointer;
+  color: #fff;}
+.dataTables_paginate span a.paginate_button:hover{background: #0b54da;}
+
+
+
+
+
+
+
+
+
