@@ -76,16 +76,14 @@
 		<div class="topDateRight">
 		<ul class="nav topDateRight">
 			<li class="nav-item dropdown">
-                    <a href="#" onclick="myFunction()" class="nav-link"><span class="userNameTopRihght"><?php $soc_name = Auth::user()->soc_name; echo $soc_name;?></span><i class="fa fa-user-circle" aria-hidden="true"></i> </a>
-                
-                    
+            <a href="#" onclick="myFunction()" class="nav-link"><span class="userNameTopRihght"><?php $soc_name = Auth::user()->soc_name; echo $soc_name;?></span><i class="fa fa-user-circle" aria-hidden="true"></i> </a>
 			
       <div id="Demo" class="w3-dropdown-content w3-bar-block w3-border">
       <div class="subDrop1">	
         <ul>
         <li>Utsab Roy</li>
         <li>utsab@synergicsoftek.com</li>	
-        <li class="profileLiCus"><a href="#">Manage your Profile</a></li>
+        <li class="profileLiCus"><a href="{{route('profile')}}">Manage your Profile</a></li>
         </ul>
       </div>	
       <div class="subDrop2">
