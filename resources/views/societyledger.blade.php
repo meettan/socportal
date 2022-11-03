@@ -253,8 +253,8 @@
                                     <div style="text-align: center;" class="printBtnSec">
                                         <button class="btn btn-primary btnCustonPrint" type="button"
                                             onclick="printDiv();">Print</button>
-                                        <button class="btn btn-primary downloadBtn" type="button"
-                                            onclick="">Download</button>
+                                        <!-- <button class="btn btn-primary downloadBtn" type="button"
+                                        onclick="generatePDF()">Download</button> -->
 
                                     </div>
                                 </div>

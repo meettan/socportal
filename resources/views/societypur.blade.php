@@ -4,7 +4,7 @@
     <div class="card">
         <div class="card-body">
             <div class="titleSec">
-                <h2>Purchase</h2>
+                <h2>Purchase History</h2>
                 <div class="dateCalenderSec"></div>
             </div>
             <div class="row">
@@ -231,9 +231,12 @@
                                     </div>
                                 </div>
                             </div>
-                            <div style="text-align: center;">
-                                <button class="btn btn-primary" type="button" onclick="printDiv();">Print</button>
-                                <!-- <button class="btn btn-primary" type="button" id="btnExport" >Excel</button> -->
+                            <div style="text-align: center;" class="printBtnSec">
+                                        <button class="btn btn-primary btnCustonPrint" type="button"
+                                            onclick="printDiv();">Print</button>
+                                        <!-- <button class="btn btn-primary downloadBtn" type="button"
+                                        onclick="generatePDF()">Download</button> -->
+
                             </div>
                             <?php } ?>
                         </div>
