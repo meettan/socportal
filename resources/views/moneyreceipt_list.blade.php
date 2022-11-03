@@ -6,8 +6,8 @@
             <div class="titleSec">
                 <h2>Money Receipt</h2>
                 <div class="dateCalenderSec">
-                    <div class="calenderSec">
-                        <form method="POST" action="{{ url('socpayment') }}" id='' class="">
+                    <div class="calenderSec calenderSecCustome">
+                        <form method="POST" action="{{ url('socpayment') }}" id='' class="formCustom">
                             @csrf
                             <label class="dateCustom"><span>Start Date:</span><span>
                                     <input type="date" name="from_date" class="form-control form-control-sm"

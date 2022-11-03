@@ -142,8 +142,7 @@ img {
     width: calc(100% - 16px);
 } */
 
-.loginLeftSec{width: 70%; float: left; background: #000; color: #fff;
-  padding: 15px; height: 100vh;}
+
 
 .LoginCardLayout-card {
   background: #fff;

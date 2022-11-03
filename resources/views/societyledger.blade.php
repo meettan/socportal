@@ -8,7 +8,7 @@
             </div>
             <div class="row">
                 <div class="col-sm-12">
-                    <div  class="divToPrintClass">
+                    <div class="">
                         <div class="wrapper_fixed">
                             <form method="POST" action="{{ url('socledger') }}" id='signupForm' class="validatedForm">
                                 @csrf
@@ -23,7 +23,8 @@
                                         <input type="date" name="to_date" class="form-control required" value="" min=''
                                             max="" />
                                     </div>
-                                    <div class="col-md-2"><input type="submit" class="form-control required"></div>
+                                    <div class="col-md-2"><input type="submit"
+                                            class="btn btn-primary form-control required"></div>
                                 </div>
                             </form>
                             <div class="row">
@@ -32,29 +33,27 @@
 
                                     <div id="divToPrint" class="divToPrintClass">
                                         <div class="topPrintHeadMain">
-                                            <div class="topPrintLogo"><img src="{{ url('public/images/logo.png') }}" alt=""/></div>
+                                            <div class="topPrintLogo"><img src="{{ url('public/images/logo.png') }}"
+                                                    alt="" /></div>
                                             <div class="topPrintLogoRight">
-                                            <h2>THE WEST BENGAL STATE CO.OP.MARKETING FEDERATION LTD.</h2>
-                                            <h4>HEAD OFFICE: SOUTHEND CONCLAVE, 3RD FLOOR, <br>
-                                                1582 RAJDANGA MAIN ROAD,
-                                                KOLKATA-700107.</h4>
-                                            <h4 class="h4CustomPrintTop">Society Ledger Between: <?php echo date('d/m/Y',strtotime($frmDt)); ?>
-                                                To <?php echo date('d/m/Y',strtotime($toDt)); ?></h4>
-                                            <!-- <h5 style="text-align:left">
-                                            <label>Society: </label> dsfsdgdfgdf<br>
-                                            <label>Gst No: </label>
-                                                <?php //$gstin = Auth::user()->gstin; echo $gstin;?></h5> -->
-                                                </div> 
+                                                <h2>THE WEST BENGAL STATE CO.OP.MARKETING FEDERATION LTD.</h2>
+                                                <h4>HEAD OFFICE: SOUTHEND CONCLAVE, 3RD FLOOR, <br>
+                                                    1582 RAJDANGA MAIN ROAD,
+                                                    KOLKATA-700107.</h4>
+                                                <h4 class="h4CustomPrintTop">Society Ledger Between:
+                                                    <?php echo date('d/m/Y',strtotime($frmDt)); ?>
+                                                    To <?php echo date('d/m/Y',strtotime($toDt)); ?></h4>
+                                            </div>
                                         </div>
 
                                         <div class="gstNumberSec">
-                                            
                                             <h5 style="text-align:left">
-                                            <label>Society: </label> dsfsdgdfgdf<br>
-                                            <label>Gst No: </label>
-                                                <?php $gstin = Auth::user()->gstin; echo $gstin;?></h5>
-                                                </div> 
-                                       
+                                                <label>Society: </label> <?php $soc_name = Auth::user()->soc_name; echo $soc_name;?><br>
+                                                <label>Gst No: </label>
+                                                <?php $gstin = Auth::user()->gstin; echo $gstin;?>
+                                            </h5>
+                                        </div>
+
                                         <div class="table-responsive">
                                             <table style="width: 100%;" id="" class="table table-striped">
                                                 <thead>
@@ -63,7 +62,7 @@
                                                         <th>Sl No.</th>
                                                         <th>Remarks</th>
                                                         <th>Date</th>
-                                                      
+
                                                         <th>Invoice/
                                                             Receipt No.</th>
                                                         <th>Sale
@@ -212,17 +211,13 @@
                                             $totVal=round($totalamt, 2);
                                             echo"<td>".abs( $totVal)."</td>";
                                            
-                                           
                                         }
                                      }
                                      ?>
                                                     </tr>
-
                                                     <?php  
-                                                        
                                     }
                                 ?>
-
                                                     <?php 
                                        }
                                 else{
@@ -233,7 +228,6 @@
                                     <td></td><td  style='text-align:center;'>No Data Found</td>
                                      <td></td><td></td><td></td>
                                      </tr>";
-
                                 }   
                             ?>
                                                     <tr style="font-weight: bold;">
@@ -259,9 +253,9 @@
                                     <div style="text-align: center;" class="printBtnSec">
                                         <button class="btn btn-primary btnCustonPrint" type="button"
                                             onclick="printDiv();">Print</button>
-                                            <button class="btn btn-primary downloadBtn" type="button"
+                                        <button class="btn btn-primary downloadBtn" type="button"
                                             onclick="">Download</button>
-                                      
+
                                     </div>
                                 </div>
                                 <?php } ?>
@@ -279,7 +273,7 @@
             WindowObject.document.open();
             WindowObject.document.writeln('<!DOCTYPE html>');
             WindowObject.document.writeln('<html><head><title></title><style type="text/css">');
-            
+
             WindowObject.document.writeln('@media print { .center { text-align: center;}' +
                 '                                         .inline { display: inline; }' +
                 '                                         .underline { text-decoration: underline; }' +
@@ -290,17 +284,17 @@
                 '                                           th, td {text-align: left;}' +
                 '                                         .border { border: 1px solid black; } ' +
                 '                                         .bottom { bottom: 5px; width: 100%; position: fixed} ' +
-                '                                         .topPrintHeadMain{width: 100%; display: flex;}'+
-                '.topPrintLogo{padding-right: 15px; width: 15%; float:left;}'+
-                '.topPrintLogoRight{padding-left: 15px; width: 85%; float:left;}'+
-                '.topPrintLogoRight h2{color: #333;font-size: 20px;margin: 0 0 6px 0;padding: 0; text-align: center;}'+
-                '.topPrintLogoRight h4{color: #333;font-size: 14px;margin: 0 0 16px 0;padding: 0;line-height: 19px; text-align: center;}'+
-                '.topPrintLogoRight h4.h4CustomPrintTop{color: #333;font-size: 16px; text-align: center;}'+
-                '.topPrintLogoRight h5{color: #000;font-size: 14px;margin: 0 0 11px 0;padding: 0;line-height: 18px; text-align: center;}'+
-                '.topPrintLogoRight h5 label{padding: 0; margin: 0;}'+
-                '.gstNumberSec{width: 100%; text-align: left;}'+
-                '.gstNumberSec h5{color: #000;font-size: 14px;margin: 0 0 11px 0;padding: 0;line-height: 18px;}'+
-                '.gstNumberSec h5 label{padding: 0; margin: 0;} '+
+                '                                         .topPrintHeadMain{width: 100%; display: flex;}' +
+                '.topPrintLogo{padding-right: 15px; width: 15%; float:left;}' +
+                '.topPrintLogoRight{padding-left: 15px; width: 85%; float:left;}' +
+                '.topPrintLogoRight h2{color: #333;font-size: 20px;margin: 0 0 6px 0;padding: 0; text-align: center;}' +
+                '.topPrintLogoRight h4{color: #333;font-size: 14px;margin: 0 0 16px 0;padding: 0;line-height: 19px; text-align: center;}' +
+                '.topPrintLogoRight h4.h4CustomPrintTop{color: #333;font-size: 16px; text-align: center;}' +
+                '.topPrintLogoRight h5{color: #000;font-size: 14px;margin: 0 0 11px 0;padding: 0;line-height: 18px; text-align: center;}' +
+                '.topPrintLogoRight h5 label{padding: 0; margin: 0;}' +
+                '.gstNumberSec{width: 100%; text-align: left;}' +
+                '.gstNumberSec h5{color: #000;font-size: 14px;margin: 0 0 11px 0;padding: 0;line-height: 18px;}' +
+                '.gstNumberSec h5 label{padding: 0; margin: 0;} ' +
                 '                                       ' +
                 '                                   } } </style>');
             WindowObject.document.writeln('</head><body onload="window.print()">');

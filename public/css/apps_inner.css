@@ -321,7 +321,16 @@ span.userNameTopRihght{color: #fff;
 
 
 
+.loginLeftSec{width: 70%; float: left; 
+  background: #000; 
+  /* background: url("../images/dec30d.png") no-repeat left center; */
+  color: #fff;
+  padding: 15px; height: 100vh;}
 
+.loginRightSec{
+  background: url("../images/dec30d.png") no-repeat left center; 
+
+}
 
 
 
