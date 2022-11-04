@@ -81,7 +81,6 @@ class DashboardController extends Controller
     $rtncount = 0;
     $rtndata  = 0;
     $cr_amt   = 0;
-
   
     $rtncount = DB::select("select count(*) row_count from   v_dr_cr_note  where  soc_id 	= '".$soc."'
     and    trans_flag = 'R' and  recpt_no like '%Crnote%'
@@ -144,7 +143,9 @@ class DashboardController extends Controller
     }
     public function profile()
     {
-      return view('profile');
+      $id = Auth::user()->id;
+      $user = userModel::where('id', $id)->first();
+      return view('profile',['users'=>$user]);
     }
     public function profile_update(Request $request){
 
@@ -158,7 +159,23 @@ class DashboardController extends Controller
         $User->updated_by =Auth::user()->pan;
         $User->save();                        
         Session::flash('msg','Registration is successfully');
-        return view('profile');
+        return redirect()->route('profile');
+    }
+    public function password_update(Request $request){
+
+      $pan = Auth::user()->pan;
+      $id  = Auth::user()->id;
+      if (Auth::attempt(['pan' => $pan, 'password' => $request->old_password])) {
+        $User = userModel::find($id);
+        $User->password = Hash::make(request('password'));
+        $User->updated_by =Auth::user()->pan;
+        $User->save();
+        Session::flash('success','Password change successfully');
+        return redirect()->route('profile');
+      }else{
+        Session::flash('error','Password not change. Old password is not correct');
+        return redirect()->route('profile');
+      }
 
     }
 }

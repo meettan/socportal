@@ -28,6 +28,7 @@ Route::post('/registercomplete',[App\Http\Controllers\UserController::class,'reg
 Route::get('/dashboard', [App\Http\Controllers\DashboardController::class,'dashboard'])->name('dashboard');
 Route::get('/profile', [App\Http\Controllers\DashboardController::class,'profile'])->name('profile');
 Route::post('/profile_update', [App\Http\Controllers\DashboardController::class,'profile_update'])->name('profile_update');
+Route::post('/password_update', [App\Http\Controllers\DashboardController::class,'password_update'])->name('password_update');
 
 Route::get('/report', [App\Http\Controllers\UserController::class,'report'])->name('report');
 Route::get('/receipt', [App\Http\Controllers\UserController::class,'receipt'])->name('receipt');
