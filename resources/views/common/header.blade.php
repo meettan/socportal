@@ -88,7 +88,7 @@
       <div class="subDrop1">	
         <ul>
         <li></li>
-        <li><?php $email = Auth::user()->email; echo $email;?></li>	
+        <li><?php $district_name = Auth::user()->district_name; echo $district_name;?></li>	
         <li class="profileLiCus"><a href="{{route('profile')}}">Manage your Profile</a></li>
         </ul>
       </div>	

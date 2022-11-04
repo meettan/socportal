@@ -8,6 +8,7 @@ use App\userModel;
 use App\SocietyModel;
 use Hash;
 use Auth;
+use DB;
 use Captcha;
 
 class UserController extends Controller
@@ -53,10 +54,13 @@ class UserController extends Controller
     }
 
     public function registercomplete(){
-
+        $dist_id  = Session::get('soctemp_detail')[0]->district;
+        $dist_name= DB::select("select district_name FROM v_district WHERE district_code = '$dist_id'");
         $User = userModel::find(request('id'));
         $User->soc_name = request('soc_name');
         $User->soc_address = request('soc_address');
+        $User->district = $dist_id;
+        $User->district_name = $dist_name[0]->district_name;
         $User->gstin = request('gstin');
         $User->mfms =request('mfms');
         $User->ph_number =request('ph_number');
@@ -67,7 +71,6 @@ class UserController extends Controller
         Session::forget('soctemp_detail') ;                            
         Session::flash('msg','Registration is successfully');
         return view('login');
-
     }
 
     public function login(Request $request)

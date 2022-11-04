@@ -26,7 +26,7 @@ class SaleController extends Controller
         $payrct = DB::select("select a.irn, a.ack,a.ack_dt,a.trans_do,a.do_dt,a.trans_type,b.soc_name,sum(a.tot_amt) as tot_amt,c.prod_desc,a.gst_type_flag,
         (select count(paid_id) from v_payment_recv where sale_invoice_no=a.trans_do) as pay_cnt
           from v_sale a,v_ferti_soc b,v_product c
-          where a.soc_id='880' 
+          where a.soc_id='$soc_id' 
           and a.prod_id=c.prod_id
           and a.soc_id=b.soc_id
 		  and a.do_dt >='$frmDt'
