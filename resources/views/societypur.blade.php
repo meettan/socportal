@@ -189,7 +189,7 @@
                                         <td></td><td></td><td></td><td></td>
                                         <td></td><td></td><td></td>
                                         <td></td><td  style='text-align:center;'>No Data Found</td>
-                                        <td></td><td></td><td></td>
+                                        <td></td><td></td>
                                         </tr>";
                                     }   
                                 ?>
