@@ -70,7 +70,7 @@
 	<div class="main-panel" id="main_panelNew">
 		<div class="float-left navRightSec">
 		<ul class="topDate">
-<li id="openSideBar_Li"><a href="#" id="openSideBarId"><i class="fa fa-bars" aria-hidden="true"></i></a></li>
+<li id="openSideBar_Li"><a href="{{route('dashboard')}}" id="openSideBarId"><i class="fa fa-bars" aria-hidden="true"></i></a></li>
 <li><a href="#"><i class="fa fa-home" aria-hidden="true"></i> Home</a></li>
 </ul>
 		<div class="topDateRight">
@@ -81,13 +81,13 @@
       <div id="Demo" class="w3-dropdown-content w3-bar-block w3-border">
       <div class="subDrop1">	
         <ul>
-        <li>Utsab Roy</li>
-        <li>utsab@synergicsoftek.com</li>	
+        <li></li>
+        <li><?php $email = Auth::user()->email; echo $email;?></li>	
         <li class="profileLiCus"><a href="{{route('profile')}}">Manage your Profile</a></li>
         </ul>
       </div>	
       <div class="subDrop2">
-      <a href="#">Loguot</a>
+      <a href="{{route('logout')}}">Loguot</a>
       </div>
       </div>      
                   </li>
