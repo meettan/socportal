@@ -41,7 +41,7 @@
                                                 <h4>HEAD OFFICE: SOUTHEND CONCLAVE, 3RD FLOOR, <br>
                                                     1582 RAJDANGA MAIN ROAD,
                                                     KOLKATA-700107.</h4>
-                                                <h4 class="h4CustomPrintTop">Society Ledger Between:
+                                                <h4 class="h4CustomPrintTop">Purchase history Between:
                                                     <?php echo date('d/m/Y',strtotime($frmDt)); ?>
                                                     To <?php echo date('d/m/Y',strtotime($toDt)); ?></h4>
 
@@ -61,7 +61,7 @@
                                                         <th>Sl No.</th>
                                                         <th>Company</th>
                                                         <th>Product</th>
-                                                        <th>Society</th>
+                                                        <!-- <th>Society</th> -->
                                                         <th>Sale invoice</th>
                                                         <th>Ro dt</th>
                                                         <th>Unit</th>
@@ -69,9 +69,9 @@
                                                         <th>Taxable Amt</th>
                                                         <th>CGST</th>
                                                         <th>SGST</th>
-                                                        <th>Discount</th>
+                                                        <!-- <th>Discount</th> -->
                                                         <th>Total amt</th>
-                                                        <th>Cotainer</th>
+                                                        <!-- <th>Cotainer</th> -->
                                                     </tr>
 
                                                 </thead>
@@ -100,12 +100,11 @@
                                                         <td class="report"><?php echo $i++; ?></td>
                                                         <td class="report"><?php echo $sal->short_name; ?></td>
                                                         <td class="report"><?php echo $sal->PROD_DESC; ?></td>
-                                                        <td class="report">
-                                                            <?php //echo get_fersociety_name($sal->soc_id);?></td>
+                                                       
                                                         <td class="report"><?php echo $sal->trans_do; ?></td>
                                                         <td class="report">
                                                             <?php echo date("d/m/Y",strtotime($sal->do_dt)); ?></td>
-                                                        <!-- <td class="report"><?php //echo $sal->trans_type; ?></td> -->
+                                                  
                                                         <td class="report"><?php 
                                         if($sal->unit==1 ||$sal->unit==2 ||$sal->unit==4 || $sal->unit==6){
                                                     echo "MTS" ;  
@@ -155,8 +154,7 @@
                                                         <td class="report"><?php echo $sal->sgst; 
                                         $tot_sgst += $sal->sgst;?></td>
 
-                                                        <td class="report"><?php echo $sal->dis;
-                                        $tot_dis += $sal->dis; ?></td>
+                                                       
                                                         <td class="report"><?php echo $sal->tot_amt; 
                                         $total += $sal->tot_amt; ?>
                                                         </td>
@@ -203,7 +201,7 @@
                                                         <td class="report"><?=$tot_taxamt?></td>
                                                         <td class="report"><?=$tot_cgst?></td>
                                                         <td class="report"><?=$tot_sgst?></td>
-                                                        <td class="report"><?=$tot_dis?></td>
+                                                        <td class="report"></td>
                                                         <td class="report"><?=$total?></td>
                                                     </tr>
                                                     <tr>

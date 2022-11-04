@@ -75,7 +75,7 @@ class SocietyController extends Controller
     }
     public function socledgerrep(Request $request){
 
-        $soc_id = 1470; 
+        $soc_id =  Auth::user()->soc_id; 
         $frmDt  =   $request->from_date;
         $toDt  =   $request->to_date;
         $data = DB::select("select  trans_dt,prod,inv_no, soc_id,soc_name,sum(paid_amt) as tot_paid,sum(paybl) as tot_payble,sum(cgst)cgst,sum(sgst)sgst,ro_no,ro_dt,sum(qty) qty ,sum(tot_recv) tot_recv,remarks
@@ -130,7 +130,7 @@ class SocietyController extends Controller
     }
     public function purrep(Request $request){
       if ($request->isMethod('post')) {
-      $soc_id = 1470; 
+      $soc_id =  Auth::user()->soc_id;
       $frmDt  =   $request->from_date;
       $toDt  =   $request->to_date;
       $data = DB::select("select a.trans_do,a.do_dt,a.trans_type,a.sale_ro,a.qty,a.soc_id,b.unit,b.QTY_PER_BAG as qty_per_bag,
