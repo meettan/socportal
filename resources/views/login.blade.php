@@ -57,16 +57,7 @@
                     <span class="Typography Typography--colorDarkGray1 Typography--s"><a href="#">Forgot your
                             password?</a></span>
                     <div class="captureSec">
-                        <!-- <span class="Typography Typography--colorDarkGray1 Typography--s"><strong>Enter the text as
-                                shown in the image</strong> </span>
-                        <input type="text"
-                            class="TextInputBase SizedTextInput SizedTextInput--medium TextInput ValidatedTextInput-input OnBlurValidatedTextInput-input LoginEmailPasswordForm-passwordInput"
-                            name="captcha" value="" autocomplete="username" autofocus="" id="captcha">
-                        <span class="captureImg">{!! captcha_img() !!}</span>
-
-                        <button type="button" class="btn btn-danger" class="reload" id="reload">
-                            &#x21bb;
-                        </button> -->
+                     
 
                     </div>
                     <input type="submit" value="Log in" class="loginBtn">
@@ -87,23 +78,3 @@
 </body>
 
 </html>
-<script>
-$('img').click(function() {
-    $(this).css({
-        "-webkit-transform": "rotate(90deg)",
-        "-moz-transform": "rotate(90deg)",
-        "transform": "rotate(90deg)" /* For modern browsers(CSS3)  */
-    });
-});
-
-$('#reload').click(function() {
-    $.ajax({
-        type: 'GET',
-        url: 'reload-captcha',
-        success: function(data) {
-            $(".captureImg").html(data.captcha);
-        }
-    });
-});
-
-</script>
