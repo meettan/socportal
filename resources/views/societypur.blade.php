@@ -63,7 +63,7 @@
                                                         <th>Product</th>
                                                         <!-- <th>Society</th> -->
                                                         <th>Sale invoice</th>
-                                                        <th>Ro dt</th>
+                                                        <th>Date</th>
                                                         <th>Unit</th>
                                                         <th>Qty</th>
                                                         <th>Taxable Amt</th>
