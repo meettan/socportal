@@ -22,7 +22,7 @@ class MoneyreceiptController extends Controller
 		where a.soc_id=b.soc_id
 		and a.ro_no=c.ro_no
 		and c.prod_id = d.prod_id
-        and a.soc_id='1349'
+        and a.soc_id='$soc_id'
         AND a.paid_dt >= '$frmDt'
         AND a.paid_dt <= '$todt'
 		group by a.sl_no,a.paid_id,a.paid_dt,a.soc_id,b.soc_name,a.ro_no,c.comp_id,c.prod_id,d.prod_desc,c.rate,c.ro_no,a.approval_status,a.sale_invoice_no
@@ -31,7 +31,7 @@ class MoneyreceiptController extends Controller
 		from  v_payment_recv a , v_ferti_soc b, v_product d
 		where a.soc_id=b.soc_id	
 		and a.prod_id = d.prod_id
-		and a.soc_id='1349'
+		and a.soc_id='$soc_id'
         AND a.paid_dt >= '$frmDt'
         AND a.paid_dt <= '$todt'
 		group by a.sl_no,a.paid_id,a.paid_dt,a.soc_id,b.soc_name,a.ro_no,a.comp_id,a.prod_id,d.prod_desc,a.ro_rt,a.ro_no,a.approval_status,a.sale_invoice_no
