@@ -138,7 +138,7 @@ class SocietyController extends Controller
                      from v_sale a,v_product b,v_company_dtls c
                      where  a.prod_id = b.PROD_ID
                      and    a.comp_id = c.COMP_ID
-                     and    a.soc_id   = '1470'
+                     and    a.soc_id   = '$soc_id'
                      and    a.do_dt between '$frmDt' and '$toDt'
                      order by c.short_name, a.do_dt");
            
