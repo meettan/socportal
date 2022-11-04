@@ -6,16 +6,20 @@
 				 <div class="titleSec">
 				 <h2>Money Receipt</h2> 
 					 <div class="dateCalenderSec">
-						 <div class="calenderSec">
-						 <label class="dateCustom"><span>Start Date:</span><span><input type="date" class="form-control form-control-sm" placeholder="" aria-controls="example"></span></label>
-						 <label class="dateCustom"><span>End Date:</span><span><input type="date" class="form-control form-control-sm" placeholder="" aria-controls="example"></span></label>
+						 <div class="calenderSec calenderSecCustome">
+                         <form method="POST" action="{{ url('salesfilter') }}" id='' class="formCustom">
+		                          @csrf
+						 <label class="dateCustom"><span>Start Date:</span><span><input type="date" class="form-control form-control-sm" placeholder="" name="from_date"></span></label>
+						 <label class="dateCustom"><span>End Date:</span><span><input type="date" class="form-control form-control-sm" placeholder="" name="to_date"></span></label>
 						 <button type="submit" class="btn btn-primary floatNone">Submit</button>
+                         </form>
 						</div>
 						 <!-- <button type="button" class="btn btn_export floatNone">Export as CSV</button> -->
 						 </div>
 				 </div>
 				<div class="row">
 					 <div class="col-sm-12"> 
+                     <?php         if($sales) {    ?>
 			<table id="example" class="table table-striped table-bordered" style="width:100%">
                 <thead>
                 <tr>
@@ -69,6 +73,7 @@
          </tr>
         </tfoot>
     </table>
+    <?php } ?>
 				</div>
 				</div>
 			</div>

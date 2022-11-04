@@ -38,7 +38,7 @@ Route::any('/advancefilter', [App\Http\Controllers\AdvanceController::class,'adv
 Route::get('/socadvReport', [App\Http\Controllers\AdvanceController::class,'socadvReport'])->name('socadvReport');
 Route::any('/socpayment', [App\Http\Controllers\MoneyreceiptController::class,'socpayment'])->name('socpayment');
 Route::get('/moneyrecpt', [App\Http\Controllers\MoneyreceiptController::class,'moneyrecpt'])->name('moneyrecpt');
-Route::get('/salesfilter', [App\Http\Controllers\SaleController::class,'salesfilter'])->name('salesfilter');
+Route::any('/salesfilter', [App\Http\Controllers\SaleController::class,'salesfilter'])->name('salesfilter');
 Route::get('/print_receipt', [App\Http\Controllers\SaleController::class,'print_receipt'])->name('print_receipt');
 Route::post('/socledgerrep', [App\Http\Controllers\SocietyController::class,'socledgerrep'])->name('socledgerrep');
 Route::any('socledger', 'SocietyController@socledger')->name('socledger');

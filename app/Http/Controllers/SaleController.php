@@ -15,19 +15,28 @@ class SaleController extends Controller
         $this->middleware('auth');
     }
     
-    public function salesfilter(){
+    public function salesfilter(Request $request){
 
         DB::enableQueryLog();
-        $soc_id =   Auth::user()->soc_id;  
+		if ($request->isMethod('post')) {
+			$soc_id =   Auth::user()->soc_id; 
+			$frmDt  =   $request->from_date;
+			$todt   =   $request->to_date;  
+        
         $payrct = DB::select("select a.irn, a.ack,a.ack_dt,a.trans_do,a.do_dt,a.trans_type,b.soc_name,sum(a.tot_amt) as tot_amt,c.prod_desc,a.gst_type_flag,
         (select count(paid_id) from v_payment_recv where sale_invoice_no=a.trans_do) as pay_cnt
           from v_sale a,v_ferti_soc b,v_product c
           where a.soc_id='880' 
           and a.prod_id=c.prod_id
           and a.soc_id=b.soc_id
+		  and a.do_dt >='$frmDt'
+		  and a.do_dt <='$todt'
           group by a.trans_do,a.do_dt,a.trans_type,b.soc_name,c.prod_desc,a.gst_type_flag
           order by a.do_dt desc");
-        return view('sale_list', ['sales' => $payrct]);
+            return view('sale_list', ['sales' => $payrct]);
+		}else{
+			return view('sale_list', ['sales' => '']);
+		}
     }
 
    
