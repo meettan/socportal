@@ -17,7 +17,7 @@ class SocietyController extends Controller
 
         if ($request->isMethod('post')) {
         //$soc_id =   Auth::user()->soc_id; 
-        $soc_id = 1470; 
+        $soc_id = Auth::user()->soc_id; 
         $frmDt  =   $request->from_date;
         $toDt  =   $request->to_date;
         $data = DB::select("select  trans_dt,prod,inv_no, soc_id,soc_name,sum(paid_amt) as tot_paid,sum(paybl) as tot_payble,sum(cgst)cgst,sum(sgst)sgst,ro_no,ro_dt,sum(qty) qty ,sum(tot_recv) tot_recv,remarks
