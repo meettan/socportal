@@ -186,11 +186,17 @@ label.dateCustom span{float: left;
   .w3-dropdown-content .subDrop1 ul li a{color: #4c4c4c; font-size: 15px; width: 100%;}
   
   .w3-dropdown-content .subDrop1 ul li.profileLiCus a{color: #4c4c4c !important;
-  font-size: 15px !important;
-  width: 100%;
-  border: #e6e6e6 solid 1px;
-  border-radius: 50px !important;
-  padding: 7px 10px !important; height: auto; min-height: auto; line-height: 20px !important;}
+    font-size: 15px !important;
+    width: 100%;
+    border: #e6e6e6 solid 1px;
+    border-radius: 50px !important;
+    padding: 7px 10px !important;
+    height: auto;
+    min-height: auto;
+    line-height: 20px !important;
+    text-align: center;
+    display: block;
+    font-weight: 600;}
   .w3-dropdown-content .subDrop1 ul li.profileLiCus a:hover{background: #ececec;}
   
   .w3-dropdown-content .subDrop2{padding:10px 10px 19px 10px;
@@ -316,7 +322,10 @@ span.userNameTopRihght{color: #fff;
   color: #fff;}
 .dataTables_paginate span a.paginate_button:hover{background: #0b54da;}
 
+a.profileNav:hover .w3-dropdown-content{display: block;}
 
+
+.w3-show{z-index:100;}
 
 .loginLeftSec{width: 70%; float: left; 
   /* background: #000;  */

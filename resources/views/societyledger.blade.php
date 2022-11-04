@@ -161,10 +161,10 @@
                                             echo"<td></td>";
                                             $totVal=round($totalamt, 2);
                                             echo"<td>".abs( $totVal)."</td>";
-                                           // echo "<td></td>";
+                                          
                                            
                                         }
-                                        echo "<td></td><td></td>";
+                                       
                                      }elseif($prodtls->remarks=='Advance'||$prodtls->remarks=='Cr note'){
 
                                         $totalamt -= (($prodtls->tot_paid));

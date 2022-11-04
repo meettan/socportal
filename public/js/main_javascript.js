@@ -27,13 +27,28 @@ $(function() {
 
 function myFunction() {
 	var x = document.getElementById("Demo");
+	var closeDropDownBlk = document.getElementById("closeDropDownBlk");
+	
 	if (x.className.indexOf("w3-show") == -1) {
 	  x.className += " w3-show";
+	  closeDropDownBlk.style.display = "block";
 	} else { 
 	  x.className = x.className.replace(" w3-show", "");
 	}
-  }
 
+
+  }
+  var closeDropDownBlk = document.getElementById("closeDropDownBlk");
+  var x = document.getElementById("Demo");
+  closeDropDownBlk.onclick = function(){
+	x.className = x.className.replace(" w3-show", "");
+	closeDropDownBlk.style.display = "none";
+
+  }
+  
+
+
+   
 var sidebar = document.getElementById('sidebar');
 var main_panelNew = document.getElementById('main_panelNew');
 var closeMenuIdNew = document.getElementById('closeMenuIdNew');

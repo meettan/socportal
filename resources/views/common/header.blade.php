@@ -27,6 +27,11 @@
 
 </head>
 <body>
+<div style="    position: fixed;
+    width: 100%;
+    height: 100%;
+    bottom: 0; z-index:100; display:none;" class="" id="closeDropDownBlk">xxx</div>
+
 <div class="page-body-wrapper">
 	<nav class="sidebar sidebar-offcanvas" id="sidebar">
 		<div class="float-left logo"><img src="{{ url('public/images/logo.png') }}" alt=""/> <a href="#" class="closeMenu" id="closeMenuIdNew"><i class="fa fa-bars" aria-hidden="true"></i></a>
@@ -70,13 +75,14 @@
 	<div class="main-panel" id="main_panelNew">
 		<div class="float-left navRightSec">
 		<ul class="topDate">
-<li id="openSideBar_Li"><a href="{{route('dashboard')}}" id="openSideBarId"><i class="fa fa-bars" aria-hidden="true"></i></a></li>
-<li><a href="#"><i class="fa fa-home" aria-hidden="true"></i> Home</a></li>
+<li id="openSideBar_Li"><a href="#" id="openSideBarId"><i class="fa fa-bars" aria-hidden="true"></i></a></li>
+<li><a href="{{route('dashboard')}}"><i class="fa fa-home" aria-hidden="true"></i> Home</a></li>
 </ul>
 		<div class="topDateRight">
 		<ul class="nav topDateRight">
 			<li class="nav-item dropdown">
-            <a href="#" onclick="myFunction()" class="nav-link"><span class="userNameTopRihght"><?php $soc_name = Auth::user()->soc_name; echo $soc_name;?></span><i class="fa fa-user-circle" aria-hidden="true"></i> </a>
+      <!-- oclick="myFunction()" -->
+            <a href="#" onclick="myFunction()" class="nav-link profileNav" id="profileNavId"><span class="userNameTopRihght"><?php $soc_name = Auth::user()->soc_name; echo $soc_name;?></span><i class="fa fa-user-circle" aria-hidden="true"></i> </a>
 			
       <div id="Demo" class="w3-dropdown-content w3-bar-block w3-border">
       <div class="subDrop1">	

@@ -41,7 +41,7 @@
                                                 <h4>HEAD OFFICE: SOUTHEND CONCLAVE, 3RD FLOOR, <br>
                                                     1582 RAJDANGA MAIN ROAD,
                                                     KOLKATA-700107.</h4>
-                                                <h4 class="h4CustomPrintTop">Purchase history Between:
+                                                <h4 class="h4CustomPrintTop">Purchase History Between:
                                                     <?php echo date('d/m/Y',strtotime($frmDt)); ?>
                                                     To <?php echo date('d/m/Y',strtotime($toDt)); ?></h4>
 
@@ -158,27 +158,7 @@
                                                         <td class="report"><?php echo $sal->tot_amt; 
                                         $total += $sal->tot_amt; ?>
                                                         </td>
-                                                        <td class="report" type="text" colspan="8" id="container">
-                                                            <?php 
-                                                        if($sal->unit==1){
-                                                            echo ceil(number_format((float)($sal->qty*1000 )/$sal->qty_per_bag,3,'.',''));                                                      
-                                                        
-                                                        }elseif($sal->unit==2){
-                                                            echo ceil(number_format((float)( $sal->qty)/$sal->qty_per_bag,3,'.',''));                                          
-                                                        }elseif($sal->unit==4){
-                                                            echo ceil(number_format((float)( $sal->qty)*100/$sal->qty_per_bag,3,'.',''));
-                                                        
-                                                        }elseif($sal->unit==6){
-                                                        echo ceil(number_format((float)( $sal->qty)*1000/$sal->qty_per_bag,3,'.',''));
-                                                        }elseif($sal->unit==3){
-                                                        echo ceil(number_format((float)( $sal->qty)/$sal->qty_per_bag,3,'.',''));
-                                                    
-                                                        }elseif($sal->unit==5){
-                                                    echo ceil(number_format((float)( $sal->qty*1000)/$sal->qty_per_bag,3,'.',''));
-                                                   
-                                                }
-                                            ?>
-                                                    </td>
+                                                      
                                                 </tr>
                                                 <?php  
                                             }      
@@ -197,28 +177,28 @@
                                         <tfooter>
                                                     <tr style="font-weight: bold;">
                                                         <td class="report" colspan="7" style="text-align:right">Total</td>
-                                                        <td class="report"></td>
+                                                       
                                                         <td class="report"><?=$tot_taxamt?></td>
                                                         <td class="report"><?=$tot_cgst?></td>
                                                         <td class="report"><?=$tot_sgst?></td>
-                                                        <td class="report"></td>
+                                                     
                                                         <td class="report"><?=$total?></td>
                                                     </tr>
                                                     <tr>
-                                                        <td class="report" colspan="12" style="text-align:left"
+                                                        <td class="report" colspan="10" style="text-align:left"
                                                             bgcolor="silver"><b>Summary</b></td>
                                                         <td class="report" colspan="1" style="text-align:center"
                                                             bgcolor="silver"><b>Sale</b></td>
                                                     </tr>
                                                     <tr>
-                                                        <td class="report" colspan="12" style="text-align:left"
+                                                        <td class="report" colspan="10" style="text-align:left"
                                                             bgcolor="silver"><b>Solid( MTS) </b></td>
                                                         <td class="report" colspan="1" style="text-align:center"
                                                             bgcolor="silver"><?=$totsld_sal?></td>
                                                     </tr>
                                                     <tr>
                                                     <tr>
-                                                        <td class="report" colspan="12" style="text-align:left"
+                                                        <td class="report" colspan="10" style="text-align:left"
                                                             bgcolor="silver"><b>Liquid( LTR ) </b></td>
                                                         <td class="report" colspan="1" style="text-align:center"
                                                             bgcolor="silver"><?= $totlqd_sal?></td>
