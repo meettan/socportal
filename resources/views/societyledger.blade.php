@@ -26,7 +26,7 @@
                                     </div>
                                     <label for="to_date" class="col-sm-2 col-form-label">To Date:</label>
                                     <div class="col-md-3">
-                                        <input type="date" name="to_date" class="form-control" value="<?=$toDt?>"  required/>
+                                        <input type="date" name="to_date" id='to_date' class="form-control" value="<?=$toDt?>"  required/>
                                     </div>
                                     <div class="col-md-2"><input type="submit"
                                             class="btn btn-primary form-control required"></div>

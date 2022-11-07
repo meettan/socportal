@@ -10,9 +10,16 @@
               <div class="col-sm-12"> 
                 <div id="divToPrint">
                 <div class="wrapper_fixed">
-        <div class="col-sm-1 logo_sec_main"><img src="<?php //echo base_url("/benfed.png");?>" /></div>
-        <h3 style="text-align:center">The West Bengal State Co-operative Marketing Federation Ltd.</h3>
-        <h4 style="text-align:center">Southend Conclave, 3rd Floor,1582 Rajdanga Main Road,Kolkata - 700 107.</h4>
+        
+        <div class="topPrintHeadMain">
+                                            <div class="topPrintLogo"><img src="http://localhost/socportal/public/images/logo.png" alt=""></div>
+                                            <div class="topPrintLogoRight">
+                                                <h2>THE WEST BENGAL STATE CO.OP.MARKETING FEDERATION LTD.</h2>
+                                                <h4>HEAD OFFICE: SOUTHEND CONCLAVE, 3RD FLOOR, <br>
+                                                    1582 RAJDANGA MAIN ROAD,
+                                                    KOLKATA-700107.</h4>
+                                              </div>
+        </div>
         <br>
         <h4 style="text-align:center"><u>Money Receipt</u></h4>
         <div class="billDateGroop">
@@ -104,8 +111,8 @@
 
         <p align="justify"><br>
         </p>
-        <div class="billDateGroop">
-          <div class="dateTop"><strong>Authorised Signature</strong></div>
+        <div class="billDateGroop" style="text-align: center;">
+          <div class="dateTop"><strong>This document is computer generated and does not require signature.</strong></div>
         </div>
         <br>
       </div>
@@ -120,30 +127,38 @@
 <?php echo View::make('common/footer'); ?>
 <script>
  function printDiv() {
-        var divToPrint = document.getElementById('divToPrint');
-        var WindowObject = window.open('', 'Print-Window');
-        WindowObject.document.open();
-        WindowObject.document.writeln('<!DOCTYPE html>');
-        WindowObject.document.writeln('<html><head><title></title><style type="text/css">');
 
-        WindowObject.document.writeln('@media print { .center { text-align: center;}' +
-            '                                         .inline { display: inline; }' +
-            '                                         .underline { text-decoration: underline; }' +
-            '                                         .left { margin-left: 315px;} ' +
-            '                                         .right { margin-right: 375px; display: inline; }' +
-            '                                          table { border-collapse: collapse; font-size: 12px;}' +
-            '                                          th, td { border: 1px solid black; border-collapse: collapse; padding: 6px;}' +
-            '                                           th, td {text-align: left;}' +
-            '                                         .border { border: 1px solid black; } ' +
-            '                                         .bottom { bottom: 5px; width: 100%; position: fixed ' +
-            '                                       ' +
-            '                                   } } </style>');
-        WindowObject.document.writeln('</head><body onload="window.print()">');
-        WindowObject.document.writeln(divToPrint.innerHTML);
-        WindowObject.document.writeln('</body></html>');
-        WindowObject.document.close();
-        setTimeout(function () {
-            WindowObject.close();
-        }, 10);
-  }
+var divToPrint = document.getElementById('divToPrint');
+var WindowObject = window.open('', 'Print-Window');
+WindowObject.document.open();
+WindowObject.document.writeln('<!DOCTYPE html>');
+WindowObject.document.writeln('<html><head><title></title><style type="text/css">');
+WindowObject.document.writeln('@media print { .center { text-align: center;}' +
+    '                                         .inline { display: inline; }' +
+    '                                         .underline { text-decoration: underline; }' +
+    '                                         .left { margin-left: 315px;} ' +
+    '                                         .right { margin-right: 375px; display: inline; }' +
+    '                                          table { border-collapse: collapse; font-size: 12px;}' +
+    '                                          th, td { border: 1px solid black; border-collapse: collapse; padding: 6px;}' +
+    '                                           th, td {text-align: left;}' +
+    '                                         .border { border: 1px solid black; } ' +
+    '                                         .bottom { bottom: 5px; width: 100%; position: fixed ' +
+    '                                         .topPrintHeadMain{width: 100%; display: flex;}' +
+    '.topPrintLogo{padding-right: 15px; width: 15%; float:left;}' +
+    '.topPrintLogoRight{padding-left: 15px; width: 85%; float:left;}' +
+    '.topPrintLogoRight h2{color: #333;font-size: 20px;margin: 0 0 6px 0;padding: 0; text-align: center;}' +
+    '.topPrintLogoRight h4{color: #333;font-size: 14px;margin: 0 0 16px 0;padding: 0;line-height: 19px; text-align: center;}' +
+    '.topPrintLogoRight h4.h4CustomPrintTop{color: #333;font-size: 16px; text-align: center;}' +
+    '.topPrintLogoRight h5{color: #000;font-size: 14px;margin: 0 0 11px 0;padding: 0;line-height: 18px; text-align: center;}' +
+    '.topPrintLogoRight h5 label{padding: 0; margin: 0;}' +
+    '                                   } } </style>');
+WindowObject.document.writeln('</head><body onload="window.print()">');
+WindowObject.document.writeln(divToPrint.innerHTML);
+WindowObject.document.writeln('</body></html>');
+WindowObject.document.close();
+setTimeout(function() {
+    WindowObject.close();
+}, 10);
+
+}
   </script>

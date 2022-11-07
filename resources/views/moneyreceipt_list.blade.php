@@ -13,7 +13,7 @@
                                     <input type="date" name="from_date" class="form-control" id="from_date"
                                      aria-controls="example"></span></label>
                             <label class="dateCustom"><span>End Date:</span><span><input type="date" name="to_date"
-                                        class="form-control form-control-sm" placeholder=""
+                                                  class="form-control" id="to_date"
                                         aria-controls="example"></span></label>
                             <button type="submit" class="btn btn-primary floatNone">Submit</button>
                         </form>
@@ -48,7 +48,7 @@
                                 <td><?php echo date("d/m/Y",strtotime($pay->paid_dt)); ?></td>
                                 <td>
                                     <a href="{{ route('moneyrecpt',['paid_id'=>$pay->paid_id])}}" title="Print">
-                                        <i class="fa fa-print fa-2x" style="color:green;"></i>
+                                        <i class="fa fa-download fa-2x" style="color:green;"></i>
                                     </a>
                                 </td>
                             </tr>

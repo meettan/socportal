@@ -16,12 +16,12 @@
                                 <div class="row groupDataStatFrom">
                                     <label for="to_date" class="col-sm-2 col-form-label">From Date:</label>
                                     <div class="col-md-3">
-                                        <input type="date" name="from_date" class="form-control required" value=""
+                                        <input type="date" name="from_date" class="form-control required" id='from_date' value=""
                                             min='' max="" />
                                     </div>
                                     <label for="to_date" class="col-sm-2 col-form-label">To Date:</label>
                                     <div class="col-md-3">
-                                        <input type="date" name="to_date" class="form-control required" value="" min=''
+                                        <input type="date" name="to_date" id='to_date' class="form-control required" value="" min=''
                                             max="" />
                                     </div>
                                     <div class="col-md-2"><input type="submit"

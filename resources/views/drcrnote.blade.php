@@ -12,8 +12,7 @@
                             <input type="date" name="from_date" id="from_date" class="form-control" 
                                     aria-controls="example"></span></label>
                         <label class="dateCustom"><span>End Date:</span><span><input type="date" name="to_date"
-                                    class="form-control form-control-sm" placeholder=""
-                                    aria-controls="example"></span></label>
+                                    class="form-control" id="to_date" aria-controls="example"></span></label>
                         <button type="submit" class="btn btn-primary floatNone">Submit</button>
                         </form>
                     </div>
@@ -52,14 +51,14 @@
                                 <td><?php echo $dr->recpt_no;?></td>
 
                                 <td>
-                                    <button type="button" name="Print<?= $i ?>" class="Print_" id="Print"
+                                    <button type="button" name="Print<?= $i ?>" class="btn download_custom"  id="download"
                                         data-toggle="tooltip" data-placement="bottom" title="Print_"
                                         <?= $disable_btn; ?>>
 
                                         <a href="{{ route('drnoteReport',['invoice_no'=>$dr->invoice_no])}}"
                                             title="Print">
 
-                                            <i class="fa fa-print fa-2x" style="color:green;"></i>
+                                            <i class="fa fa-download fa-2x" style="color:green;"></i>
 
                                         </a>
                                 </td>

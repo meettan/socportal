@@ -74,17 +74,32 @@ var d = new Date();
 d.setMonth(d.getMonth() - 6);
 d= d.toLocaleDateString();
 d =  d.split('/');
+
 $('#from_date').on('change', function() {
-  var startdate = this.value;
-  startdate = startdate.split('-');
-  startdate = startdate[2]+'-'+(startdate[1])+'-'+startdate[0];
-  console.log(startdate,d[2]+'-'+d[1]+'-'+d[0]);
-  if(new Date(startdate) < new Date(d))
+  var startdate = $(this).val();
+  //console.log(startdate,d[2]+'-'+d[1]+'-'+d[0]);
+  if(new Date(startdate) < new Date(d[2]+'-'+d[1]+'-'+d[0]))
   {//compare end <=, not >=
       alert('From Date can not be less than six month');
-      
+	  $('#from_date').val('');
   }
 });
+  $('#to_date').on('change', function() {
+	var todate = this.value;
+	startdate = $('#from_date').val();
+	if(startdate!=''){
+		console.log(todate,startdate);
+		if(new Date(startdate) > new Date(todate))
+		{//compare end <=, not >=
+			alert('From date can not be greater than to date');
+			$('#to_date').val('');
+		}
+	}else{
+		alert('Please select from date');
+		
+	}
+	
+  });
 
 
 

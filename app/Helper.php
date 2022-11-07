@@ -52,10 +52,10 @@ class Helper{
            $points = $words[$point];
        }
        if($points != ''){        
-           echo $result . "Rupees  " . $points . " Paise Only";
+           echo $result . "rupees  " . $points . " Paise only";
        } else {
      
-           echo $result . "Rupees Only";
+           echo $result . "rupees only";
        }
     }
     
