@@ -32,11 +32,10 @@
                                             </li>           
 
                                         </ul>
-
                                         <div class="tab-content">
                                             <div id="home" class="tab-pane fade in active tabContent">
-                                            <form action ="{{'profile_update'}}" method="post">
-                                                @csrf
+                                            <!-- <form action ="{{'profile_update'}}" method="post">
+                                                @csrf -->
                                                 <input type="hidden" value="{{Auth::user()->id}}" name="id">
                                                 <div class="full_field_col3">
                                                     <div class="textFieldSec">
@@ -47,43 +46,41 @@
                                                 <div class="full_field_col3">
                                                     <div class="textFieldSec">
                                                         <span>Name Of Society:</span> <input type="text" name="soc_name"
-                                                            value="{{$users->soc_name}}">
+                                                            value="{{$users->soc_name}}" readonly>
                                                     </div>
                                                 </div>
                                                 <div class="full_field_col3">
                                                     <div class="textFieldSec">
                                                         <span>Email Id:</span><input type="email" name="email"
-                                                            value="{{$users->email}}">
+                                                            value="{{$users->email}}" readonly>
                                                     </div>
                                                 </div>
                                                 <div class="full_field_col3_full">
                                                     <div class="textFieldSec">
                                                         <span>Address:</span><textarea
-                                                            name="soc_address">{{$users->soc_address}}</textarea>
+                                                            name="soc_address" readonly>{{$users->soc_address}}</textarea>
                                                     </div>
                                                 </div>
-
                                                 <div class="full_field_col3">
                                                     <div class="textFieldSec">
                                                         <span>Mobile:</span> <input type="text" name="ph_number"
-                                                            value="{{$users->ph_number}}">
+                                                            value="{{$users->ph_number}}" readonly>
                                                     </div>
                                                 </div>
                                                 <div class="full_field_col3">
                                                     <div class="textFieldSec">
                                                         <span>GSTIN:</span> <input type="text" name="gstin"
-                                                            value="{{$users->gstin}}" />
+                                                            value="{{$users->gstin}}" readonly/>
                                                     </div>
                                                 </div>
                                                 <div class="full_field_col3">
                                                     <div class="textFieldSec">
                                                         <span>mFMS</span> <input type="text" name="mfms"
-                                                            value="{{$users->mfms}}" />
+                                                            value="{{$users->mfms}}" readonly />
                                                     </div>
                                                 </div>
-
-                                                	<div class="full_field_col3"><input type="submit" value="Submit" class="btn btn-primary"></div>
-                                            </form>
+                                                	<div class="full_field_col3"></div>
+                                            <!-- </form> -->
                                             </div>
                                             <div id="menu1" class="tab-pane fade tabContent">
                                             <form action ="{{'password_update'}}" method="post">
@@ -97,7 +94,8 @@
                                                 <div class="full_field_col3Half"><input type="text"
                                                         placeholder="Confirm Password" name="confirm_password" id="confirm_password"></div>
 
-                                                <div class="full_field_col3_full"><input type="submit" value="Confirm">
+                                                <!-- <div class="full_field_col3_full"><input type="submit" value="Confirm"> -->
+                                                <div class="full_field_col3"><input type="submit" class="btn btn-primary" value="submit"></div>
                                                 </div>
                                             </form>
                                             </div>
