@@ -46,14 +46,15 @@
 	<div class="signUpRightInnerSub">
 		<div class="signUpRightInnerSubMain">
 		<img class="feature-callout__img" src="{{ url('public/images/005100.png') }}" alt="Image of team" width="112">
-			<h2>Your plan includes</h2>
+			<h2>Please Follow The Steps</h2>
 			
 			<div class="list">
 				<ul>
-				<li>Unlimited tasks and projects</li>
-				<li>Unlimited tasks and projects</li>
-				<li>Unlimited tasks and projects</li>
-				<li>Unlimited tasks and projects</li>
+				<li>Supply your PAN No.</li>
+				<li>Email Id</li>
+				<li>Password must contain one uppercase letter</li>
+				<li>One lowercase case letter</li>
+				<li>One	special Character and length must be 8 Digit</li>
 				</ul>
 		</div>
 	</div>	
