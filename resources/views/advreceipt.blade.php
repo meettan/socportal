@@ -95,39 +95,44 @@
 </div>
 <?php echo View::make('common/footer'); ?>
 <script>
-function printDiv() {
+        function printDiv() {
+            var divToPrint = document.getElementById('divToPrint');
+            var WindowObject = window.open('', 'Print-Window');
+            WindowObject.document.open();
+            WindowObject.document.writeln('<!DOCTYPE html>');
+            WindowObject.document.writeln('<html><head><title></title><style type="text/css">');
 
-var divToPrint = document.getElementById('divToPrint');
-var WindowObject = window.open('', 'Print-Window');
-WindowObject.document.open();
-WindowObject.document.writeln('<!DOCTYPE html>');
-WindowObject.document.writeln('<html><head><title></title><style type="text/css">');
-WindowObject.document.writeln('@media print { .center { text-align: center;}' +
-    '                                         .inline { display: inline; }' +
-    '                                         .underline { text-decoration: underline; }' +
-    '                                         .left { margin-left: 315px;} ' +
-    '                                         .right { margin-right: 375px; display: inline; }' +
-    '                                          table { border-collapse: collapse; font-size: 12px;}' +
-    '                                          th, td { border: 1px solid black; border-collapse: collapse; padding: 6px;}' +
-    '                                           th, td {text-align: left;}' +
-    '                                         .border { border: 1px solid black; } ' +
-    '                                         .bottom { bottom: 5px; width: 100%; position: fixed ' +
-    '                                         .topPrintHeadMain{width: 100%; display: flex;}' +
-    '.topPrintLogo{padding-right: 15px; width: 15%; float:left;}' +
-    '.topPrintLogoRight{padding-left: 15px; width: 85%; float:left;}' +
-    '.topPrintLogoRight h2{color: #333;font-size: 20px;margin: 0 0 6px 0;padding: 0; text-align: center;}' +
-    '.topPrintLogoRight h4{color: #333;font-size: 14px;margin: 0 0 16px 0;padding: 0;line-height: 19px; text-align: center;}' +
-    '.topPrintLogoRight h4.h4CustomPrintTop{color: #333;font-size: 16px; text-align: center;}' +
-    '.topPrintLogoRight h5{color: #000;font-size: 14px;margin: 0 0 11px 0;padding: 0;line-height: 18px; text-align: center;}' +
-    '.topPrintLogoRight h5 label{padding: 0; margin: 0;}' +
-    '                                   } } </style>');
-WindowObject.document.writeln('</head><body onload="window.print()">');
-WindowObject.document.writeln(divToPrint.innerHTML);
-WindowObject.document.writeln('</body></html>');
-WindowObject.document.close();
-setTimeout(function() {
-    WindowObject.close();
-}, 10);
-
-}
+            WindowObject.document.writeln('@media print { .center { text-align: center;}' +
+                '                                         .inline { display: inline; }' +
+                '                                         .underline { text-decoration: underline; }' +
+                '                                         .left { margin-left: 315px;} ' +
+                '                                         .right { margin-right: 375px; display: inline; }' +
+                '                                          table { border-collapse: collapse; font-size: 12px;}' +
+                '                                          th, td { border: 1px solid black; border-collapse: collapse; padding: 6px;}' +
+                '                                           th, td {text-align: left;}' +
+                '                                         .border { border: 1px solid black; } ' +
+                '                                         .bottom { bottom: 5px; width: 100%; position: fixed} ' +
+                '                                         .topPrintHeadMain{width: 100%; display: flex;}' +
+                '.topPrintLogo{padding-right: 15px; width: 15%; float:left;}' +
+                '.gstNumberSec h5.h5LeftDataCus{float: left;}'+
+                '.gstNumberSec h5.h5RightDataCus{float: right;}'+
+                '.topPrintLogoRight{padding-left: 15px; width: 85%; float:left;}' +
+                '.topPrintLogoRight h2{color: #333;font-size: 20px;margin: 0 0 6px 0;padding: 0; text-align: center;}' +
+                '.topPrintLogoRight h4{color: #333;font-size: 14px;margin: 0 0 16px 0;padding: 0;line-height: 19px; text-align: center;}' +
+                '.topPrintLogoRight h4.h4CustomPrintTop{color: #333;font-size: 16px; text-align: center;}' +
+                '.topPrintLogoRight h5{color: #000;font-size: 14px;margin: 0 0 11px 0;padding: 0;line-height: 18px; text-align: center;}' +
+                '.topPrintLogoRight h5 label{padding: 0; margin: 0;}' +
+                '.gstNumberSec{width: 100%; text-align: left;}' +
+                '.gstNumberSec h5{color: #000;font-size: 14px;margin: 0 0 11px 0;padding: 0;line-height: 18px;}' +
+                '.gstNumberSec h5 label{padding: 0; margin: 0;} ' +
+                '                                       ' +
+                '                                   } } </style>');
+            WindowObject.document.writeln('</head><body onload="window.print()">');
+            WindowObject.document.writeln(divToPrint.innerHTML);
+            WindowObject.document.writeln('</body></html>');
+            WindowObject.document.close();
+            setTimeout(function() {
+                WindowObject.close();
+            }, 10);
+        }
 </script>

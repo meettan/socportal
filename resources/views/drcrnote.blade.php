@@ -7,13 +7,13 @@
                 <div class="dateCalenderSec">
                     <div class="calenderSec calenderSecCustome">
                         <form method="POST" action="{{ url('drcrnote') }}" id='' class="formCustom">
-		                          @csrf
-                        <label class="dateCustom"><span>Start Date:</span><span>
-                            <input type="date" name="from_date" id="from_date" class="form-control" 
-                                    aria-controls="example"></span></label>
-                        <label class="dateCustom"><span>End Date:</span><span><input type="date" name="to_date"
-                                    class="form-control" id="to_date" aria-controls="example"></span></label>
-                        <button type="submit" class="btn btn-primary floatNone">Submit</button>
+                            @csrf
+                            <label class="dateCustom"><span>Start Date:</span><span>
+                                    <input type="date" name="from_date" id="from_date" class="form-control"
+                                        aria-controls="example"></span></label>
+                            <label class="dateCustom"><span>End Date:</span><span><input type="date" name="to_date"
+                                        class="form-control" id="to_date" aria-controls="example"></span></label>
+                            <button type="submit" class="btn btn-primary floatNone">Submit</button>
                         </form>
                     </div>
                     <!-- <button type="button" class="btn btn_export floatNone">Export as CSV</button> -->
@@ -22,7 +22,7 @@
 
             <div class="row">
                 <div class="col-sm-12">
-                <?php if($dr_notes) {     ?>
+                    <?php if($dr_notes) {     ?>
                     <table id="example" class="table table-striped table-bordered" style="width:100%">
                         <thead>
                             <tr>
@@ -33,7 +33,7 @@
                             </tr>
                         </thead>
                         <tbody>
-                    <?php
+                            <?php
                         $i=0;
 						$disable_btn = '';
 						$enable_btn  = '';
@@ -51,8 +51,8 @@
                                 <td><?php echo $dr->recpt_no;?></td>
 
                                 <td>
-                                    <button type="button" name="Print<?= $i ?>" class="btn download_custom"  id="download"
-                                        data-toggle="tooltip" data-placement="bottom" title="Print_"
+                                    <button type="button" name="Print<?= $i ?>" class="btn download_custom"
+                                        id="download" data-toggle="tooltip" data-placement="bottom" title="Print_"
                                         <?= $disable_btn; ?>>
 
                                         <a href="{{ route('drnoteReport',['invoice_no'=>$dr->invoice_no])}}"
