@@ -9,19 +9,24 @@
             <div class="row">
                 <div class="col-sm-12">
                     <div class="">
+                        <?php if (date('m') <= 4) {//Upto June 2014-2015
+                                    $financial_yearst = (date('Y')-1).'-04-01';
+                                } else {//After June 2015-2016
+                                    $financial_yearst = date('Y').'-04-01' ;
+                                }
+                        ?>
                         <div class="wrapper_fixed">
                             <form method="POST" action="{{ url('socledger') }}" id='signupForm' class="validatedForm">
                                 @csrf
                                 <div class="row groupDataStatFrom">
                                     <label for="to_date" class="col-sm-2 col-form-label">From Date:</label>
                                     <div class="col-md-3">
-                                        <input type="date" name="from_date" class="form-control required" value=""
-                                            min='' max="" />
+                                        <input type="date" name="from_date" class="form-control required" value="<?=$financial_yearst?>"
+                                            min='' readonly/>
                                     </div>
                                     <label for="to_date" class="col-sm-2 col-form-label">To Date:</label>
                                     <div class="col-md-3">
-                                        <input type="date" name="to_date" class="form-control required" value="" min=''
-                                            max="" />
+                                        <input type="date" name="to_date" class="form-control" value="<?=$toDt?>"  required/>
                                     </div>
                                     <div class="col-md-2"><input type="submit"
                                             class="btn btn-primary form-control required"></div>

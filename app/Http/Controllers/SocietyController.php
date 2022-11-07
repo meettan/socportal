@@ -68,7 +68,7 @@ class SocietyController extends Controller
         return view('societyledger', ['all_data' => $data,'frmDt'=>$frmDt,'toDt'=>$toDt]);
         
       }else{
-         return view('societyledger', ['all_data' => '']);
+         return view('societyledger', ['all_data' => '','toDt'=>'']);
       }
       
 

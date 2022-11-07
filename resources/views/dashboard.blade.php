@@ -33,9 +33,11 @@
                     <div class="boxSecMainDescrip">
                         <div class="price"><i class="fa fa-inr" aria-hidden="true"></i> <span>{{$amt}}
                             <?php if($soc_balance_amt_data == 'Cr.') { ?>
-                            <strong class="crCus"> {{$soc_balance_amt_data}}</strong>
+                                <strong class="crCus" style="color: #0000b9 !important">
+                             {{$soc_balance_amt_data}}</strong>
                             <?php }else{  ?>
-                            <strong class="crCus" style="color:blue !important"> {{$soc_balance_amt_data}}</strong>
+                            <strong class="crCus">
+                             {{$soc_balance_amt_data}}</strong>
                             <?php } ?>
                         </span>
                     </div>

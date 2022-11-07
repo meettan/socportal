@@ -9,8 +9,8 @@
 						 <div class="calenderSec calenderSecCustome">
                          <form method="POST" action="{{ url('salesfilter') }}" id='' class="formCustom">
 		                          @csrf
-						 <label class="dateCustom"><span>Start Date:</span><span><input type="date" class="form-control form-control-sm" placeholder="" name="from_date"></span></label>
-						 <label class="dateCustom"><span>End Date:</span><span><input type="date" class="form-control form-control-sm" placeholder="" name="to_date"></span></label>
+						 <label class="dateCustom"><span>Start Date:</span><span><input type="date" class="form-control"  name="from_date" id="from_date"></span></label>
+						 <label class="dateCustom"><span>End Date:</span><span><input type="date" class="form-control" name="to_date"></span></label>
 						 <button type="submit" class="btn btn-primary floatNone">Submit</button>
                          </form>
 						</div>
@@ -80,3 +80,22 @@
 			</div>
 		</div>
 <?php echo View::make('common/footer'); ?>
+<script>
+// var d = new Date();
+// d.setMonth(d.getMonth() - 6);
+// d= d.toLocaleDateString();
+// d =  d.split('/');
+// $('#from_date').on('change', function() {
+//   var startdate = this.value;
+//   startdate = startdate.split('-');
+//   startdate = startdate[2]+'-'+(startdate[1])+'-'+startdate[0];
+//   console.log(startdate,d[2]+'-'+d[1]+'-'+d[0]);
+//   if(new Date(startdate) < new Date(d))
+//   {//compare end <=, not >=
+//       alert('From Date can not be less than six month');
+
+//   }
+// });
+ 
+
+</script>

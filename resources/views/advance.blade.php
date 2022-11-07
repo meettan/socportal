@@ -10,7 +10,7 @@
                     <form method="POST" action="{{ url('advancefilter') }}" id='' class="formCustom">
 		                          @csrf
                         <label class="dateCustom"><span>Start Date:</span><span>
-                            <input type="date" name="from_date" class="form-control form-control-sm" placeholder=""
+                            <input type="date" name="from_date" class="form-control" id="from_date"
                                     aria-controls="example"></span></label>
                         <label class="dateCustom"><span>End Date:</span><span><input type="date" name="to_date"
                                     class="form-control form-control-sm" placeholder=""
