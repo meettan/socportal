@@ -102,7 +102,7 @@
                                     <div class="imgsec"><img src="{{ url('public/images/society_icon.png') }}" alt="" />
                                     </div>
                                     <h5>Society ledger</h5>
-                                    <p>Assign a task to start collaborating</p>
+                                    <!-- <p>Assign a task to start collaborating</p> -->
                                     <a href="{{'socledger'}}"><button type="button" class="viewMore">View
                                             More</button></a>
 
@@ -115,7 +115,7 @@
                                     <div class="imgsec"><img src="{{ url('public/images/perchase_icon.png') }}"
                                             alt="" /></div>
                                     <h5>Purchase history</h5>
-                                    <p>Assign a task to start collaborating</p>
+                                    <!-- <p>Assign a task to start collaborating</p> -->
                                     <a href="{{'purrep'}}"><button type="button" class="viewMore">View More</button></a>
                                 </div>
                             </div>
@@ -125,7 +125,7 @@
                                     <div class="imgsec"><img src="{{ url('public/images/payment_icon.png') }}" alt="" />
                                     </div>
                                     <h5>Payment history</h5>
-                                    <p>Assign a task to start collaborating</p>
+                                    <!-- <p>Assign a task to start collaborating</p> -->
                                     <a href="javascript:void(0)"><button type="button" class="viewMore">View
                                             More</button></a>
                                 </div>
