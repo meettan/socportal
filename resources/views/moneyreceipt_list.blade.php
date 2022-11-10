@@ -10,10 +10,10 @@
                         <form method="POST" action="{{ url('socpayment') }}" id='' class="formCustom">
                             @csrf
                             <label class="dateCustom"><span>Start Date:</span><span>
-                                    <input type="date" name="from_date" class="form-control" id="from_date"
+                                    <input type="text" name="from_date" class="form-control" id="datepicker"
                                      aria-controls="example"></span></label>
-                            <label class="dateCustom"><span>End Date:</span><span><input type="date" name="to_date"
-                                                  class="form-control" id="to_date"
+                            <label class="dateCustom"><span>End Date:</span><span><input type="text" name="to_date"
+                                                  class="form-control" id="datepicker2"
                                         aria-controls="example"></span></label>
                             <button type="submit" class="btn btn-primary floatNone">Submit</button>
                         </form>

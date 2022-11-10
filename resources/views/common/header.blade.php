@@ -12,15 +12,21 @@
 <link rel="stylesheet" type="text/css" href="{{ url('public/css/apps_inner.css') }}">
 <link rel="stylesheet" type="text/css" href="{{ url('public/css/res.css') }}">
 <meta name="csrf-token" content="{{ csrf_token() }}" />
-<script src="https://code.jquery.com/jquery-3.5.1.js"></script>
+<!-- <script src="https://code.jquery.com/jquery-3.5.1.js"></script> -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+<!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script> -->
 <script src="https://cdn.datatables.net/1.10.24/js/jquery.dataTables.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
 <!-- <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script> -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"  crossorigin="anonymous" ></script>
 <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap" rel="stylesheet">
 <link href="https://fonts.googleapis.com/css2?family=Gorditas:wght@400;700&display=swap" rel="stylesheet"> 
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>	
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.bundle.min.js" ></script>
+<link href="{{ url('public/bootstrap-datepicker/dist/css/bootstrap-datepicker.min.css') }}" rel='stylesheet' type='text/css'>
+<script src="{{ url('public/bootstrap-datepicker/dist/js/bootstrap-datepicker.min.js') }}"  type='text/javascript'></script>
 
 </head>
 <body>

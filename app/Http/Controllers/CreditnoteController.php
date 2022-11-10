@@ -5,6 +5,7 @@ use Illuminate\Http\Request;
 use Hash;
 use Auth;
 use DB;
+use Helper;
 class CreditnoteController extends Controller
 {   
     public function __construct()
@@ -16,8 +17,8 @@ class CreditnoteController extends Controller
 
         if ($request->isMethod('post')) {
         $soc_id =   Auth::user()->soc_id;
-        $frmDt  =   $request->from_date;
-        $todt   =   $request->to_date;  
+        $frmDt  =   Helper::dateformat($request->from_date);
+		$todt   =   Helper::dateformat($request->to_date);  
         $dr_notes = DB::select("SELECT b.soc_name,a.recpt_no, 
          (select nwirn from v_sale_cancel where trans_do=a.invoice_no) as irn,
           a.trans_dt, a.trans_no, a.soc_id, sum(a.tot_amt)tot_amt,a.trans_flag,a.invoice_no,

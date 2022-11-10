@@ -7,6 +7,7 @@ use Auth;
 use DB;
 use Illuminate\Support\Facades\Http;
 use PDF;
+use Helper;
 
 class SaleController extends Controller
 {   
@@ -20,9 +21,10 @@ class SaleController extends Controller
         DB::enableQueryLog();
 		if ($request->isMethod('post')) {
 			$soc_id =   Auth::user()->soc_id; 
-			$frmDt  =   $request->from_date;
-			$todt   =   $request->to_date;  
+			$frmDt  =   Helper::dateformat($request->from_date);
+			$todt   =   Helper::dateformat($request->to_date);  
         
+
         $payrct = DB::select("select a.irn, a.ack,a.ack_dt,a.trans_do,a.do_dt,a.trans_type,b.soc_name,sum(a.tot_amt) as tot_amt,c.prod_desc,a.gst_type_flag,
         (select count(paid_id) from v_payment_recv where sale_invoice_no=a.trans_do) as pay_cnt
           from v_sale a,v_ferti_soc b,v_product c

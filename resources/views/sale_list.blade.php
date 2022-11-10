@@ -9,8 +9,8 @@
 						 <div class="calenderSec calenderSecCustome">
                          <form method="POST" action="{{ url('salesfilter') }}" id='' class="formCustom">
 		                          @csrf
-						 <label class="dateCustom"><span>Start Date:</span><span><input type="date" class="form-control"  name="from_date" id="from_date"></span></label>
-						 <label class="dateCustom"><span>End Date:</span><span><input type="date" class="form-control" name="to_date" id="to_date"></span></label>
+						 <label class="dateCustom"><span>Start Date:</span><span><input type="text" class="form-control"  name="from_date" id="datepicker" placeholder="dd-mm-yyyy"></span></label>
+						 <label class="dateCustom"><span>End Date:</span><span><input type="text" class="form-control" name="to_date" id="datepicker2" placeholder="dd-mm-yyyy"></span></label>
 						 <button type="submit" class="btn btn-primary floatNone">Submit</button>
                          </form>
 						</div>

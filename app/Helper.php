@@ -58,6 +58,11 @@ class Helper{
            echo $result . "rupees only";
        }
     }
+    public static function dateformat($number){
+        $number  = explode("-",$number);
+        $dates   =$number[2]."-".$number[1]."-".$number[0];
+        return $dates;
+    }
     
 }
 

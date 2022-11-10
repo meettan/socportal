@@ -75,20 +75,19 @@ d.setMonth(d.getMonth() - 6);
 d= d.toLocaleDateString();
 d =  d.split('/');
 
-$('#from_date').on('change', function() {
-  var startdate = $(this).val();
+//$('#from_date').on('change', function() {
+$("#form").submit(function(){
+  var startdate = $('#from_date').val();
+  var todate    = $('#to_date').val();
   //console.log(startdate,d[2]+'-'+d[1]+'-'+d[0]);
   if(new Date(startdate) < new Date(d[2]+'-'+d[1]+'-'+d[0]))
   {//compare end <=, not >=
       alert('From Date can not be less than six month');
 	  $('#from_date').val('');
-  }
-});
-  $('#to_date').on('change', function() {
-	var todate = this.value;
-	startdate = $('#from_date').val();
+	  e.preventDefault();
+   }else {
+
 	if(startdate!=''){
-		console.log(todate,startdate);
 		if(new Date(startdate) > new Date(todate))
 		{//compare end <=, not >=
 			alert('From date can not be greater than to date');
@@ -98,8 +97,30 @@ $('#from_date').on('change', function() {
 		alert('Please select from date');
 		
 	}
-	
-  });
+  }
+});
+$(document).ready(function(){
+              
+	$('#datepicker').datepicker({
+		// format: "yy-mm-dd",
+		format: "dd-mm-yyyy",
+		startDate: '-6m',
+		endDate: '+0d'
+	}).on('change', function() {
+        $(this).valid();  // triggers the validation test
+        // '$(this)' refers to '$("#datepicker")'
+    });
+
+	$('#datepicker2').datepicker({
+		format: "dd-mm-yyyy",
+		startDate: '-6m',
+		endDate: '+0d'
+	});   
+});
+// $("#datepicker").mousedown(function() {
+//     $(this).datepicker("hide");    
+// });
+
 
 
 

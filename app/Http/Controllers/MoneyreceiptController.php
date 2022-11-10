@@ -3,6 +3,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Auth;
 use DB;
+use Helper;
 
 class MoneyreceiptController extends Controller
 {   
@@ -15,8 +16,8 @@ class MoneyreceiptController extends Controller
         DB::enableQueryLog();
         if ($request->isMethod('post')) {
         $soc_id =   Auth::user()->soc_id;  
-        $frmDt  =   $request->from_date;
-        $todt   =   $request->to_date;  
+        $frmDt  =   Helper::dateformat($request->from_date);
+		$todt   =   Helper::dateformat($request->to_date);
         $payrct = DB::select("select distinct a.paid_id,a.sl_no,a.paid_dt paid_dt,a.soc_id,b.soc_name,a.ro_no,c.comp_id,c.prod_id,d.prod_desc,c.rate,c.ro_no as pur_inv,a.approval_status,sum(a.paid_amt)amount,0 as sale_qty,a.sale_invoice_no
 		from  v_payment_recv a , v_ferti_soc b,v_purchase c,v_product d
 		where a.soc_id=b.soc_id
