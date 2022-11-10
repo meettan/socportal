@@ -13,7 +13,6 @@
                         <div class="wrapper_fixed">
 
                             <div class="row">
-
                                 <div class="col-lg-12 contant-wraper">
                                     <div id="divToPrint" class="divToPrintClass">
                                         <div class="topPrintHeadMain">
@@ -105,7 +104,7 @@
                                             </table>
                                         </div>
 
-                                        <p align="justify">PAN: <strong>AABAT0010H</strong><br>
+                                        <p align="justify">PAN: <strong><?php $pan = Auth::user()->pan; echo $pan;?></strong><br>
                                 </p>
                                 <h5>For The West Bengal State Co-operative Marketing Federation Ltd.</h5>
                                 <h3>&nbsp;</h3>
