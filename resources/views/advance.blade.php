@@ -10,10 +10,10 @@
                     <form method="POST" action="{{ url('advancefilter') }}" id='' class="formCustom">
 		                          @csrf
                         <label class="dateCustom"><span>Start Date:</span><span>
-                            <input type="text" name="from_date" class="form-control" id="datepicker"
+                            <input type="text" name="from_date" class="form-control" id="datepicker" placeholder="dd-mm-yyyy" required
                                     aria-controls="example"></span></label>
                         <label class="dateCustom"><span>End Date:</span><span><input type="text" name="to_date"
-                                    class="form-control" id="datepicker2"
+                                    class="form-control" id="datepicker2" placeholder="dd-mm-yyyy" required
                                     aria-controls="example"></span></label>
                         <button type="submit" class="btn btn-primary floatNone">Submit</button>
                         </form>

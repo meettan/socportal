@@ -9,9 +9,9 @@
                         <form method="POST" action="{{ url('drcrnote') }}" id='' class="formCustom">
                             @csrf
                             <label class="dateCustom"><span>Start Date:</span><span>
-                                    <input type="text" name="from_date" id="datepicker" class="form-control"
+                                    <input type="text" name="from_date" id="datepicker" class="form-control" placeholder="dd-mm-yyyy" required
                                         aria-controls="example"></span></label>
-                            <label class="dateCustom"><span>End Date:</span><span><input type="text" name="to_date"
+                            <label class="dateCustom"><span>End Date:</span><span><input type="text" name="to_date" placeholder="dd-mm-yyyy" required
                                         class="form-control" id="datepicker2" aria-controls="example"></span></label>
                             <button type="submit" class="btn btn-primary floatNone">Submit</button>
                         </form>
