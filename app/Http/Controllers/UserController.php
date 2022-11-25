@@ -46,7 +46,7 @@ class UserController extends Controller
                 // $User->save();
                 // $id = $User->id;
             // return redirect()->route('registerse',['id'=>$id]);
-            return view('signup2.blade',['datas'=>$request,'soc_id'=>$result[0]->soc_id]);
+            return view('signup2',['datas'=>$request,'soc_id'=>$result[0]->soc_id]);
             }else{
                 Session::flash('error','Pan not available');
                 return redirect()->route('register');
