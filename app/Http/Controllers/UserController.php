@@ -35,17 +35,18 @@ class UserController extends Controller
         else{
             $result = SocietyModel::where(['pan'=> $request->pan])->get();
             if (count($result) > 0) {
-                session(['soctemp_detail' => $result]);
-                $User = new userModel;
-                $User->pan = request('pan');
-                $User->email = request('email');
-                $User->soc_id = $result[0]->soc_id;
-                $User->password = Hash::make(request('password'));
-                $User->created_by =request('email');
-                $User->save();
-                $id = $User->id;
-            return redirect()->route('registerse',['id'=>$id]);
-            // return view('signup2.blade',['id'=>$id]);
+                // $datas=$request;
+                // session(['soctemp_detail' => $result]);
+                // $User = new userModel;
+                // $User->pan = request('pan');
+                // $User->email = request('email');
+                // $User->soc_id = $result[0]->soc_id;
+                // $User->password = Hash::make(request('password'));
+                // $User->created_by =request('email');
+                // $User->save();
+                // $id = $User->id;
+            // return redirect()->route('registerse',['id'=>$id]);
+            return view('signup2.blade',['datas'=>$request,'soc_id'=>$result[0]->soc_id]);
             }else{
                 Session::flash('error','Pan not available');
                 return redirect()->route('register');
@@ -53,10 +54,15 @@ class UserController extends Controller
        }
     }
 
-    public function registercomplete(){
+    public function registercomplete(Request $request){
         $dist_id  = Session::get('soctemp_detail')[0]->district;
         $dist_name= DB::select("select district_name FROM v_district WHERE district_code = '$dist_id'");
-        $User = userModel::find(request('id'));
+        // $User = userModel::find(request('id'));
+        $User = new userModel;
+        $User->pan = request('prev_pan');
+        $User->email = request('prev_email');
+        $User->soc_id = request('prev_soc_id');
+        $User->password = Hash::make(request('prev_password'));
         $User->soc_name = request('soc_name');
         $User->soc_address = request('soc_address');
         $User->district = $dist_id;
@@ -66,7 +72,8 @@ class UserController extends Controller
         $User->ph_number =request('ph_number');
         $User->registration_status = '2';
         $User->status = '1';
-        $User->updated_by =Session::get('soctemp_detail')[0]->email;
+        $User->created_by =request('prev_email');
+        // $User->updated_by =Session::get('soctemp_detail')[0]->email;
         $User->save();
         Session::forget('soctemp_detail') ;                            
         Session::flash('msg','Registration is successfully');

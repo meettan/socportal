@@ -9,6 +9,12 @@
 			
 			<form method="POST" action="{{ url('registercomplete') }}" id='signupForm'>
 			@csrf
+			<input type="text" name="prev_pan" id="prev_pan" value="{{$datas->pan}}">
+			<input type="text" name="prev_email" id="prev_email" value="{{$datas->email}}">
+			<input type="text" name="prev_password" id="prev_password" value="{{$datas->password}}">
+			<input type="text" name="prev_soc_id" id="prev_soc_id" value="{{$soc_id}}">
+
+
 			<label class="full_fieldSignHalf_1"><span>Pan No.</span>
 			<input type="text" class="nonEdit" name="pan" value="{{Session::get('soctemp_detail')[0]->pan}}"></label>
 			
