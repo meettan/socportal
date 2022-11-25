@@ -78,7 +78,6 @@ class SaleController extends Controller
     }
     public function print_receipt1(Request $request){
 
-            // $irns ='2957a947a6de732642eb6d39fb4ec789a5bfa305440f3684dc2815b597107ebf';
             $irns =$request->irn;
             $filename = $irns . '.pdf';
             $curl = curl_init();

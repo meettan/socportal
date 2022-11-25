@@ -75,7 +75,7 @@ class UserController extends Controller
 
     public function login(Request $request)
     {                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    
-                                                                                                                                                                                                           
+        // return Hash::make($request->password);                                                                                                                                                                                                 
         // $request->validate([
         //     'pan' => 'required',
         //     'password' => 'required',
