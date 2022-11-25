@@ -20,7 +20,7 @@
 			
 			<label class="full_fieldSignHalf_2"><span>Email Id</span>
 			<input type="email"  class="nonEdit" name="email" value="{{Session::get('soctemp_detail')[0]->email}}"> </label>
-			<input type="hidden" class="nonEdit" name="id" value="{{$id}}">
+			<!-- <input type="hidden" class="nonEdit" name="id" value="{{$id}}"> -->
 			<label class="full_fieldSign">
 			<span>Name Of Society</span>
 			<input type="text" class="nonEdit" name="soc_name" value="{{Session::get('soctemp_detail')[0]->soc_name}}">
