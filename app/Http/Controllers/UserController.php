@@ -36,7 +36,7 @@ class UserController extends Controller
             $result = SocietyModel::where(['pan'=> $request->pan])->get();
             if (count($result) > 0) {
                 // $datas=$request;
-                // session(['soctemp_detail' => $result]);
+                session(['soctemp_detail' => $result]);
                 // $User = new userModel;
                 // $User->pan = request('pan');
                 // $User->email = request('email');
