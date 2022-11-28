@@ -88,14 +88,16 @@ class UserController extends Controller
         //     'password' => 'required',
         //     'captcha' => 'required|captcha',
         // ]);
-        
             $user = userModel::where(['pan'=> $request->pan])->get();
             if (count($user) > 0) {
                 if (Auth::attempt(['pan' => $request->pan, 'password' => $request->password])) {
-                    // return "if";  // return redirect(session('url.intended'));
-                        //  session(['user_detail' => $user]);
-                        //session::put('username', $student[0]->user_name);
-                        return redirect()->route('dashboard');
+                    $userdtl = DB::select("select a.*,b.district_name
+                     from v_ferti_soc a,v_district b
+                     where  a.district = b.district_code
+                     and    a.pan   = '$request->pan' ");
+                    session(['socuserdtls' => $userdtl[0]]);
+                  
+                    return redirect()->route('dashboard');
                 }else{
                     return redirect()->back()->with('login_error','error')->withInput($request->only('email', 'remember'));
                 }
@@ -139,6 +141,10 @@ class UserController extends Controller
     {
         return view('login');
         # code...
+    }
+
+    public function chnage_password(){
+        
     }
     
 

@@ -52,31 +52,31 @@
                                                 <div class="full_field_col3">
                                                     <div class="textFieldSec">
                                                         <span>Email Id:</span><input type="email" name="email"
-                                                            value="{{$users->email}}" readonly>
+                                                            value="{{Session::get('socuserdtls')->email}}" readonly>
                                                     </div>
                                                 </div>
                                                 <div class="full_field_col3_full">
                                                     <div class="textFieldSec">
                                                         <span>Address:</span><textarea
-                                                            name="soc_address" readonly>{{$users->soc_address}}</textarea>
+                                                            name="soc_address" readonly>{{Session::get('socuserdtls')->soc_add}}</textarea>
                                                     </div>
                                                 </div>
                                                 <div class="full_field_col3">
                                                     <div class="textFieldSec">
                                                         <span>Mobile:</span> <input type="text" name="ph_number"
-                                                            value="{{$users->ph_number}}" readonly>
+                                                            value="{{Session::get('socuserdtls')->ph_no}}" readonly>
                                                     </div>
                                                 </div>
                                                 <div class="full_field_col3">
                                                     <div class="textFieldSec">
                                                         <span>GSTIN:</span> <input type="text" name="gstin"
-                                                            value="{{$users->gstin}}" readonly/>
+                                                            value="{{Session::get('socuserdtls')->gstin}}" readonly/>
                                                     </div>
                                                 </div>
                                                 <div class="full_field_col3">
                                                     <div class="textFieldSec">
                                                         <span>mFMS</span> <input type="text" name="mfms"
-                                                            value="{{$users->mfms}}" readonly />
+                                                            value="{{Session::get('socuserdtls')->mfms}}" readonly />
                                                     </div>
                                                 </div>
                                                 	<div class="full_field_col3"></div>
