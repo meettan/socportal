@@ -100,6 +100,22 @@ img {
   width: 100%
 }
 
+.innerPageSecCus{padding:35px 15px; min-height: 450px;}
+
+.innerPageSecCus h2{font-size: 32px; color: #333; font-weight: 700;
+  margin: 0 0 15px 0; padding: 0;}
+  .innerPageSecCus h3{font-size: 22px; color: #333; font-weight: 700;
+    margin: 0 0 10px 0; padding: 0;}
+.innerPageSecCus p {color: #474747; font-size: 16px; line-height: 25px;
+padding: 0; margin: 0 0 15px 0;}
+.innerPageSecCus p a{color: #14aaf5;}
+
+.innerPageSecCus ol{margin: 0 0 15px 15px; padding: 0;}
+.innerPageSecCus ol li{margin-bottom: 10px; padding: 0; color: #474747; 
+  font-size: 16px; line-height: 25px;}
+
+
+
 
 
 
@@ -330,11 +346,21 @@ img {
     margin-top: 24px; font-size: 14px; color: #6f7479; 
     text-align: center;
 }
+
 .LoginDefaultView-signUpButtonLink {
     margin-left: 8px; color: #14aaf5;
 }
 .LoginDefaultView-signUpButtonLink:hover{text-decoration: underline; color: #1296d8;}
 
+
+.loginFooterLink {
+  margin-top: 24px; font-size: 14px; color: #6f7479; margin-bottom: 15px; 
+  text-align: center;
+}
+
+.loginFooterLink ul.loginFooterUl{margin: 0; padding: 0; list-style-type: none;}
+.loginFooterLink ul.loginFooterUl li{display: inline-block; padding: 0 2px;}
+.loginFooterLink ul.loginFooterUl li a{color: #202020; font-size: 14px;}
 
 .Typography--s.Typography {
     font-size: 12px;
@@ -361,6 +387,8 @@ span.captureImg{display: inline-block; margin-top: 5px;}
 .topLogo{margin: 0 auto 0 0;}
 .userDetailsRight{margin: 0 0 0 auto;}
 
+.rightInnerPage{margin: 0 0 0 auto;}
+.rightInnerPage h2{font-size: 2em; color: #333; font-weight: 700;}
 
 .innerPageSec{
 padding: 55px 0;

@@ -18,6 +18,9 @@ Route::get('/', function () {
 });
 
 Route::get('/login',[App\Http\Controllers\UserController::class,'Show'])->name('login');
+Route::get('/privacypolicy',[App\Http\Controllers\UserController::class,'privacypolicy'])->name('privacypolicy');
+Route::get('/refundpolicy',[App\Http\Controllers\UserController::class,'refundpolicy'])->name('refundpolicy');
+Route::get('/termcondition',[App\Http\Controllers\UserController::class,'termcondition'])->name('termcondition');
 Route::post('/login',[App\Http\Controllers\UserController::class,'login'])->name('loginConfrim');
 Route::get('/reload-captcha', [App\Http\Controllers\UserController::class, 'reloadCaptcha']);
 Route::get('/register', [App\Http\Controllers\UserController::class,'register'])->name('register');

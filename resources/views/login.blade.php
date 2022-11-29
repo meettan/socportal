@@ -67,6 +67,14 @@
                     <a class="LoginDefaultView-signUpButtonLink PrimaryLink BaseLink" href="{{route('register')}}">Sign
                         up</a>
                 </div>
+                <div class="loginFooterLink">
+
+                <ul class="loginFooterUl">
+                <li><a href="{{'privacypolicy'}}">Privacy Policy</a></li>
+                <li><a href="{{'refundpolicy'}}">Refund Policy</a></li>
+                <li><a href="{{'termcondition'}}">Terms & Condition</a></li>
+                </ul>
+                </div>
             </div>
           
         </div>

@@ -146,6 +146,16 @@ class UserController extends Controller
     public function chnage_password(){
         
     }
+
+    public function privacypolicy(){
+        return view('outer_page/privacypolicy');
+    }
+    public function refundpolicy(){
+        return view('outer_page/refundpolicy');
+    }
+    public function termcondition(){
+        return view('outer_page/termcondition');
+    }
     
 
 }
