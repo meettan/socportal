@@ -12,19 +12,21 @@ use DB;
 use Captcha;
 
 class UserController extends Controller
-{
+{   
+    // Loading registeration First page  
     public function register()
     {
         return view('signup');
         //echo Hash::make('123');
     }
-
+    // Loading registeration Second page
     public function register_second($id)
     {
         return view('signup2',['id'=>$id]);
-        //echo Hash::make('123');
     }
-    
+    // Here PAN is using as Uniquie Identifier,Using table v_ferti_soc for validating 
+    // society exist or not . After that checking society already register or 
+    // not using PAN  in this portal using table v_ferti_soc
     public function validatesocdetail(Request $request)
     {
         $user = userModel::where(['pan'=> $request->pan])->get();
@@ -35,17 +37,9 @@ class UserController extends Controller
         else{
             $result = SocietyModel::where(['pan'=> $request->pan])->get();
             if (count($result) > 0) {
-                // $datas=$request;
+               
                 session(['soctemp_detail' => $result]);
-                // $User = new userModel;
-                // $User->pan = request('pan');
-                // $User->email = request('email');
-                // $User->soc_id = $result[0]->soc_id;
-                // $User->password = Hash::make(request('password'));
-                // $User->created_by =request('email');
-                // $User->save();
-                // $id = $User->id;
-            // return redirect()->route('registerse',['id'=>$id]);
+                
             return view('signup2',['datas'=>$request,'soc_id'=>$result[0]->soc_id]);
             }else{
                 Session::flash('error','Pan not available');
@@ -53,11 +47,12 @@ class UserController extends Controller
             }
        }
     }
-
+    // Registration second Page using PAN, Password from first form Society name ,Society Address,Gistin,Mfms
+    // form benfed fertilizer portal database.Using table v_ferti_soc  And
+    // Inserting in table td_users
     public function registercomplete(Request $request){
         $dist_id  = Session::get('soctemp_detail')[0]->district;
         $dist_name= DB::select("select district_name FROM v_district WHERE district_code = '$dist_id'");
-        // $User = userModel::find(request('id'));
         $User = new userModel;
         $User->pan = request('prev_pan');
         $User->email = request('prev_email');
@@ -73,13 +68,12 @@ class UserController extends Controller
         $User->registration_status = '2';
         $User->status = '1';
         $User->created_by =request('prev_email');
-        // $User->updated_by =Session::get('soctemp_detail')[0]->email;
         $User->save();
         Session::forget('soctemp_detail') ;                            
         Session::flash('msg','Registration is successfully');
         return view('login');
     }
-
+    // Login process using PAN and given password using table td_users
     public function login(Request $request)
     {                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    
         // return Hash::make($request->password);                                                                                                                                                                                                 
@@ -96,24 +90,21 @@ class UserController extends Controller
                      where  a.district = b.district_code
                      and    a.pan   = '$request->pan' ");
                     session(['socuserdtls' => $userdtl[0]]);
-                  
                     return redirect()->route('dashboard');
                 }else{
                     return redirect()->back()->with('login_error','error')->withInput($request->only('email', 'remember'));
                 }
                     //if unsuccessfull redirect back to the login form with form data
-                    
             } else {
                 return redirect()->back()->with('account_active_error', 'error');
             }
-       
-        
-
     }
     public function reloadCaptcha()
     {
         return response()->json(['captcha'=> captcha_img()]);
     }
+    //  Valid PAN data for starting registration process using table 
+    //  v_ferti_soc before submiting form.  
     public function panvalidate(Request $request){
         $pan = $request->pan;
         $panexist = SocietyModel::where(['pan'=> $request->pan])->get();
@@ -127,9 +118,9 @@ class UserController extends Controller
         }else{
             return response()->json(['status'=> 2]);
         }
-        
-
     }
+    // Here logout operation happen and destroying session using Laravel 
+    // Predefined AUTH middleware. 
     public function logout(){
 
         Auth::logout();
@@ -143,16 +134,18 @@ class UserController extends Controller
         # code...
     }
 
-    public function chnage_password(){
+    public function forgot_password(){
         
     }
-
+    //  Display page of privacypolicy as outer link without login .
     public function privacypolicy(){
         return view('outer_page/privacypolicy');
     }
+    //  Display page of Refundpolicy as outer link without login .
     public function refundpolicy(){
         return view('outer_page/refundpolicy');
     }
+    //  Display page of Term & Condition as outer link without login .
     public function termcondition(){
         return view('outer_page/termcondition');
     }
