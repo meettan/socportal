@@ -14,17 +14,20 @@
     <link
         href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap"
         rel="stylesheet">
-        <link href="https://fonts.googleapis.com/css2?family=Gorditas:wght@400;700&display=swap" rel="stylesheet">
-    </head>
+    <link href="https://fonts.googleapis.com/css2?family=Gorditas:wght@400;700&display=swap" rel="stylesheet">
+</head>
+
 <body>
     <div class="LoginCardLayout">
-<div class="loginLeftSec"></div>
+        <div class="loginLeftSec"></div>
 
-        <div class="LoginCardLayout-card loginRightSec">
-       <a href="{{route('login')}}"> <div class="LoginCardLayout-LoginLogoContainer "><img src="{{ url('public/images/logo.png') }}" alt=""
-                    class="LoginCardLayout-LogoLogo" /></div></a>
+        <div class="LoginCardLayout-card loginRightSec" style="position: relative;">
+            <a href="{{route('login')}}">
+                <div class="LoginCardLayout-LoginLogoContainer "><img src="{{ url('public/images/logo.png') }}" alt=""
+                        class="LoginCardLayout-LogoLogo" /></div>
+            </a>
             <div class="LoginDefaultView-content">
-                
+
                 @if(Session::has('msg'))
                 <div class="alert alert-success" role="alert">
                     {{Session::get('msg')}}
@@ -41,14 +44,14 @@
                 @endif
 
                 <form class="LoginEmailPasswordForm" method="POST" action="{{ route('loginConfrim') }}" id='signupForm'>
-				@csrf
+                    @csrf
                     <div class="LoginEmailPasswordForm-emailAndPassword">
 
-                        
+
                         <span class="Typography Typography--colorDarkGray1 Typography--s">Pan No.</span>
                         <input type="text"
                             class="TextInputBase SizedTextInput SizedTextInput--medium TextInput LoginEmailPasswordForm-emailInput"
-                            placeholder="Pan No." name="pan" value="" autocomplete="username" autofocus="" id ="pan">
+                            placeholder="Pan No." name="pan" value="" autocomplete="username" autofocus="" id="pan">
                         <span class="Typography Typography--colorDarkGray1 Typography--s">Password</span>
                         <input type="password"
                             class="TextInputBase SizedTextInput SizedTextInput--medium TextInput ValidatedTextInput-input OnBlurValidatedTextInput-input LoginEmailPasswordForm-passwordInput"
@@ -57,7 +60,7 @@
                     <span class="Typography Typography--colorDarkGray1 Typography--s"><a href="#">Forgot your
                             password?</a></span>
                     <div class="captureSec">
-                     
+
 
                     </div>
                     <input type="submit" value="Log in" class="loginBtn">
@@ -67,17 +70,20 @@
                     <a class="LoginDefaultView-signUpButtonLink PrimaryLink BaseLink" href="{{route('register')}}">Sign
                         up</a>
                 </div>
-                <div class="loginFooterLink">
+
+            </div>
+
+            <div class="loginFooterLink">
 
                 <ul class="loginFooterUl">
-                <li><a href="{{'privacypolicy'}}">Privacy Policy</a></li>
-                <li><a href="{{'refundpolicy'}}">Refund Policy</a></li>
-                <li><a href="{{'termcondition'}}">Terms & Condition</a></li>
+                    <li><a href="{{'privacypolicy'}}">Privacy Policy</a></li>
+                    <li><a href="{{'refundpolicy'}}">Refund Policy</a></li>
+                    <li><a href="{{'termcondition'}}">Terms & Condition</a></li>
                 </ul>
-                </div>
             </div>
-          
+
         </div>
+
     </div>
 
     <script src="{{ url('public/js/bootstrap.min.js') }}"></script>
