@@ -1,4 +1,5 @@
-<?php echo View::make('common/header'); ?>
+@extends('common.master')
+@section('content')
 <div class="content-wrapper">
     <div class="card">
         <div class="card-body">
@@ -270,7 +271,8 @@
                 </div>
             </div>
         </div>
-        <?php echo View::make('common/footer'); ?>
+        @endsection
+        @section('script')
         <script>
         function printDiv() {
             var divToPrint = document.getElementById('divToPrint');
@@ -311,3 +313,4 @@
             }, 10);
         }
         </script>
+        @endsection

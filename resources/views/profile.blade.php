@@ -1,4 +1,5 @@
-<?php echo View::make('common/header'); ?>
+@extends('common.master')
+@section('content')
 <div class="content-wrapper">
     <div class="card">
         <div class="card-body">

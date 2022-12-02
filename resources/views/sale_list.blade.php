@@ -1,5 +1,5 @@
-<?php echo View::make('common/header'); ?>
-
+@extends('common.master')
+@section('content')
 <div class="content-wrapper">
 			<div class="card">
 			 <div class="card-body">
@@ -79,23 +79,6 @@
 			</div>
 			</div>
 		</div>
-<?php echo View::make('common/footer'); ?>
-<script>
-// var d = new Date();
-// d.setMonth(d.getMonth() - 6);
-// d= d.toLocaleDateString();
-// d =  d.split('/');
-// $('#from_date').on('change', function() {
-//   var startdate = this.value;
-//   startdate = startdate.split('-');
-//   startdate = startdate[2]+'-'+(startdate[1])+'-'+startdate[0];
-//   console.log(startdate,d[2]+'-'+d[1]+'-'+d[0]);
-//   if(new Date(startdate) < new Date(d))
-//   {//compare end <=, not >=
-//       alert('From Date can not be less than six month');
-
-//   }
-// });
- 
-
-</script>
+        @endsection
+@section('script')
+@endsection

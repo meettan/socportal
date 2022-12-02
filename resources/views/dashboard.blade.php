@@ -1,4 +1,5 @@
-<?php echo View::make('common/header'); ?>
+@extends('common.master')
+@section('content')
 <div class="content-wrapper">
     <div class="samllWrapper">
         <div class="contentHeaderTop">
@@ -145,4 +146,7 @@
         </div>
     </div>
 </div>
-<?php echo View::make('common/footer'); ?>
+@endsection
+@section('script')
+
+@endsection
