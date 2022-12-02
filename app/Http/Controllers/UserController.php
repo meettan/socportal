@@ -32,7 +32,7 @@ class UserController extends Controller
         $user = userModel::where(['pan'=> $request->pan])->get();
         if (count($user) > 0) {
             Session::flash('msg','You already registered');
-            return view('login');
+            return redirect()->route('login');
         }
         else{
             $result = SocietyModel::where(['pan'=> $request->pan])->get();
@@ -71,25 +71,20 @@ class UserController extends Controller
         $User->save();
         Session::forget('soctemp_detail') ;                            
         Session::flash('msg','Registration is successfully');
-        return view('login');
+        return redirect()->route('login');
     }
     // Login process using PAN and given password using table td_users
     public function login(Request $request)
     {                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    
-        // return Hash::make($request->password);                                                                                                                                                                                                 
-        // $request->validate([
-        //     'pan' => 'required',
-        //     'password' => 'required',
-        //     'captcha' => 'required|captcha',
-        // ]);
             $user = userModel::where(['pan'=> $request->pan])->get();
             if (count($user) > 0) {
                 if (Auth::attempt(['pan' => $request->pan, 'password' => $request->password])) {
-                    $userdtl = DB::select("select a.*,b.district_name
-                     from v_ferti_soc a,v_district b
-                     where  a.district = b.district_code
-                     and    a.pan   = '$request->pan' ");
-                    session(['socuserdtls' => $userdtl[0]]);
+                    $userdtl =DB::table('v_ferti_soc')
+                    ->leftJoin('v_district','v_ferti_soc.district','=','v_district.district_code')
+                    ->select('v_ferti_soc.*','v_district.district_name')
+                    ->where('v_ferti_soc.pan','=',$request->pan)
+                    ->first();
+                    session(['socuserdtls' => $userdtl]);
                     return redirect()->route('dashboard');
                 }else{
                     return redirect()->back()->with('login_error','error')->withInput($request->only('email', 'remember'));
