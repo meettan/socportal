@@ -114,4 +114,4 @@
                 </div>
             </div>
         </div>
-        <?php echo View::make('common/footer'); ?>
+        @endsection
