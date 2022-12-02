@@ -13,6 +13,9 @@ class AdvanceController extends Controller
     {
         $this->middleware('auth');
     }
+    // Display Advance filter for society to get advance list using date range
+    // From date and to date is required filed using table v_advance,v_ferti_soc as the view of 
+    // fertilizer portal td_advance and mm_ferti_soc 
     public function advancefilter(Request $request)
     {   DB::enableQueryLog();
         if ($request->isMethod('post')) {
@@ -34,6 +37,9 @@ class AdvanceController extends Controller
             return view('advance', ['data' => '']);
         }
     }
+    // Display Advance report filter of society using receipt no 
+    //  using table v_advance,v_ferti_soc as the view of 
+    // fertilizer portal td_advance and mm_ferti_soc 
     public function socadvReport(Request $request){
         DB::enableQueryLog();
         $soc_id =   Auth::user()->soc_id;

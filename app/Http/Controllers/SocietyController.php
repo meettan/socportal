@@ -12,11 +12,10 @@ class SocietyController extends Controller
     {
         $this->middleware('auth');
     }
+    
     public function socledger(Request $request){
         DB::enableQueryLog();
-
         if ($request->isMethod('post')) {
-        //$soc_id =   Auth::user()->soc_id; 
         $soc_id = Auth::user()->soc_id; 
         $frmDt  =   $request->from_date;
         $toDt  =   $request->to_date;
@@ -62,7 +61,8 @@ class SocietyController extends Controller
             and c.sale_ro = d.ro_no and c.do_dt between '$frmDt' and '$toDt' 
             and c.prod_id=e.prod_id
            )a
-            group by soc_id,soc_name,ro_no,ro_dt,inv_no,trans_dt,remarks,prod 
+           
+           group by trans_dt,prod,inv_no,soc_id,soc_name,ro_no,ro_dt,remarks
             ORDER BY `a`.`trans_dt`,`a`.`inv_no`");
 
         return view('societyledger', ['all_data' => $data,'frmDt'=>$frmDt,'toDt'=>$toDt]);
