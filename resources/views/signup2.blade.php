@@ -1,12 +1,9 @@
 <?php echo View::make('common/signupheader'); ?>
 	<div class="innerPageSecSignUp">
 	<div class="signUpLeftInner">
-	
 		<div class="signUpLeftForm">
 		<h2>Sign up</h2>
-			
 			<p>By signing up, I agree to the Asana Privacy Policy and Terms of Service.</p>
-			
 			<form method="POST" action="{{ url('registercomplete') }}" id='signupForm'>
 			@csrf
 			<input type="text" hidden name="prev_pan" id="prev_pan" value="{{$datas->pan}}">

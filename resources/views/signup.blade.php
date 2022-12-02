@@ -1,8 +1,4 @@
 <?php echo View::make('common/signupheader'); ?>
-<style>
-
-
-</style>
 <div class="innerPageSecSignUp">
     <div class="signUpLeftInner">
         <div class="signUpLeftForm">
@@ -107,19 +103,6 @@
 </html>
 
 <script>
-// jQuery('.validatedForm').validate({
-// 			rules : {
-// 				password : {
-// 					minlength : 4,
-// 					
-// 					
-// 				},
-// 				password_confirm : {
-// 					minlength : 4,
-// 					equalTo : "#password"
-// 				}
-// 			}
-// });
 $('#pan').change(function() {
     var pan = $(this).val();
     $.ajax({
