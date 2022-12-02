@@ -15,7 +15,9 @@ class SaleController extends Controller
     {
         $this->middleware('auth');
     }
-    
+    // Dispaly sale filter form and gettting data of society on date range of Sales
+	// with using  table v_sale, v_ferti_soc, v_product  as view of fertilizer portal table
+	//td_sale ,mm_ferti_soc,mm_product . 
     public function salesfilter(Request $request){
 
         DB::enableQueryLog();
@@ -23,7 +25,6 @@ class SaleController extends Controller
 			$soc_id =   Auth::user()->soc_id; 
 			$frmDt  =   Helper::dateformat($request->from_date);
 			$todt   =   Helper::dateformat($request->to_date);  
-        
 
         $payrct = DB::select("select a.irn, a.ack,a.ack_dt,a.trans_do,a.do_dt,a.trans_type,b.soc_name,sum(a.tot_amt) as tot_amt,c.prod_desc,a.gst_type_flag,
         (select count(paid_id) from v_payment_recv where sale_invoice_no=a.trans_do) as pay_cnt
@@ -33,14 +34,15 @@ class SaleController extends Controller
           and a.soc_id=b.soc_id
 		  and a.do_dt >='$frmDt'
 		  and a.do_dt <='$todt'
-          group by a.trans_do,a.do_dt,a.trans_type,b.soc_name,c.prod_desc,a.gst_type_flag
+          group by a.irn,a.ack,a.ack_dt,a.trans_do,a.do_dt,a.trans_type,b.soc_name,c.prod_desc,a.gst_type_flag,pay_cnt
           order by a.do_dt desc");
             return view('sale_list', ['sales' => $payrct]);
 		}else{
 			return view('sale_list', ['sales' => '']);
 		}
     }
-
+   // print sale receipt of society of particular sale using IRN number of sale
+   // using cleartax api 
    
     public function print_receipt(Request $request){
 
@@ -76,6 +78,8 @@ class SaleController extends Controller
         }, $filename);
     
     }
+	// print sale receipt of society of particular sale using IRN number of sale
+   // using cleartax api Demo test for download pdf
     public function print_receipt1(Request $request){
 
             $irns =$request->irn;
