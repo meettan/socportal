@@ -43,7 +43,7 @@
                         </span>
                     </div>
                     </div>
-                    <a href="#" class="buttonBoxOut">Pay Now</a>
+                    <a href="{{'payment'}}" class="buttonBoxOut">Pay Now</a>
                 </div>
             </div>
             <div class="col-sm-6 float-left">

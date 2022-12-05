@@ -46,4 +46,15 @@ Route::get('/print_receipt', [App\Http\Controllers\SaleController::class,'print_
 Route::post('/socledgerrep', [App\Http\Controllers\SocietyController::class,'socledgerrep'])->name('socledgerrep');
 Route::any('socledger', 'SocietyController@socledger')->name('socledger');
 Route::any('purrep', 'SocietyController@purrep')->name('purrep');
+
+//  Payment detail  route start
+Route::get('/payment', [App\Http\Controllers\PaymentController::class,'payment'])->name('payment');
+Route::any('/advpayment', [App\Http\Controllers\PaymentController::class,'advpayment'])->name('advpayment');
+Route::any('/invpayment', [App\Http\Controllers\PaymentController::class,'invpayment'])->name('invpayment');
+
+
+// Payment detail  route End
+
+
+
 Route::get('/logout', 'UserController@logout')->name('logout');
