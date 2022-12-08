@@ -3,8 +3,9 @@
 <div class="wrapperCus">
 <div class="innerPageSecCus">
 <h2>Refund &amp; Cancellation Policy:</h2>
-<p>All payments are final, and BENFED does not offer any money-back guarantees. Customers shall not
-be entitled to a refund for any purchase under any circumstances</p>
+<p>All payments are final, and BENFED does not offer any money-back guarantees. Customers
+shall not be entitled to a refund for any purchase under any circumstances.</p>
+<p>If BENFED is overpaid, the extra payment would be adjusted through a fresh purchase.</p>
 </div>
 </div>
 
