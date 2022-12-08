@@ -82,6 +82,9 @@
                     </div>
                 </li>
                 <li>
+                    <div class="link"><a href="{{'paymentlist'}}"><i class="fa fa-tachometer"></i>Pay Now</a></div>
+                </li>
+                <li>
                     <div class="link"><a href="{{route('logout')}}"><i class="fa fa-sign-out"></i>Log out</a></div>
                 </li>
             </ul>
