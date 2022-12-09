@@ -118,7 +118,9 @@ class UserController extends Controller
     // Predefined AUTH middleware. 
     public function logout(){
 
+        
         Auth::logout();
+        Session::flush();
         return redirect()->route('login');
         // return view('login');
     }
