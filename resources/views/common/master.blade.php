@@ -129,7 +129,12 @@
 
             </div> <!--  Div End For Getting Ajax data and page  -->
         </div>
+        
     </div>
+
+    
+       
+   
     <script>
     $(document).ready(function() {
         $('#example').DataTable();
@@ -148,6 +153,19 @@
     <script src="{{ url('public/js/main_jquery.js') }}"></script>
 
     @yield('script')
+</div>
+</div>
+<div class="col-md-12">
+<div class="loginFooterLink" >
+            <ul class="loginFooterUl">
+                <li><a href="privacypolicy">Privacy Policy</a></li>
+                <li><a href="refundpolicy">Refund Policy</a></li>
+                <li><a href="termcondition">Terms &amp; Condition</a></li>
+            </ul>
+        </div>
+</div>       
 </body>
+  
+
 
 </html>

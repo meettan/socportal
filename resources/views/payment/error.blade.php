@@ -16,7 +16,16 @@
                 <div class="col-sm-12">
                 <img src="" class="img-fluid">
 
-                <h2>Your payment Failed</h2>
+                <h1>Your payment Failed</h1>
+                <div class="row">
+                        <div class="col-sm-4">
+                        </div>
+                        <div class="col-sm-4" >
+                            <p style="font-size: 18px;font-weight: 700;color: red;">Fee Amount: {{$details->amount/100}}</p>
+                            <p style="font-size: 18px;font-weight: 700;color: red;">Status: {{$details->status}}</p>
+                            <p style="font-size: 18px;font-weight: 700;color: red;">Transaction id: {{$details->id}}</p>
+                          </div>
+                    </div>
 
 <a class="btn btn-info" href="{{route('paymentlist')}}">OK </a> 
 

@@ -81,6 +81,8 @@
                                                             var rzp1 = new Razorpay(options);
                                                             rzp1.on('payment.failed', function(response) {
                                                                 console.log(response);
+                                                                var order_id = response.error.metadata.order_id;
+                                                                var payment_id=response.error.metadata.payment_id;
                                                                 // alert(response.error.code);
                                                                 // alert(response.error.description);
                                                                 // alert(response.error.source);
@@ -100,8 +102,9 @@
 
                                                                     },
                                                                     success: function(data) {
-
-                                                                        window.location.href = "{{route('error')}}";
+                                                                        console.log(data);
+                                                                        // var order_id = response.error.metadata.order_id;
+                                                                        window.location.href = "{{route('error')}}/"+data;
 
                                                                     }
                                                                 });

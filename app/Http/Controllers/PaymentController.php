@@ -123,7 +123,7 @@ class PaymentController extends Controller
     public function pay(Request $request){
         $data = $request->all();
         $api = new Api(env('RAZORPAY_KEY'), env('RAZORPAY_SECRET'));
-
+       
         try{
             $attributes = array(
                 'razorpay_signature' => $data['razorpay_signature'],
@@ -153,16 +153,20 @@ class PaymentController extends Controller
             $data->payment_at = $details['created_at'];
             $data->save();
             $success = true;
+            $sdata = PaymentModel::where('order_id',$details['order_id'])->first();
+           
         }catch(SignatureVerificationError $e){
 
             $succes = false;
         }
         if($success){
             // $user->save();
-            return redirect()->route('success');
-        }else{
-
-            return redirect()->route('error');
+           
+            return redirect()->route('success')->with('data', $sdata);
+        }else{  
+            
+            
+            return redirect()->route('error')->with('data', $sdata);
         }
     }
 
@@ -177,7 +181,7 @@ class PaymentController extends Controller
         $data->status = $request->reason.' '.$description;
         $data->payment_at = strtotime(date("Y-m-d h:i:s"));
         $data->save();
-        echo '1';
+        echo $payment_id;
     }
 
     public function paymentdetail(Request $request)
@@ -289,10 +293,16 @@ class PaymentController extends Controller
     }
 
 
-    public function error(){
-        return view('payment.error');
+    public function error($payment_id){
+     
+        $api = new Api(env('RAZORPAY_KEY'), env('RAZORPAY_SECRET'));
+        $details=$api->payment->fetch($payment_id);
+        // return $details;
+        // dd($details);
+        // $sdata = PaymentModel::where('order_id',$fdetail['order_id'])->first();
+        return view('payment.error',['details'=>$details]);
     }
-    public function success(){
+    public function success(Request $request){
         return view('payment.success');
     }
 

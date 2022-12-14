@@ -16,9 +16,18 @@
                 <div class="col-sm-12">
                 <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcTgyobPWtA8sK4FUdJ7v2mVN1k1XYUwsy1q8A&usqp=CAU" class="img-fluid">
 
-                    <h2>Your payment has been processed</h2>
-
+                    <h1>Your payment has been processed</h1>
+                    <div class="row">
+                        <div class="col-sm-4">
+                        </div>
+                        <div class="col-sm-4" >
+                            <p style="font-size: 18px;font-weight: 700;color: green;">Fee Amount: {{Session::get('data.amount')}}</p>
+                            <p style="font-size: 18px;font-weight: 700;color: green;">Status: {{Session::get('data.status')}}</p>
+                            <p style="font-size: 18px;font-weight: 700;color: green;">Transaction id: {{Session::get('data.payment_id')}}</p>
+                          </div>
+                    </div>
                     <a class="btn btn-info" href="{{route('paymentlist')}}">OK </a> 
+                   
 
                 </div>
             </div>
