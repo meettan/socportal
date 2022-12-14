@@ -297,8 +297,6 @@ class PaymentController extends Controller
      
         $api = new Api(env('RAZORPAY_KEY'), env('RAZORPAY_SECRET'));
         $details=$api->payment->fetch($payment_id);
-        // return $details;
-        // dd($details);
         // $sdata = PaymentModel::where('order_id',$fdetail['order_id'])->first();
         return view('payment.error',['details'=>$details]);
     }
@@ -309,7 +307,7 @@ class PaymentController extends Controller
     public function FunctionName(Type $var = null)
     {
         $api = new Api($key_id, $secret);
-$api->invoice->create(array ('type' => 'invoice','date' => 1589994898, 'customer_id'=> 'cust_E7q0trFqXgExmT', 'line_items'=>array(array('item_id'=>'item_DRt61i2NnL8oy6'))));
+        $api->invoice->create(array ('type' => 'invoice','date' => 1589994898, 'customer_id'=> 'cust_E7q0trFqXgExmT', 'line_items'=>array(array('item_id'=>'item_DRt61i2NnL8oy6'))));
     }
 
 

@@ -72,6 +72,22 @@
                     Kolkata - 700 107.</p>
                 <p>Phone: +91 33 2441 4366/67, Fax: +91 33 2441-4372<br>
                     Email: info@benfed.org</p>
+                    <p>
+                <div class="col-md-4">
+                    <ul class="loginFooterUl">
+                    <li><a href="{{route('privacypolicy')}}">Privacy Policy</a></li>
+                    </ul>
+               </div>
+               <div class="col-md-4"><ul class="loginFooterUl">
+                    <li><a href="{{route('refundpolicy')}}">Refund Policy</a></li>
+                
+                </ul>
+               </div>
+               <div class="col-md-4"><ul class="loginFooterUl">
+                    <li><a href="{{route('termcondition')}}">Terms &amp; Condition</a></li>
+                </ul>
+               </div>
+               </p>  
 
             </div>
             <div class="col-sm-6 float-left">

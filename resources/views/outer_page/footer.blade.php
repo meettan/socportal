@@ -13,16 +13,16 @@
              <p>
                 <div class="col-md-4">
                     <ul class="loginFooterUl">
-                    <li><a href="{{'privacypolicy'}}">Privacy Policy</a></li>
+                    <li><a href="{{route('privacypolicy')}}">Privacy Policy</a></li>
                     </ul>
                </div>
                <div class="col-md-4"><ul class="loginFooterUl">
-                    <li><a href="{{'refundpolicy'}}">Refund Policy</a></li>
+                    <li><a href="{{route('refundpolicy')}}">Refund Policy</a></li>
                 
                 </ul>
                </div>
                <div class="col-md-4"><ul class="loginFooterUl">
-                    <li><a href="{{'termcondition'}}">Terms &amp; Condition</a></li>
+                    <li><a href="{{route('termcondition')}}">Terms &amp; Condition</a></li>
                 </ul>
                </div>
              </p>       

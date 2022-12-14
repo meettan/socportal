@@ -60,29 +60,29 @@
                     </div>
                 </li>
                 <li>
-                    <div class="link"><a href="{{'salesfilter'}}"><i class="fa fa-tachometer"></i>Sale</a></div>
+                    <div class="link"><a href="{{route('salesfilter')}}"><i class="fa fa-tachometer"></i>Sale</a></div>
                 </li>
                 <li>
-                    <div class="link"><a href="{{'drcrnote'}}"><i class="fa fa-tachometer"></i>Credit Note</a></div>
+                    <div class="link"><a href="{{route('drcrnote')}}"><i class="fa fa-tachometer"></i>Credit Note</a></div>
                 </li>
                 <li>
-                    <div class="link"><a href="{{'advancefilter'}}"><i class="fa fa-tachometer"></i>Advance</a></div>
+                    <div class="link"><a href="{{route('advancefilter')}}"><i class="fa fa-tachometer"></i>Advance</a></div>
                 </li>
                 <li>
-                    <div class="link"><a href="{{'socpayment'}}"><i class="fa fa-tachometer"></i>Money Receipt</a></div>
+                    <div class="link"><a href="{{route('socpayment')}}"><i class="fa fa-tachometer"></i>Money Receipt</a></div>
                 </li>
                 <li>
-                    <div class="link"><a href="{{'socledger'}}"><i class="fa fa-tachometer"></i>Society Ledger</a></div>
+                    <div class="link"><a href="{{route('socledger')}}"><i class="fa fa-tachometer"></i>Society Ledger</a></div>
                 </li>
                 <li>
-                    <div class="link"><a href="{{'purrep'}}"><i class="fa fa-tachometer"></i>Purchase History</a></div>
+                    <div class="link"><a href="{{route('purrep')}}"><i class="fa fa-tachometer"></i>Purchase History</a></div>
                 </li>
                 <li>
                     <div class="link"><a href="javascript:void(0)"><i class="fa fa-tachometer"></i>Payment History</a>
                     </div>
                 </li>
                 <li>
-                    <div class="link"><a href="{{'paymentlist'}}"><i class="fa fa-tachometer"></i>Pay Now</a></div>
+                    <div class="link"><a href="{{route('paymentlist')}}"><i class="fa fa-tachometer"></i>Pay Now</a></div>
                 </li>
                 <li>
                     <div class="link"><a href="{{route('logout')}}"><i class="fa fa-sign-out"></i>Log out</a></div>
@@ -158,9 +158,9 @@
 <div class="col-md-12">
 <div class="loginFooterLink" >
             <ul class="loginFooterUl">
-                <li><a href="privacypolicy">Privacy Policy</a></li>
-                <li><a href="refundpolicy">Refund Policy</a></li>
-                <li><a href="termcondition">Terms &amp; Condition</a></li>
+                <li><a href="{{route('privacypolicy')}}">Privacy Policy</a></li>
+                <li><a href="{{route('refundpolicy')}}">Refund Policy</a></li>
+                <li><a href="{{route('termcondition')}}">Terms &amp; Condition</a></li>
             </ul>
         </div>
 </div>       
