@@ -115,7 +115,7 @@
                                                                     },
                                                                     success: function(data) {
 
-                                                                        window.location.href = "{{route('error')}}";
+                                                                        window.location.href = "{{route('error')}}/"+data;
 
                                                                     }
                                                                 });
