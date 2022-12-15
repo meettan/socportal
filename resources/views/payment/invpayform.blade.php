@@ -58,7 +58,7 @@
                                                         <div class="col-sm-12">
                                                             <div class="full_field_col3">
                                                                 <span>Date:</span>
-                                                                 <input type="text" name="do_dt" value='<?=date('d/m/Y',strtotime($data['do_dt']))?>' disabled>
+                                                                 <input type="text" name="do_dt" value='<?=date('d/m/Y')?>' disabled>
                                                             </div>
                                                             <div class="full_field_col3">
                                                                 <span>Invoice No:</span>{{$data['invoice_id']}}

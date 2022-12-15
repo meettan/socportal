@@ -61,61 +61,59 @@ class PaymentController extends Controller
 
     public function paymentrequest(Request $request){
         $pay_mode = $request->input('pay_mode');
-
-        if(request('amt') > 500000){
-            return redirect()->back()->with('amt_error','Maximum allowable amount exceed.');
+        
+            if($pay_mode == 'I')
+            {
+                if(request('amt') > 500000){
+                    return redirect()->back()->with('amt_error','Maximum allowable amount exceed.');
+                }else{
+                $name = $request->input('name');
+                $amount = $request->input('amt');
+                // $api = new Api('rzp_test_OWzJfVy5ZI6cj1', 'PmjFWLtnnGS6AeCQ1Sk2okrH');
+                $api = new Api(env('RAZORPAY_KEY'), env('RAZORPAY_SECRET'));
+                $order  = $api->order->create(array('receipt' => '123', 'amount' => $amount * 100 , 'currency' => 'INR')); // Creates order
+                $orderId = $order['id'];
+                Session::forget('invoice_id');
+                Session::put('amts',  $amount);
+                Session::put('orderId',  $orderId);
+                Session::put('soc_id',  Auth::user()->soc_id);
+                Session::put('brn_id',  Session::get('socuserdtls')->district);
+                Session::put('pay_mode',  'I');
+                Session::put('ptype', request('ptype'));
+                $data = array(
+                    'order_id' => $orderId,
+                    'amount' => $amount * 100
+                );
+                // Session::put('order_id', $orderId);
+                return redirect()->route('paywithroza')->with('data', $data);
+                }
+        }else{
+                $imageName = '';
+                $soc_id =   Auth::user()->soc_id; 
+                // $request->validate([
+                //     'image' => 'required|image|mimes:jpeg,png,jpg|max:2048'
+                // ]);
+                $pay = new PaymentModel;
+                $pay->trans_date = date('Y-m-d');
+                $pay->payment_type =request('ptype');
+                $pay->soc_id = $soc_id;
+                $pay->brn_id = Session::get('socuserdtls')->district;
+                $pay->amount = request('amt');
+                $pay->payment_mode = request('pay_mode');
+                $pay->cheque_no = request('cheque_no');
+                $pay->cheque_dt = request('cheque_dt');
+                $pay->bank_name = request('bank_name');
+                $pay->ifs_code  = request('ifs_code');
+                if($imageName != ''){
+                $imageName = time().'.'.request()->image->getClientOriginalExtension();
+                request()->image->move(public_path('images'), $imageName);
+                }
+                $pay->cheque_img = $imageName;
+                $pay->created_by = Auth::user()->id;
+                $pay->save();
+                return redirect()->route('paymentlist');
         }
-        if($pay_mode == 'I')
-        {
-            $name = $request->input('name');
-            $amount = $request->input('amt');
-            // $api = new Api('rzp_test_OWzJfVy5ZI6cj1', 'PmjFWLtnnGS6AeCQ1Sk2okrH');
-            $api = new Api(env('RAZORPAY_KEY'), env('RAZORPAY_SECRET'));
-            $order  = $api->order->create(array('receipt' => '123', 'amount' => $amount * 100 , 'currency' => 'INR')); // Creates order
-            $orderId = $order['id'];
-            $pay = new PaymentModel;
-            $pay->trans_date = date('Y-m-d');
-            $pay->payment_type =request('ptype');
-            $pay->soc_id = Auth::user()->soc_id;
-            $pay->brn_id = Session::get('socuserdtls')->district;
-            $pay->amount = request('amt');
-            $pay->payment_mode = request('pay_mode');
-            $pay->order_id = $orderId;
-            $pay->created_by = Auth::user()->id;
-            $pay->save();
-            $data = array(
-                'order_id' => $orderId,
-                'amount' => $amount * 100
-            );
-            // Session::put('order_id', $orderId);
-            return redirect()->route('paywithroza')->with('data', $data);
-       }else{
-
-            $imageName = '';
-            $soc_id =   Auth::user()->soc_id; 
-            // $request->validate([
-            //     'image' => 'required|image|mimes:jpeg,png,jpg|max:2048'
-            // ]);
-            $pay = new PaymentModel;
-            $pay->trans_date = date('Y-m-d');
-            $pay->payment_type =request('ptype');
-            $pay->soc_id = $soc_id;
-            $pay->brn_id = Session::get('socuserdtls')->district;
-            $pay->amount = request('amt');
-            $pay->payment_mode = request('pay_mode');
-            $pay->cheque_no = request('cheque_no');
-            $pay->cheque_dt = request('cheque_dt');
-            $pay->bank_name = request('bank_name');
-            $pay->ifs_code  = request('ifs_code');
-            if($imageName != ''){
-            $imageName = time().'.'.request()->image->getClientOriginalExtension();
-            request()->image->move(public_path('images'), $imageName);
-            }
-            $pay->cheque_img = $imageName;
-            $pay->created_by = Auth::user()->id;
-            $pay->save();
-            return redirect()->route('paymentlist');
-       }
+        
     }
     
     public function paywithroza(Request $request)
@@ -127,7 +125,7 @@ class PaymentController extends Controller
     public function pay(Request $request){
         $data = $request->all();
         // return $data;
-        dd($data);
+       
         if(count($data)==0){
             return redirect()->route('dashboard');
         }
@@ -141,11 +139,19 @@ class PaymentController extends Controller
             );
             $order = $api->utility->verifyPaymentSignature($attributes);
             $details=$api->payment->fetch($data['razorpay_payment_id']);
-            $data = PaymentModel::where('order_id',$details['order_id'])->first();
+            
+            if(Session::get('orderId')== $details['order_id']){
+            $data = new PaymentModel;
+            $data->order_id = $details['order_id'];
             $data->payment_id = $details['id'];
             $data->signature = $data['razorpay_signature'];
             $data->status = $details['status'];
-          //  $data->invoice_id = $details['invoice_id'];
+            $data->payment_type = Session::get('ptype');
+            $data->amount = $details['amount']/100;
+            $data->payment_mode = Session::get('pay_mode');
+            $data->brn_id = Session::get('brn_id');
+            $data->soc_id = Session::get('soc_id');
+            $data->invoice_id = Session::get('invoice_id')?Session::get('invoice_id'):NULL;
             $data->method = $data['method'];
             $data->description = $details['description'];
             $data->card_id = $details['card_id'];
@@ -158,10 +164,13 @@ class PaymentController extends Controller
             $data->note = $data['notes'];
             $data->fee = $details['fee'];
             $data->tax = $details['tax'];
+            $data->trans_date = date('Y-m-d');
+            $data->created_by = Auth::user()->id;
             $data->payment_at = $details['created_at'];
             $data->save();
             $success = true;
             $sdata = PaymentModel::where('order_id',$details['order_id'])->first();
+            }
            
         }catch(SignatureVerificationError $e){
 
@@ -173,27 +182,37 @@ class PaymentController extends Controller
         }else{
             // return 
             $details=$api->payment->fetch($data['razorpay_payment_id']);
-            $data = PaymentModel::where('order_id',$details['order_id'])->first();
-            $data->payment_id = $details['id'];
-            $data->signature = $data['razorpay_signature'];
-            $data->status = $details['status'];
-          //  $data->invoice_id = $details['invoice_id'];
-            $data->method = $data['method'];
-            $data->description = $details['description'];
-            $data->card_id = $details['card_id'];
-            $data->card = $data['card'];
-            $data->bank = $details['bank'];
-            $data->wallet = $details['wallet'];
-            $data->vpa = $data['vpa'];
-            $data->email = $details['email'];
-            $data->contact = $details['contact'];
-            $data->note = $data['notes'];
-            $data->fee = $details['fee'];
-            $data->tax = $details['tax'];
-            $data->payment_at = $details['created_at'];
-            $data->save();
-            $success = true;
-            $sdata = PaymentModel::where('order_id',$details['order_id'])->first();
+            if(Session::get('orderId')== $details['order_id']){
+                $data = new PaymentModel;
+                $data->order_id = $details['order_id'];
+                $data->payment_id = $details['id'];
+                $data->signature = $data['razorpay_signature'];
+                $data->status = $details['status'];
+                $data->payment_type = Session::get('ptype');
+                $data->amount = $details['amount']/100;
+                $data->payment_mode = Session::get('pay_mode');
+                $data->brn_id = Session::get('brn_id');
+                $data->soc_id = Session::get('soc_id');
+                $data->invoice_id = Session::get('invoice_id') ? Session::get('invoice_id'):NULL;
+                $data->method = $data['method'];
+                $data->description = $details['description'];
+                $data->card_id = $details['card_id'];
+                $data->card = $data['card'];
+                $data->bank = $details['bank'];
+                $data->wallet = $details['wallet'];
+                $data->vpa = $data['vpa'];
+                $data->email = $details['email'];
+                $data->contact = $details['contact'];
+                $data->note = $data['notes'];
+                $data->fee = $details['fee'];
+                $data->tax = $details['tax'];
+                $data->trans_date = date('Y-m-d');
+                $data->created_by = Auth::user()->id;
+                $data->payment_at = $details['created_at'];
+                $data->save();
+                $success = true;
+                $sdata = PaymentModel::where('order_id',$details['order_id'])->first();
+                }
             return redirect()->route('success')->with('data', $sdata);
 
             // return redirect()->route('paymentlist');
@@ -207,10 +226,18 @@ class PaymentController extends Controller
         $payment_id =  $request->payment_id;
         $code       =  $request->code;
         $description  =  $request->description;
-        $data = PaymentModel::where('order_id',$order_id)->first();
+        $data = new PaymentModel;
+        $data->amount = Session::get('amts');
+        $data->trans_date = date('Y-m-d');
+        $data->payment_type = Session::get('ptype');
+        $data->payment_mode = Session::get('pay_mode');
+        $data->brn_id = Session::get('brn_id');
+        $data->soc_id = Session::get('soc_id');
+        $data->order_id = $order_id;
         $data->payment_id = $payment_id;
         $data->status = $request->reason.' '.$description;
         $data->payment_at = strtotime(date("Y-m-d h:i:s"));
+        $data->created_by = Auth::user()->id;
         $data->save();
         echo $payment_id;
     }
@@ -309,7 +336,7 @@ class PaymentController extends Controller
     {      
             if(request('amt') > 500000){
                 return redirect()->back()->with('amt_error','Maximum allowable amount exceed.');
-            } 
+            }else{ 
             $dt      = $request->input('do_dt');
             $ro_no   = $request->input('ro_no');
             $sale_invoice_no = $request->input('invoice_id');
@@ -323,16 +350,14 @@ class PaymentController extends Controller
                 $order  = $api->order->create(array('receipt' => '123', 'amount' => $pay_amt * 100 , 'currency' => 'INR')); // Creates order
                 $orderId = $order['id'];
                 $pay = new PaymentModel;
-                $pay->trans_date = date('Y-m-d');
-                $pay->payment_type ='I';
-                $pay->soc_id = Auth::user()->soc_id;
-                $pay->brn_id = Session::get('socuserdtls')->district;
-                $pay->amount = $pay_amt;
-                $pay->payment_mode = 'I';
-                $pay->order_id = $orderId;
-                $pay->invoice_id = $sale_invoice_no;
-                $pay->created_by = Auth::user()->id;
-                $pay->save();
+             
+                   Session::put('amts',  $pay_amt);
+                   Session::put('invoice_id',  $sale_invoice_no);
+                   Session::put('orderId',  $orderId);
+                    Session::put('soc_id',  Auth::user()->soc_id);
+                    Session::put('brn_id',  Session::get('socuserdtls')->district);
+                    Session::put('pay_mode',  'I');
+                    Session::put('ptype', 'I');
                 $data = array(
                     'order_id' => $orderId,
                     'amount' => $pay_amt * 100,
@@ -372,6 +397,7 @@ class PaymentController extends Controller
                 $pay->save();
                 return redirect()->route('paymentlist');
             }
+        }
     }
     public function invpaywithroza(Request $request)
     {   
@@ -384,10 +410,23 @@ class PaymentController extends Controller
      
         $api = new Api(env('RAZORPAY_KEY'), env('RAZORPAY_SECRET'));
         $details=$api->payment->fetch($payment_id);
-        // $sdata = PaymentModel::where('order_id',$fdetail['order_id'])->first();
+        Session::forget('invoice_id');
+        Session::forget('amts');
+        Session::forget('orderId');
+        Session::forget('soc_id');
+        Session::forget('brn_id');
+        Session::forget('pay_mode');
+        Session::forget('ptype');
         return view('payment.error',['details'=>$details]);
     }
     public function success(Request $request){
+        Session::forget('invoice_id');
+        Session::forget('amts');
+        Session::forget('orderId');
+        Session::forget('soc_id');
+        Session::forget('brn_id');
+        Session::forget('pay_mode');
+        Session::forget('ptype');
         return view('payment.success');
     }
 
