@@ -78,7 +78,7 @@
                     <div class="link"><a href="{{route('purrep')}}"><i class="fa fa-tachometer"></i>Purchase History</a></div>
                 </li>
                 <li>
-                    <div class="link"><a href="javascript:void(0)"><i class="fa fa-tachometer"></i>Payment History</a>
+                    <div class="link"><a href="{{route('payhistory')}}"><i class="fa fa-tachometer"></i>Payment History</a>
                     </div>
                 </li>
                 <li>

@@ -139,7 +139,7 @@ class DashboardController extends Controller
 			$soc_balance_amt_data =  "Cr.";
 		}
    
-        return view('dashboard',['soc_balance_amt_data'=>$soc_balance_amt_data,'amt'=>$cls_amt]);
+        return view('dashboard',['soc_balance_amt_data'=>$soc_balance_amt_data,'amt'=>abs($cls_amt)]);
     }
     public function profile()
     {

@@ -43,7 +43,6 @@
                                                                 <input type="text" name="name"
                                                                     value="{{Session::get('data.order_id')}}" readonly>
                                                             </div>
-                                                           
                                                 </div>
                                                     <div class="col-sm-12">
                                                         <div class="full_field_col3">

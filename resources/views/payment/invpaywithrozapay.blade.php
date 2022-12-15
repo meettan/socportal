@@ -46,7 +46,6 @@
                                                             </div>
                                                 </div>
                                                 <div class="col-sm-12">
-                                                            
                                                             <?php $amt = Session::get('data.amount'); ?>
                                                             <div class="full_field_col3">
                                                                 <span>Amount:</span> <input type="text" name="amt"

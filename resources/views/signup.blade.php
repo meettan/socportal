@@ -20,7 +20,6 @@
                     <span>Email Id</span>
                     <input type="email" name="email" required>
                 </label>
-
                 <label class="full_fieldSign">
                     <span>Password</span>
                     <input type="password" name="password" id="password" required>

@@ -43,7 +43,7 @@
                         </span>
                     </div>
                     </div>
-                    <a href="{{'payment'}}" class="buttonBoxOut">Pay Now</a>
+                    <a href="{{route('payment')}}" class="buttonBoxOut">Pay Now</a>
                 </div>
             </div>
             <div class="col-sm-6 float-left">
@@ -52,27 +52,27 @@
                     <div class="boxSecMainDescrip">
                         <ul class="downList">
                             <li>
-                                <a href="{{'salesfilter'}}">
+                                <a href="{{route('salesfilter')}}">
                                     <div class="iconSec boxColor1"><img src="{{ url('public/images/sale.png') }}"
                                             alt="" /></div> Sale
                                 </a>
                             </li>
 
                             <li>
-                                <a href="{{'drcrnote'}}">
+                                <a href="{{route('drcrnote')}}">
                                     <div class="iconSec boxColor2"><img src="{{ url('public/images/credit.png') }}"
                                             alt="" /></div> Credit Note
                                 </a>
                             </li>
 
                             <li>
-                                <a href="{{'advancefilter'}}">
+                                <a href="{{route('advancefilter')}}">
                                     <div class="iconSec boxColor3"><img src="{{ url('public/images/advance.png') }}"
                                             alt="" /></div> Advance
                                 </a>
                             </li>
                             <li>
-                                <a href="{{'socpayment'}}">
+                                <a href="{{route('socpayment')}}">
                                     <div class="iconSec boxColor4"><img src="{{ url('public/images/moneyRece.png') }}"
                                             alt="" /></div> Money Receipt
                                 </a>
@@ -104,7 +104,7 @@
                                     </div>
                                     <h5>Society ledger</h5>
                                     <!-- <p>Assign a task to start collaborating</p> -->
-                                    <a href="{{'socledger'}}"><button type="button" class="viewMore">View
+                                    <a href="{{route('socledger')}}"><button type="button" class="viewMore">View
                                             More</button></a>
 
                                 </div>
@@ -117,7 +117,7 @@
                                             alt="" /></div>
                                     <h5>Purchase history</h5>
                                     <!-- <p>Assign a task to start collaborating</p> -->
-                                    <a href="{{'purrep'}}"><button type="button" class="viewMore">View More</button></a>
+                                    <a href="{{route('purrep')}}"><button type="button" class="viewMore">View More</button></a>
                                 </div>
                             </div>
 

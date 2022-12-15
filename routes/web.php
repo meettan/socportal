@@ -60,8 +60,11 @@ Route::get('/success' ,[App\Http\Controllers\PaymentController::class,'success']
 Route::get('/error/{payment_id?}' ,[App\Http\Controllers\PaymentController::class,'error'])->name('error');
 Route::get('/failedresponse' ,[App\Http\Controllers\PaymentController::class,'failedresponse'])->name('failedresponse');
 Route::get('/paymentdetail', [App\Http\Controllers\PaymentController::class,'paymentdetail'])->name('paymentdetail');
-Route::get('/invpaymentrequest', [App\Http\Controllers\PaymentController::class,'invpaymentrequest'])->name('invpaymentrequest');
+Route::get('/invpayform', [App\Http\Controllers\PaymentController::class,'invpayform'])->name('invpayform');
+Route::any('/invpaymentrequest', [App\Http\Controllers\PaymentController::class,'invpaymentrequest'])->name('invpaymentrequest');
 Route::get('/invpaywithroza' ,[App\Http\Controllers\PaymentController::class,'invpaywithroza'])->name('invpaywithroza');
+Route::get('/payhistory' ,[App\Http\Controllers\PaymentController::class,'payhistory'])->name('payhistory');
+
 
 // Payment detail  route End
 

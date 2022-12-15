@@ -40,7 +40,8 @@
                                 <td><?php echo $pay->sale_ro; ?></td>
                                 
                                 <td>
-                                    <a href ="{{ route('invpayform',['trans_do'=>$pay->trans_do,'ro'=>$pay->sale_ro,'dt'=>$pay->do_dt])}}" class="btn btn-primary">Pay</a>
+                                    <button class="btn btn-success">Paid</button>
+                                    
                                 </td>
                             </tr>
 

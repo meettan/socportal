@@ -19,28 +19,29 @@
                     <div class="reportBoxMain">
                         <div class="row">
                             <div class="col-sm-2 float-left">
-
+                               
                             </div>
-                            <div class="col-sm-4 float-left">
-                                <div class="reportBoxMainList">
-                                    <div class="imgsec"><img src="{{ url('public/images/advance.png') }}" alt="" />
-                                    </div>
-                                    <h5>Advance Payment</h5>
-                                    <!-- <p>Assign a task to start collaborating</p> -->
-                                    <a href="{{'advpayment'}}"><button type="button" class="viewMore">View
-                                            More</button></a>
+                            <div class="col-sm-8 float-left" style="color: #6ed96e;">
+                                <div class='col-md-12' style="margin-bottom:10px">
+                                <div class='col-md-6'><h3> Advance Payment</h3></div>
+                                <div class='col-md-2'> 
+                                    <a href="{{route('advpayment')}}">
+                                    <button type="button" class="btn btn-primary">Payment</button></a>
                                 </div>
+                                </div>
+                                 </br>
+                                <div class='col-md-12'>
+                                <div class='col-md-6'><h3> Invoice Payment</h3></div>
+                                <div class='col-md-6'> 
+                                    <a href="{{route('invpayment')}}">
+                                    <button type="button" class="btn btn-primary">Payment</button></a>
+                                </div>
+                                </div>
+                                
+                         
                             </div>
 
-                            <div class="col-sm-4 float-left">
-                                <div class="reportBoxMainList">
-                                    <div class="imgsec"><img src="{{ url('public/images/perchase_icon.png') }}"
-                                            alt="" /></div>
-                                    <h5>Invoice Payment</h5>
-                                    <!-- <p>Assign a task to start collaborating</p> -->
-                                    <a href="{{'invpayment'}}"><button type="button" class="viewMore">View More</button></a>
-                                </div>
-                            </div>
+                            
 
                         </div>
                     </div>
