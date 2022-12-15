@@ -41,7 +41,7 @@
                                 <td><?php echo $pay->order_id; ?></td>
                                 <td><?php echo $pay->status; ?></td>
                                 <td>
-                                    <a href="{{ route('paymentdetail',['order_id'=>$pay->order_id])}}" title="Print">
+                                    <a href="{{ route('paymentdetail',['id'=>$pay->id])}}" title="Print">
                                         <i class="fa fa-eye fa-2x" style="color:green;"></i>
                                     </a>
                                 </td>
