@@ -364,7 +364,7 @@ padding: 0; margin: 0 0 15px 0;}
     right: 0;
     bottom: 0;
     background: #192634;
-    padding: 20px 0;
+    /* padding: 20px 0; */
 }
 
 .loginFooterLink ul.loginFooterUl{margin: 0; padding: 0; list-style-type: none;}
