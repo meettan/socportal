@@ -28,7 +28,7 @@
                                                 <div class="col-sm-12">
                                                             <div class="full_field_col3">
                                                                 <span>Date:</span>
-                                                                <?php echo Session::get('data.do_dt') ;?>
+                                                                 {{ date('d/m/Y') }}
                                                             </div>
                                                             
                                                             <div class="full_field_col3">

@@ -26,18 +26,24 @@
                                             <div class="tab-content">
                                                 <div id="home" class="tab-pane fade in active tabContent">
                                                 <div class="col-sm-12">
+                                                <div class="full_field_col3">
+                                                                <span>Date:</span>
+                                                                <input type="text" name="dates"
+                                                                    value="<?=date('d/m/Y')?>" readonly>
+                                                            </div>
                                                             <div class="full_field_col3">
                                                                 <span>Name:</span>
                                                                 <input type="text" name="name"
                                                                     value="{{Auth::user()->soc_name}}" readonly>
                                                             </div>
-                                                            <?php $amt = Session::get('data.amount'); ?>
+                                                           
+                                                </div>
+                                                <div class="col-sm-12">
+                                                <?php $amt = Session::get('data.amount'); ?>
                                                             <div class="full_field_col3">
                                                                 <span>Amount:</span> <input type="text" name="amt"
                                                                     value="{{$amt/100}}" readonly>
                                                             </div>
-                                                </div>
-                                                <div class="col-sm-12">
                                                             <div class="full_field_col3">
                                                                 <span>Order No:</span>
                                                                 <input type="text" name="name"

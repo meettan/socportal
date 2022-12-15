@@ -68,7 +68,7 @@
                                                                     value="{{Auth::user()->soc_name}}" readonly>
                                                             </div>
                                                             <div class="full_field_col3">
-                                                                <span>Amount:</span> <input type="text" name="amt"
+                                                                <span>Amount:</span> <input type="text" name="amt" id="amt"
                                                                     value="" required>
                                                             </div>
                                                         </div>
@@ -180,5 +180,14 @@ $('input[type="radio"]').click(function() {
     }
     
 });
+
+$('#amt').keyup(function(e) {
+        var value = $("#amt").val();
+        if (/\D/g.test(value)) {
+            // Filter non-digits from input value.
+            val2 = value.replace(/\D/g, '');
+            $("#amt").val(val2);
+        }
+    });
 </script>
 @endsection

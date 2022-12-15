@@ -61,6 +61,7 @@ class PaymentController extends Controller
 
     public function paymentrequest(Request $request){
         $pay_mode = $request->input('pay_mode');
+        if(request('amt') >= 1){
         
             if($pay_mode == 'I')
             {
@@ -87,7 +88,7 @@ class PaymentController extends Controller
                 // Session::put('order_id', $orderId);
                 return redirect()->route('paywithroza')->with('data', $data);
                 }
-        }else{
+            }else{
                 $imageName = '';
                 $soc_id =   Auth::user()->soc_id; 
                 // $request->validate([
@@ -113,6 +114,10 @@ class PaymentController extends Controller
                 $pay->save();
                 return redirect()->route('paymentlist');
         }
+
+       }else{
+        return redirect()->back()->with('amt_error','Minimum amount must be 1');
+       }
         
     }
     
@@ -231,6 +236,7 @@ class PaymentController extends Controller
         $data->trans_date = date('Y-m-d');
         $data->payment_type = Session::get('ptype');
         $data->payment_mode = Session::get('pay_mode');
+        $data->invoice_id = Session::get('invoice_id') ? Session::get('invoice_id'):NULL;
         $data->brn_id = Session::get('brn_id');
         $data->soc_id = Session::get('soc_id');
         $data->order_id = $order_id;
