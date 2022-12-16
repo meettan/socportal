@@ -51,7 +51,7 @@ Route::any('purrep', 'SocietyController@purrep')->name('purrep');
 Route::get('/payment', [App\Http\Controllers\PaymentController::class,'payment'])->name('payment');
 Route::any('/advpayment', [App\Http\Controllers\PaymentController::class,'advpayment'])->name('advpayment');
 Route::any('/invpayment', [App\Http\Controllers\PaymentController::class,'invpayment'])->name('invpayment');
-Route::any('/pay' ,[App\Http\Controllers\PaymentController::class,'pay'])->name('pay');
+Route::post('/pay' ,[App\Http\Controllers\PaymentController::class,'pay'])->name('pay');
 // Route::get('/pay' ,[App\Http\Controllers\PaymentController::class,'pay'])->name('pay');
 Route::post('/paymentrequest' ,[App\Http\Controllers\PaymentController::class,'paymentrequest'])->name('paymentrequest');
 Route::get('/paywithroza' ,[App\Http\Controllers\PaymentController::class,'paywithroza'])->name('paywithroza');
@@ -60,8 +60,8 @@ Route::get('/success' ,[App\Http\Controllers\PaymentController::class,'success']
 Route::get('/error/{payment_id?}' ,[App\Http\Controllers\PaymentController::class,'error'])->name('error');
 Route::get('/failedresponse' ,[App\Http\Controllers\PaymentController::class,'failedresponse'])->name('failedresponse');
 Route::get('/paymentdetail', [App\Http\Controllers\PaymentController::class,'paymentdetail'])->name('paymentdetail');
-Route::get('/invpayform', [App\Http\Controllers\PaymentController::class,'invpayform'])->name('invpayform');
-Route::any('/invpaymentrequest', [App\Http\Controllers\PaymentController::class,'invpaymentrequest'])->name('invpaymentrequest');
+Route::post('/invpayform', [App\Http\Controllers\PaymentController::class,'invpayform'])->name('invpayform');
+Route::post('/invpaymentrequest', [App\Http\Controllers\PaymentController::class,'invpaymentrequest'])->name('invpaymentrequest');
 Route::get('/invpaywithroza' ,[App\Http\Controllers\PaymentController::class,'invpaywithroza'])->name('invpaywithroza');
 Route::get('/payhistory' ,[App\Http\Controllers\PaymentController::class,'payhistory'])->name('payhistory');
 

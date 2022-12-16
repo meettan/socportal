@@ -145,7 +145,7 @@ class PaymentController extends Controller
             $order = $api->utility->verifyPaymentSignature($attributes);
             $details=$api->payment->fetch($data['razorpay_payment_id']);
             
-            if(Session::get('orderId')== $details['order_id']){
+            if(Session::get('orderId')== $details['order_id'] &&  Session::get('amts') == $details['amount']/100){
             $data = new PaymentModel;
             $data->order_id = $details['order_id'];
             $data->payment_id = $details['id'];
@@ -187,7 +187,7 @@ class PaymentController extends Controller
         }else{
             // return 
             $details=$api->payment->fetch($data['razorpay_payment_id']);
-            if(Session::get('orderId')== $details['order_id']){
+            if(Session::get('orderId')== $details['order_id'] &&  Session::get('amts') == $details['amount']/100){
                 $data = new PaymentModel;
                 $data->order_id = $details['order_id'];
                 $data->payment_id = $details['id'];
@@ -217,8 +217,12 @@ class PaymentController extends Controller
                 $data->save();
                 $success = true;
                 $sdata = PaymentModel::where('order_id',$details['order_id'])->first();
+                return redirect()->route('success')->with('data', $sdata);
+                }else{
+
+                    return view('payment.validationerror');
                 }
-            return redirect()->route('success')->with('data', $sdata);
+                
 
             // return redirect()->route('paymentlist');
         }
@@ -269,8 +273,6 @@ class PaymentController extends Controller
     }
 
     public function invpayform(Request $request){
-
-        
 
         $sale_invoice_no = $request->input('trans_do');
             $invoice_amt = 0;$cr_amt = 0;

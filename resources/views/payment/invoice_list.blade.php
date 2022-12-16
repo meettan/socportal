@@ -40,7 +40,14 @@
                                 <td><?php echo $pay->sale_ro; ?></td>
                                 
                                 <td>
-                                    <a href ="{{ route('invpayform',['trans_do'=>$pay->trans_do,'ro'=>$pay->sale_ro,'dt'=>$pay->do_dt])}}" class="btn btn-primary">Pay</a>
+                                        <form action="{{ route('invpayform')}}" method="post">
+                                            @csrf
+                                            <input type="hidden" name="trans_do" value="{{$pay->trans_do}}">
+                                            <input type="hidden" name="ro" value="{{$pay->sale_ro}}">
+                                            <input type="hidden" name="dt" value="{{$pay->do_dt}}">
+                                            <input type="submit" value="Pay" class="btn btn-primary">
+                                        </form>
+                                   
                                 </td>
                             </tr>
 
