@@ -71,10 +71,10 @@
                                                                 <input type='hidden' value="{{$data['ro_no']}}" name="ro_no">
                                                             </div>
                                                             
-                                                            <div class="full_field_col3">
-                                                                <span>Invoice Amount:</span>{{$data['invoice_amt']}}
-                                                                <input type='hidden' value="{{$data['invoice_amt']}}" name="invoice_amt">
-                                                            </div>
+                                                            <!-- <div class="full_field_col3">
+                                                                <span>Invoice Amount:</span>
+                                                                
+                                                            </div> -->
                                                          </div>
                                                         <div class="col-sm-12">
                                                             <div class="full_field_col3">

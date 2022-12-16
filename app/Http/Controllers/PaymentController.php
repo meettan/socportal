@@ -372,7 +372,6 @@ class PaymentController extends Controller
                     'ro_no'  => $ro_no,
                     'invoice_id' =>$sale_invoice_no,
                     'do_dt' => $dt,
-                    'invoice_amt'=>$invoice_amt,
                     'pay_amt'=>$pay_amt
                 );
                 // Session::put('order_id', $orderId);

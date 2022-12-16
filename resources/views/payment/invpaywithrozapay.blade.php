@@ -41,9 +41,7 @@
                                                                 <?php echo Session::get('data.ro_no') ;?>
                                                             </div>
                                                             
-                                                            <div class="full_field_col3">
-                                                                <span>Invoice Amount:</span> <?php echo Session::get('data.invoice_amt') ;?>
-                                                            </div>
+                                                          
                                                 </div>
                                                 <div class="col-sm-12">
                                                             <?php $amt = Session::get('data.amount'); ?>
