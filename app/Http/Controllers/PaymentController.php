@@ -267,6 +267,7 @@ class PaymentController extends Controller
                                                 where br_cd = '$br_cd'
                                                  and soc_id='$soc_id'
                                                  and round_tot_amt-paid_amt > 0 
+                                                 and round_tot_amt-paid_amt < 500000 
                                                  and trans_do NOT IN (SELECT invoice_id FROM td_payment where status='captured')
                                                  ");
         return view('payment.invoice_list', ['invoice_list' => $invoice_list]);
@@ -343,14 +344,23 @@ class PaymentController extends Controller
 
     public function invpaymentrequest(Request $request)
     {      
-            if(request('amt') > 500000){
-                return redirect()->back()->with('amt_error','Maximum allowable amount exceed.');
+            $pay_amt = Session::get('amts');
+            if($pay_amt > 500000){
+                // return $request;
+                $data = array(
+                    'amount' => Session::get('amts'),
+                    'ro_no'  => $request->ro_no,
+                    'invoice_id' =>$request->invoice_id,
+                    'do_dt' => date('Y-m-d'),
+                    'invoice_amt'=>Session::get('amts'),
+                    'pay_amt'=>Session::get('amts')
+                );
+                return view('payment.invpayform', ['data' => $data])->with('amt_error','Maximum allowable amount exceed.');
             }else{ 
             $dt      = $request->input('do_dt');
             $ro_no   = $request->input('ro_no');
             $sale_invoice_no = $request->input('invoice_id');
             $invoice_amt  = $request->input('invoice_amt');
-            $pay_amt = Session::get('amts');
             $pay_mode = $request->input('pay_mode');
             
             if($pay_mode == 'I')
