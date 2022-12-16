@@ -113,7 +113,7 @@
                                     </ul>
                                 </div>
                                 <div class="subDrop2">
-                                    <a href="{{route('logout')}}">Loguot</a>
+                                    <a href="{{route('logout')}}">Logout</a>
                                 </div>
                             </div>
                         </li>
