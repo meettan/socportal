@@ -326,6 +326,7 @@ class PaymentController extends Controller
 									and trans_flag='R' and invoice_no='$sale_invoice_no'");
             $cr_amt = $cr[0]->tot_amt;
             $pay_amt = round($invoice_amt-$cr_amt);
+            Session::put('amts',  $pay_amt);
 
             $data = array(
                 'amount' => $pay_amt,
@@ -349,7 +350,7 @@ class PaymentController extends Controller
             $ro_no   = $request->input('ro_no');
             $sale_invoice_no = $request->input('invoice_id');
             $invoice_amt  = $request->input('invoice_amt');
-            $pay_amt = $request->input('amt');
+            $pay_amt = Session::get('amts');
             $pay_mode = $request->input('pay_mode');
             
             if($pay_mode == 'I')
@@ -359,7 +360,6 @@ class PaymentController extends Controller
                 $orderId = $order['id'];
                 $pay = new PaymentModel;
              
-                   Session::put('amts',  $pay_amt);
                    Session::put('invoice_id',  $sale_invoice_no);
                    Session::put('orderId',  $orderId);
                     Session::put('soc_id',  Auth::user()->soc_id);
