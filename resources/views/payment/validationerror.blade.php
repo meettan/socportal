@@ -16,7 +16,7 @@
                 <div class="col-sm-12">
                 <img src="" class="img-fluid">
 
-                <h1>Your payment Failed</h1>
+                <h1>Your payment Failed (Parameter mismatched payment failed)</h1>
                 <div class="row">
                         <div class="col-sm-4">
                         </div>
