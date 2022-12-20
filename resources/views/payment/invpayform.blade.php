@@ -165,7 +165,7 @@
 
                                                         <input name="surl" value="{{route('success')}}" hidden />
                                                         <input name="furl" value="{{route('error')}}" hidden />
-                                                        <input name="curl" value="{{route('cancel')}}" hidden />
+                                                      
                                                         <input type="hidden" name="service_provider"
                                                             value="payu_paisa" />
                                                         <input name="udf1"
