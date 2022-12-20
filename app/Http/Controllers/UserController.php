@@ -85,6 +85,8 @@ class UserController extends Controller
                     ->where('v_ferti_soc.pan','=',$request->pan)
                     ->first();
                     session(['socuserdtls' => $userdtl]);
+                    Session::put('raw_password', $request->password);
+
                     return redirect()->route('dashboard');
                 }else{
                     return redirect()->back()->with('login_error','error')->withInput($request->only('email', 'remember'));

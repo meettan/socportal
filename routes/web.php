@@ -51,18 +51,35 @@ Route::any('purrep', 'SocietyController@purrep')->name('purrep');
 Route::get('/payment', [App\Http\Controllers\PaymentController::class,'payment'])->name('payment');
 Route::any('/advpayment', [App\Http\Controllers\PaymentController::class,'advpayment'])->name('advpayment');
 Route::any('/invpayment', [App\Http\Controllers\PaymentController::class,'invpayment'])->name('invpayment');
+
+
 Route::post('/pay' ,[App\Http\Controllers\PaymentController::class,'pay'])->name('pay');
+
+// start payment success and error roure
+Route::any('advredirectToPayU',  [App\Http\Controllers\PaymentController::class,'advredirectToPayU'])->name('advredirectToPayU');
+Route::any('redirectToPayU',  [App\Http\Controllers\PaymentController::class,'redirectToPayU'])->name('redirectToPayU');
+Route::any('error', [App\Http\Controllers\PayuMoneyController::class,'error'])->name('error');
+Route::any('success', [App\Http\Controllers\PayuMoneyController::class,'success'])->name('success');
+Route::any('cancel', [App\Http\Controllers\PayuMoneyController::class,'cancel'])->name('cancel');
+// end payment success and error roure
+
+
 // Route::get('/pay' ,[App\Http\Controllers\PaymentController::class,'pay'])->name('pay');
 Route::post('/paymentrequest' ,[App\Http\Controllers\PaymentController::class,'paymentrequest'])->name('paymentrequest');
 Route::get('/paywithroza' ,[App\Http\Controllers\PaymentController::class,'paywithroza'])->name('paywithroza');
 Route::get('/paymentlist' ,[App\Http\Controllers\PaymentController::class,'paymentlist'])->name('paymentlist');
-Route::get('/success' ,[App\Http\Controllers\PaymentController::class,'success'])->name('success');
-Route::get('/error/{payment_id?}' ,[App\Http\Controllers\PaymentController::class,'error'])->name('error');
+// Route::get('/success' ,[App\Http\Controllers\PaymentController::class,'success'])->name('success');
+// Route::get('/error/{payment_id?}' ,[App\Http\Controllers\PaymentController::class,'error'])->name('error');
 Route::get('/failedresponse' ,[App\Http\Controllers\PaymentController::class,'failedresponse'])->name('failedresponse');
 Route::get('/paymentdetail', [App\Http\Controllers\PaymentController::class,'paymentdetail'])->name('paymentdetail');
+
+
 Route::post('/invpayform', [App\Http\Controllers\PaymentController::class,'invpayform'])->name('invpayform');
+
+
+
 Route::post('/invpaymentrequest', [App\Http\Controllers\PaymentController::class,'invpaymentrequest'])->name('invpaymentrequest');
-Route::get('/invpaywithroza' ,[App\Http\Controllers\PaymentController::class,'invpaywithroza'])->name('invpaywithroza');
+
 Route::get('/payhistory' ,[App\Http\Controllers\PaymentController::class,'payhistory'])->name('payhistory');
 
 

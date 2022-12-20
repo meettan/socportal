@@ -25,7 +25,7 @@
                                 <div class='col-md-12' style="margin-bottom:10px">
                                 <div class='col-md-6'><h3> Advance Payment</h3></div>
                                 <div class='col-md-2'> 
-                                    <a href="{{route('advpayment')}}">
+                                    <a href="{{route('advredirectToPayU')}}">
                                     <button type="button" class="btn btn-primary">Payment</button></a>
                                 </div>
                                 </div>

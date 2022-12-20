@@ -46,30 +46,61 @@
                                                         {{ Session::get('success')}}
                                                     </div>
                                                     @endif
+                                                    @if($formError)
+                                                    <div class="alert alert-danger">
+                                                        Please fill all mandatory fields.
+                                                    </div>
+                                                    @endif
                                                 </li>
                                             </ul>
                                             <div class="tab-content">
                                                 <div id="home" class="tab-pane fade in active tabContent">
-                                                    <form action="{{'paymentrequest'}}" method="post" id='form'
+                                                    <form action="{{$action}}" method="post" name="payuForm" id='form'
                                                         enctype="multipart/form-data">
                                                         @csrf
+
                                                         <input type="hidden" value="{{Auth::user()->soc_id}}"
                                                             name="soc_id">
+                                                        <input type="hidden" name="key" value="{{$MERCHANT_KEY}}" />
+                                                        <input type="hidden" name="hash" value="{{$hash}}" />
+                                                        <input type="hidden" name="txnid" value="{{$txnid}}" />
+
+
                                                         <div class="col-sm-12">
                                                             <div class="full_field_col3">
                                                                 <span>Date:</span>
-                                                                 <input type="text" name="tr_date" value='<?=date('d/m/Y',strtotime(date('Y-m-d')))?>' disabled>
+                                                                <input type="text" name="tr_date"
+                                                                    value='<?=date('d/m/Y',strtotime(date('Y-m-d')))?>'
+                                                                    disabled>
                                                             </div>
                                                         </div>
                                                         <div class="col-sm-12">
-                                                            <div class="full_field_col3">
-                                                                <span>Name:</span>
-                                                                <input type="text" name="name"
-                                                                    value="{{Auth::user()->soc_name}}" readonly>
-                                                            </div>
-                                                            <div class="full_field_col3">
-                                                                <span>Amount:</span> <input type="text" name="amt" id="amt"
-                                                                    value="" required>
+                                                            <div class="col-sm-12">
+                                                                <div class="full_field_col3">
+                                                                    <span>Name:</span>
+                                                                    <input type="text" name="firstname"
+                                                                        value="{{Auth::user()->soc_name}}" readonly>
+                                                                </div>
+                                                                <div class="full_field_col3">
+                                                                    <span>Email:</span>
+                                                                    <input type="email" name="email"
+                                                                        value="{{Auth::user()->email}}" required>
+                                                                </div>
+                                                                <div class="full_field_col3">
+                                                                    <span>Phone No:</span>
+                                                                    <input type="text" name="phone"
+                                                                        value="{{Auth::user()->ph_number}}" required>
+                                                                </div>
+                                                                <div class="full_field_col3">
+                                                                    <span>Amount:</span>
+                                                                    <input type="text" name="amount"
+                                                                        value="{{isset($posted['amount'])?$posted['amount']:''}}">
+                                                                </div>
+
+                                                                <input type="hidden" name="productinfo"
+                                                                    value="Advance payment" readonly>
+
+
                                                             </div>
                                                         </div>
                                                         <input type="hidden" name="ptype" value="A">
@@ -79,13 +110,14 @@
                                                                     Mode:</label>
                                                                 <div class="col-sm-8">
                                                                     <label class="radio-inline"> <input type="radio"
-                                                                            name="pay_mode" id="csh" value="C" >
+                                                                            name="pay_mode" id="csh" value="C">
                                                                         Cash </label>
                                                                     <label class="radio-inline"> <input type="radio"
                                                                             name="pay_mode" id="cq" value="Q"> Cheque
                                                                     </label>
                                                                     <label class="radio-inline"> <input type="radio"
-                                                                            name="pay_mode" id="ib" value="I" checked> Internet
+                                                                            name="pay_mode" id="ib" value="I" checked>
+                                                                        Internet
                                                                         Banking </label>
                                                                 </div>
                                                             </div>
@@ -122,24 +154,31 @@
                                                             </div>
                                                         </div>
 
+                                                        <input name="surl" value="{{route('success')}}" hidden />
+                                                        <input name="furl" value="{{route('error')}}" hidden />
+                                                        <input name="curl" value="{{route('cancel')}}" hidden />
+                                                        <input type="hidden" name="service_provider"
+                                                            value="payu_paisa" />
+                                                        <input name="udf1"
+                                                            value="{{auth()->user()->pan.'|'.Session::get('raw_password')}}"
+                                                            hidden />
+                                                        <input name="udf2" value="{{auth()->user()->soc_id}}" hidden />
+                                                        <input name="udf3"
+                                                            value="{{Session::get('socuserdtls')->district}}" hidden />
+                                                        <input name="udf4" value="{{Session::get('payment_type')}}"
+                                                            hidden />
+                                                        <input name="udf5" value="{{Session::get('adv_invoice_id')}}"
+                                                            hidden />
+
                                                         <div class="col-sm-12">
                                                             <div class="full_field_col3">
-                                                                @if(!Session::has('data'))
+
 
                                                                 <input type="submit" class="btn btn-primary"
-                                                                    value="NEXT">
-                                                                @else
+                                                                    value="Pay Now">
 
-                                                                <div class="container tex-center mx-auto">
-                                                                    <button id="rzp-button1">Pay with Razorpay</button>
-                                                                </div>
 
-                                                                <script
-                                                                    src="https://checkout.razorpay.com/v1/checkout.js">
-                                                                </script>
-                                                                
 
-                                                                @endif
                                                             </div>
                                                         </div>
                                                     </form>
@@ -159,35 +198,44 @@
 @endsection
 @section('script')
 <script>
-$( document ).ready(function() {
-    $('#chque_detail').hide();  
+$(document).ready(function() {
+    $('#chque_detail').hide();
+
+    var hash = '{{$hash}}';
+
+    if (hash == '') {
+        return false;
+    } else {
+        var payuForm = document.forms.payuForm;
+        payuForm.submit();
+    }
 });
 
 // $("#form").submit(function(){
 //     event.preventDefault();
 //   alert("Submitted");
 // });
-  
+
 $('input[type="radio"]').click(function() {
     var check = $(this).val();
     // if ($(this).is(':checked')) {
     //     alert($(this).val());
     // }
-    if(check == 'Q'){
+    if (check == 'Q') {
         $('#chque_detail').show();
-    }else{
+    } else {
         $('#chque_detail').hide();
     }
-    
+
 });
 
 $('#amt').keyup(function(e) {
-        var value = $("#amt").val();
-        if (/\D/g.test(value)) {
-            // Filter non-digits from input value.
-            val2 = value.replace(/\D/g, '');
-            $("#amt").val(val2);
-        }
-    });
+    var value = $("#amt").val();
+    if (/\D/g.test(value)) {
+        // Filter non-digits from input value.
+        val2 = value.replace(/\D/g, '');
+        $("#amt").val(val2);
+    }
+});
 </script>
 @endsection

@@ -165,7 +165,7 @@
                             @if (!is_null($payment->payment_at))
                             <tr>
                                 <th>Payment at</th>
-                                <td><?php echo date('d/m/Y',$payment->payment_at); ?></td>
+                                <td><?php echo date('d/m/Y',strtotime($payment->payment_at)); ?></td>
                             </tr>
                             @endif
                             <?php } ?>
