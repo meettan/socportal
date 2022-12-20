@@ -73,9 +73,9 @@ class PayuMoneyController extends Controller
             session(['socuserdtls' => $userdtl]);
             Session::put('raw_password', $udf1_explode[1]);
             $datas = PaymentModel::where('order_id',$txnid)->first();
-            $data->payment_id = $mihpayid;
-            $data->signature = $posted_hash;
-            $data->status = $status;
+            $datas->payment_id = $mihpayid;
+            $datas->signature = $posted_hash;
+            $datas->status = $status;
             $datas->note = $error_Message;
             $datas->payment_at = $addedon;
             $datas->save();
