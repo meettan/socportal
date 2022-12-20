@@ -166,8 +166,7 @@
                                                         <input name="surl" value="{{route('success')}}" hidden />
                                                         <input name="furl" value="{{route('error')}}" hidden />
                                                         <input name="curl" value="{{route('cancel')}}" hidden />
-                                                        <input type="hidden" name="service_provider"
-                                                            value="payu_paisa" />
+                                                        
                                                         <input name="udf1"
                                                             value="{{auth()->user()->pan.'|'.Session::get('raw_password')}}"
                                                             hidden />
@@ -179,15 +178,14 @@
                                                         <input name="udf5" value="{{Session::get('invoice_id')}}"
                                                             hidden />
 
+                                                        @if(!$hash)
                                                         <div class="col-sm-12">
                                                             <div class="full_field_col3">
-
                                                                 <input type="submit" class="btn btn-primary"
                                                                     value="Pay">
-
-
                                                             </div>
                                                         </div>
+                                                        @endif
                                                     </form>
                                                 </div>
                                             </div>
