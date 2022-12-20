@@ -204,7 +204,8 @@ class PayuMoneyController extends Controller
         $input = $request->all();
         
 
-        dd($input);
+       // dd($input);
+       return view('payment.validationerror');
     }
 
     public function checkHasValidHas($data)
