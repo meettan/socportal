@@ -55,7 +55,7 @@
                                             </ul>
                                             <div class="tab-content">
                                                 <div id="home" class="tab-pane fade in active tabContent">
-                                                    <form action="{{$action}}" method="post" name="payuForm">
+                                                    <form action="{{$action}}" method="post" name="payuForm" enctype='multipart/form-data'>
                                                         @csrf
                                                         <input type="hidden" value="{{Auth::user()->soc_id}}"
                                                             name="soc_id">

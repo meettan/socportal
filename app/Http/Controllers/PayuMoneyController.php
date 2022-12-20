@@ -21,23 +21,41 @@ class PayuMoneyController extends Controller
         $data = $request->all();
         // dd($data);
         $mihpayid = $data["mihpayid"];
-        $txnid = $data["txnid"];
-        $hash = $data["hash"];
-        $addedon = $data["addedon"];
         $status = $data["status"];
-        $udf1 = $data["udf1"];
-        $udf5 = $data["udf5"];
+        $firstname = $data["firstname"];
+        $amount = $data["amount"];
+        $net_amount_debit = $data["net_amount_debit"];
+        $txnid = $data["txnid"];
+        $posted_hash = $data["hash"];
+        $key = $data["key"];
         $productinfo = $data["productinfo"];
+        $email = $data["email"];
+        $phone = $data["phone"];
+        $addedon = $data["addedon"];
+        
+        $udf1 = $data["udf1"];  //pan no
+        $udf2 = $data["udf2"];  //soc id
+        $udf3 = $data["udf3"];  //brn_id
+        $udf4 = $data["udf4"];  //payment type
+        $udf5 = $data["udf5"];  //invoice_id
 
-        $validHash = $this->checkHasValidHas($data);
+        $salt = config('payu.salt_key');
 
-        if (!$validHash) {
-            echo "Invalid Transaction. Please try again";
+        if (isset($data["additionalCharges"])) {
+            $additionalCharges = $data["additionalCharges"];
+            $retHashSeq = $additionalCharges.'|'.$salt.'|'.$status.'||||||'.$udf5.'|'.$udf4.'|'.$udf3.'|'.$udf2.'|'.$udf1.'|'.$email.'|'.$firstname.'|'.$productinfo.'|'.$amount.'|'.$txnid.'|'.$key;
+        } else {
+            $retHashSeq = $salt.'|'.$status.'||||||'.$udf5.'|'.$udf4.'|'.$udf3.'|'.$udf2.'|'.$udf1.'|'.$email.'|'.$firstname.'|'.$productinfo.'|'.$amount.'|'.$txnid.'|'.$key;
+        }
+        $hash = hash("sha512", $retHashSeq);
+        if ($hash != $posted_hash) {
+            // echo "Invalid Transaction. Please try again";
             // return 'if';
+            return view('payment.validationerror');
         } else {
             // return 'else';
-            echo "<h3>Your order status is ". $data["status"].".</h3>";
-            echo "<h4>Your transaction id for this transaction is ".$data["txnid"].". You may try making the payment by clicking the link below.</h4>";
+            // echo "<h3>Your order status is ". $data["status"].".</h3>";
+            // echo "<h4>Your transaction id for this transaction is ".$data["txnid"].". You may try making the payment by clicking the link below.</h4>";
         }
         
         $error_Message = $data['error_Message'];
@@ -55,13 +73,10 @@ class PayuMoneyController extends Controller
             session(['socuserdtls' => $userdtl]);
             Session::put('raw_password', $udf1_explode[1]);
             $datas = PaymentModel::where('order_id',$txnid)->first();
-            $datas->payment_mode = 'I';
-            $datas->payment_id = $mihpayid;
-            $datas->signature = $hash;
-            $datas->status = $status;
-            $datas->invoice_id = $udf5;
+            $data->payment_id = $mihpayid;
+            $data->signature = $posted_hash;
+            $data->status = $status;
             $datas->note = $error_Message;
-            $datas->created_by = Auth::user()->id;
             $datas->payment_at = $addedon;
             $datas->save();
         }
@@ -98,7 +113,6 @@ class PayuMoneyController extends Controller
         $email = $input["email"];
         $phone = $input["phone"];
         $addedon = $input["addedon"];
-        $productinfo = $input["productinfo"];
         
         $udf1 = $input["udf1"];  //pan no
         $udf2 = $input["udf2"];  //soc id
@@ -118,7 +132,8 @@ class PayuMoneyController extends Controller
         }
         $hash = hash("sha512", $retHashSeq);
         if ($hash != $posted_hash) {
-            return "Invalid Transaction. Please try again";
+            // return "Invalid Transaction. Please try again";
+            return view('payment.validationerror');
         } else {
             // echo "<h3>Thank You. Your order status is ".$status.".</h3>";
             // echo "<h4>Your Transaction ID for this transaction is ".$txnid.".</h4>";

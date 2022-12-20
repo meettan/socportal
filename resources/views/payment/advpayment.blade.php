@@ -93,7 +93,7 @@
                                                                 </div>
                                                                 <div class="full_field_col3">
                                                                     <span>Amount:</span>
-                                                                    <input type="text" name="amount"
+                                                                    <input type="text" name="amount" required
                                                                         value="{{isset($posted['amount'])?$posted['amount']:''}}">
                                                                 </div>
 

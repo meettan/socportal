@@ -370,6 +370,7 @@ class PaymentController extends Controller
         return redirect()->route('redirectToPayU');
     }
 
+     //    Code for invoice payment request to payu
     public function redirectToPayU(Request $request)
     {
         $data = $request->all();
@@ -450,8 +451,8 @@ class PaymentController extends Controller
             ]);
         }else{
             if($pay_mode != 'I') {
-                return $pay_mode;
-                $imageName = '';
+                //return $pay_mode;
+                        $imageName = request()->image;
                         $soc_id =   Auth::user()->soc_id; 
                         // $request->validate([
                         //     'image' => 'required|image|mimes:jpeg,png,jpg|max:2048'
@@ -461,7 +462,7 @@ class PaymentController extends Controller
                         $pay->payment_type ='I';
                         $pay->soc_id = $soc_id;
                         $pay->brn_id = Session::get('socuserdtls')->district;
-                        $pay->amount = $pay_amt;
+                        $pay->amount = Session::get('amts');
                         $pay->payment_mode = request('pay_mode');
                         $pay->cheque_no = request('cheque_no');
                         $pay->cheque_dt = request('cheque_dt');
@@ -471,7 +472,7 @@ class PaymentController extends Controller
                         $imageName = time().'.'.request()->image->getClientOriginalExtension();
                         request()->image->move(public_path('images'), $imageName);
                         }
-    
+                       
                         $pay->cheque_img = $imageName;
                         $pay->created_by = Auth::user()->id;
                         $pay->save();
@@ -508,6 +509,8 @@ class PaymentController extends Controller
         }
         
     }
+
+    // Advance payment redirect
     public function advredirectToPayU(Request $request)
     {
         $adv_invoice_id=auth()->user()->soc_id.'_'.date('Ymd_his');
@@ -592,18 +595,19 @@ class PaymentController extends Controller
             ]);
         }else{
             if($pay_mode != 'I') {
-                return $pay_mode;
+                //return $pay_mode;
                 $imageName = '';
                         $soc_id =   Auth::user()->soc_id; 
+                        $imageName = request()->image;
                         // $request->validate([
                         //     'image' => 'required|image|mimes:jpeg,png,jpg|max:2048'
                         // ]);
                         $pay = new PaymentModel;
                         $pay->trans_date = date('Y-m-d');
-                        $pay->payment_type ='I';
+                        $pay->payment_type ='A';
                         $pay->soc_id = $soc_id;
                         $pay->brn_id = Session::get('socuserdtls')->district;
-                        $pay->amount = $pay_amt;
+                        $pay->amount = request('amount');
                         $pay->payment_mode = request('pay_mode');
                         $pay->cheque_no = request('cheque_no');
                         $pay->cheque_dt = request('cheque_dt');
@@ -650,19 +654,6 @@ class PaymentController extends Controller
         }
         
     }
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
