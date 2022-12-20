@@ -169,17 +169,15 @@
                                                         <input name="udf5" value="{{Session::get('adv_invoice_id')}}"
                                                             hidden />
 
+                                                        @if(!$hash)
                                                         <div class="col-sm-12">
                                                             <div class="full_field_col3">
-
-
                                                                 <input type="submit" class="btn btn-primary"
                                                                     value="Pay Now">
 
-
-
                                                             </div>
                                                         </div>
+                                                        @endif
                                                     </form>
                                                 </div>
                                             </div>
