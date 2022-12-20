@@ -413,7 +413,7 @@ class PaymentController extends Controller
                 || empty($posted['productinfo'])
                 || empty($posted['surl'])
                 || empty($posted['furl'])
-                // || empty($posted['service_provider'])
+                || empty($posted['service_provider'])
             ) {
                 $formError = 1;
             } else {
@@ -557,7 +557,7 @@ class PaymentController extends Controller
                 || empty($posted['productinfo'])
                 || empty($posted['surl'])
                 || empty($posted['furl'])
-                || empty($posted['service_provider'])
+                // || empty($posted['service_provider'])
             ) {
                 $formError = 1;
             } else {
