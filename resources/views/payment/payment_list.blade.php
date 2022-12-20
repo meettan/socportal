@@ -20,8 +20,10 @@
                             <tr>
                                 <th>Sl No.</th>
                                 <th>Payment Date</th>
+                                <th>Payment Type</th>
                                 <th>Amount.</th>
-                                <th>Order id</th>
+                                <th>Transaction ID.</th>
+                                <th>Invoice ID</th>
                                 <th>Status </th>
                                 <th>Option </th>
                             </tr>
@@ -37,8 +39,13 @@
                             <tr>
                                 <td><?php echo ++$i; ?></td>
                                 <td><?php echo date("d/m/Y",strtotime($pay->trans_date)); ?></td>
+                                <td><?php if($pay->payment_type == 'A'){ echo 'ADVANCE';}else{
+                                    echo 'INVOICE';
+                                } ?></td>
                                 <td><?php echo $pay->amount; ?></td>
+                                
                                 <td><?php echo $pay->order_id; ?></td>
+                                <td><?php echo $pay->invoice_id; ?></td>
                                 <td><?php echo $pay->status; ?></td>
                                 <td>
                                     <a href="{{ route('paymentdetail',['id'=>$pay->id])}}" title="Print">
@@ -60,7 +67,9 @@
                             <tr>
                                 <th>Sl No.</th>
                                 <th>Payment Date</th>
+                                <th>Payment Type</th>
                                 <th>Amount.</th>
+                                <th>Transaction ID.</th>
                                 <th>Order id</th>
                                 <th>Status </th>
                                 <th>Option </th>
