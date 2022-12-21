@@ -140,7 +140,7 @@ class PayuMoneyController extends Controller
             $udf1_explode = explode("|", $udf1);
             if($this->verifyPayment($key,$salt,$txnid,$status)){
 
-                $this->requestsendhash($key,$salt,$txnid);
+                //$this->requestsendhash($key,$salt,$txnid);
                // echo "Request hash: ".$this->requestsendhash($key,$salt,$txnid);
                 //echo "<br>";
                 //echo "Response hash: ".$retHashSeq;
