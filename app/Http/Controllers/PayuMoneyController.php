@@ -133,15 +133,17 @@ class PayuMoneyController extends Controller
 
         $hash = hash("sha512", $retHashSeq);
         if ($status == 'success'  && $hash == $posted_hash) {
-            echo $retHashSeq;
+            
             // echo "<h3>Thank You. Your order status is ".$status.".</h3>";
             // echo "<h4>Your Transaction ID for this transaction is ".$txnid.".</h4>";
             // echo "<h4>We have received a payment of Rs. ".$amount.". Your order will soon be shipped.</h4>";
             $udf1_explode = explode("|", $udf1);
             if($this->verifyPayment($key,$salt,$txnid,$status)){
 
+                
+                echo "Request hash: ".$this->requestsendhash($key,$salt,$txnid);
                 echo "<br>";
-                echo $this->requestsendhash($key,$salt,$txnid);
+                echo "Response hash: ".$retHashSeq;
 			    $msg = "Transaction Successful, Hash Verified...Payment Verified...";
                 if (Auth::attempt(['pan' => $udf1_explode[0],'password' => $udf1_explode[1]])) {
                     $userdtl =DB::table('v_ferti_soc')
@@ -343,7 +345,7 @@ class PayuMoneyController extends Controller
                 $response = $response[$txnid];
                 
                 if($response['status'] == $status) {//payment response status and verify status matched
-                    print_r($response);
+                    // print_r($response);
                     return true;
                 }else{
 
