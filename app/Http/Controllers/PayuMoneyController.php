@@ -140,10 +140,10 @@ class PayuMoneyController extends Controller
             $udf1_explode = explode("|", $udf1);
             if($this->verifyPayment($key,$salt,$txnid,$status)){
 
-                
-                echo "Request hash: ".$this->requestsendhash($key,$salt,$txnid);
-                echo "<br>";
-                echo "Response hash: ".$retHashSeq;
+                $this->requestsendhash($key,$salt,$txnid);
+               // echo "Request hash: ".$this->requestsendhash($key,$salt,$txnid);
+                //echo "<br>";
+                //echo "Response hash: ".$retHashSeq;
 			    $msg = "Transaction Successful, Hash Verified...Payment Verified...";
                 if (Auth::attempt(['pan' => $udf1_explode[0],'password' => $udf1_explode[1]])) {
                     $userdtl =DB::table('v_ferti_soc')
@@ -373,7 +373,8 @@ class PayuMoneyController extends Controller
         $hash = strtolower(hash('sha512', $hash_str));
 
             $r = array('key' => $key , 'hash' =>$hash , 'var1' => $var1, 'command' => $command);
-            return $hash;
+            echo "Request hash: ".$hash;
+            echo "<br>";
             // die();
             $qs= http_build_query($r);
             $wsUrl = "https://test.payu.in/merchant/postservice.php?form=1";
