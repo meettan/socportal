@@ -18,7 +18,7 @@
                     <div id="divToPrint">
                         <div class="wrapper_fixed">
                             <div class="topPrintHeadMain">
-                                <div class="topPrintLogo"><img src="http://localhost/socportal/public/images/logo.png"
+                                <div class="topPrintLogo"><img src="{{ url('public/images/logo.png') }}"
                                         alt=""></div>
                                 <div class="topPrintLogoRight">
                                     <h2>THE WEST BENGAL STATE CO.OP.MARKETING FEDERATION LTD.</h2>
