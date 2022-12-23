@@ -45,7 +45,10 @@
                                 <td><?php echo $pay->amount; ?></td>
                                 
                                 <td><?php echo $pay->order_id; ?></td>
-                                <td><?php echo $pay->invoice_id; ?></td>
+                                <td> @if ($pay->payment_type == 'I')
+                                    <?php echo $pay->invoice_id; ?>
+                                    @endif
+                                </td>
                                 <td><?php echo $pay->status; ?></td>
                                 <td>
                                     <a href="{{ route('paymentdetail',['id'=>$pay->id])}}" title="Print">
@@ -70,7 +73,7 @@
                                 <th>Payment Type</th>
                                 <th>Amount.</th>
                                 <th>Transaction ID.</th>
-                                <th>Order id</th>
+                                <th>Invoice ID</th>
                                 <th>Status </th>
                                 <th>Option </th>
 

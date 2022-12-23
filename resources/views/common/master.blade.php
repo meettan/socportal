@@ -78,11 +78,11 @@
                     <div class="link"><a href="{{route('purrep')}}"><i class="fa fa-tachometer"></i>Purchase History</a></div>
                 </li>
                 <li>
-                    <div class="link"><a href="{{route('payhistory')}}"><i class="fa fa-tachometer"></i>Payment History</a>
+                    <div class="link"><a href="{{route('paymentlist')}}"><i class="fa fa-tachometer"></i>Payment History</a>
                     </div>
                 </li>
                 <li>
-                    <div class="link"><a href="{{route('paymentlist')}}"><i class="fa fa-tachometer"></i>Pay Now</a></div>
+                    <div class="link"><a href="{{route('payment')}}"><i class="fa fa-tachometer"></i>Pay Now</a></div>
                 </li>
                 <li>
                     <div class="link"><a href="{{route('logout')}}"><i class="fa fa-sign-out"></i>Log out</a></div>

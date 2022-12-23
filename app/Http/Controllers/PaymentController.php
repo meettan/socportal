@@ -299,8 +299,8 @@ class PaymentController extends Controller
         $invoice_list = DB::select("select distinct trans_do,do_dt,sale_ro from v_sale 
                                                 where br_cd = '$br_cd'
                                                  and soc_id='$soc_id'
-                                                 and round_tot_amt-paid_amt > 0 
-                                                 and round_tot_amt-paid_amt < 500000 
+                                                 and round_tot_amt-paid_amt > 0
+                                                 and do_dt >= '2022-04-01' 
                                                  and trans_do NOT IN (SELECT invoice_id FROM td_payment where status='success')
                                                  ");
         return view('payment.invoice_list', ['invoice_list' => $invoice_list]);
@@ -474,6 +474,7 @@ class PaymentController extends Controller
                        
                         $pay->cheque_img = $imageName;
                         $pay->created_by = Auth::user()->id;
+                        $pay->created_ip = $_SERVER['REMOTE_ADDR'];
                         $pay->save();
                         return redirect()->route('paymentlist');
             }else{
@@ -492,6 +493,7 @@ class PaymentController extends Controller
                 $data->email = $request->email;
                 $data->contact = $request->phone;
                 $data->created_by = auth()->user()->id;
+                $data->created_ip = $_SERVER['REMOTE_ADDR'];
                 $data->save();
 
                 return view('payment.invpayform', [
@@ -618,6 +620,7 @@ class PaymentController extends Controller
     
                         $pay->cheque_img = $imageName;
                         $pay->created_by = Auth::user()->id;
+                        $pay->created_ip = $_SERVER['REMOTE_ADDR'];
                         $pay->save();
                         return redirect()->route('paymentlist');
             }else{
@@ -636,6 +639,8 @@ class PaymentController extends Controller
                 $data->email = $request->email;
                 $data->contact = $request->phone;
                 $data->created_by = auth()->user()->id;
+                $data->created_ip = $_SERVER['REMOTE_ADDR'];
+              
                 $data->save();
 
                 return view('payment.advpayment', [
