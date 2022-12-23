@@ -84,7 +84,7 @@
                                                                 <div class="full_field_col3">
                                                                     <span>Email:</span>
                                                                     <input type="email" name="email"
-                                                                        value="{{Auth::user()->email}}" required>
+                                                                        value="{{isset($posted['email'])?$posted['email']:Auth::user()->email}}" required>
                                                                 </div>
                                                                 <div class="full_field_col3">
                                                                     <span>Phone No:</span>
@@ -109,9 +109,9 @@
                                                                 <label class="col-sm-2 control-label">Payment
                                                                     Mode:</label>
                                                                 <div class="col-sm-8">
-                                                                    <label class="radio-inline"> <input type="radio"
+                                                                    <!-- <label class="radio-inline"> <input type="radio"
                                                                             name="pay_mode" id="csh" value="C">
-                                                                        Cash </label>
+                                                                        Cash </label> -->
                                                                     <label class="radio-inline"> <input type="radio"
                                                                             name="pay_mode" id="cq" value="Q"> Cheque
                                                                     </label>

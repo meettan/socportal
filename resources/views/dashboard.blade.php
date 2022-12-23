@@ -32,7 +32,7 @@
                 <div class="boxSecMain">
                     <h2>Outstanding</h2>
                     <div class="boxSecMainDescrip">
-                        <div class="price"><i class="fa fa-inr" aria-hidden="true"></i> <span>{{$amt}}
+                        <div class="price"><i class="fa fa-inr" aria-hidden="true"></i> <span>{{round($amt, 2)}}
                             <?php if($soc_balance_amt_data == 'Cr.') { ?>
                                 <strong class="crCus" style="color: #0000b9 !important">
                              {{$soc_balance_amt_data}}</strong>
@@ -127,7 +127,7 @@
                                     </div>
                                     <h5>Payment history</h5>
                                     <!-- <p>Assign a task to start collaborating</p> -->
-                                    <a href="javascript:void(0)"><button type="button" class="viewMore">View
+                                    <a href="{{route('paymentlist')}}"><button type="button" class="viewMore">View
                                             More</button></a>
                                 </div>
                             </div>

@@ -94,16 +94,16 @@
                                                             </div>
                                                             <div class="full_field_col3">
                                                                 <span>Email:</span>
-                                                                <input type="email" name="email"
-                                                                    value="{{Auth::user()->email}}" readonly>
+                                                                <input type="email" name="email" required
+                                                                    value="{{isset($posted['email'])?$posted['email']:Auth::user()->email}}" >
                                                             </div>
                                                             <div class="full_field_col3">
                                                                 <span>Phone No:</span>
-                                                                <input type="text" name="phone"
-                                                                    value="{{Auth::user()->ph_number}}" readonly>
+                                                                <input type="text" name="phone" required
+                                                                    value="{{Auth::user()->ph_number}}" >
                                                             </div>
                                                             <div class="full_field_col3">
-                                                                <span>Amount:</span> <strong>{{Session::get('amts')}}</strong> 
+                                                                <span>Amount: <strong style="padding: 10px;font-size: 18px;margin: 15px 5px 0px 15px;"> {{Session::get('amts')}}</strong></span>  
                                                                 <input type="hidden" name="amount"
                                                                     value="{{Session::get('amts')}}">
                                                             </div>
@@ -118,9 +118,9 @@
                                                                 <label class="col-sm-2 control-label">Payment
                                                                     Mode:</label>
                                                                 <div class="col-sm-8">
-                                                                    <label class="radio-inline"> <input type="radio"
+                                                                    <!-- <label class="radio-inline"> <input type="radio"
                                                                             name="pay_mode" id="csh" value="C">
-                                                                        Cash </label>
+                                                                        Cash </label> -->
                                                                     <label class="radio-inline"> <input type="radio"
                                                                             name="pay_mode" id="cq" value="Q"> Cheque
                                                                     </label>
