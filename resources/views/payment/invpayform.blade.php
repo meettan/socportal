@@ -136,28 +136,28 @@
                                                             <div class="row">
                                                                 <div class="col-sm-12">
                                                                     <div class="full_field_col3">
-                                                                        <span>Cheque No:</span> <input type="text"
+                                                                        <span>Cheque No:</span> <input type="text" id="cheque_no"
                                                                             name="cheque_no" value="">
                                                                     </div>
                                                                     <div class="full_field_col3">
                                                                         <span>Cheque Date:</span>
-                                                                        <input type="date" name="cheque_dt" value="">
+                                                                        <input type="date" name="cheque_dt" id="cheque_dt" value="" min="<?=date('Y-m-d',strtotime(date('Y-m-d').'-6 months'))?>" />
                                                                     </div>
                                                                 </div>
                                                                 <div class="col-sm-12">
                                                                     <div class="full_field_col3">
-                                                                        <span>Bank name:</span> <input type="text"
+                                                                        <span>Bank name:</span> <input type="text"  id="bank_name"
                                                                             name="bank_name" value="">
                                                                     </div>
                                                                     <div class="full_field_col3">
-                                                                        <span>IFS CODE:</span> <input type="text"
+                                                                        <span>IFS CODE:</span> <input type="text" id="ifs_code"
                                                                             name="ifs_code" value="">
                                                                     </div>
                                                                 </div>
                                                                 <div class="col-sm-12">
                                                                     <div class="full_field_col3">
-                                                                        <span>Upload Cheque Scan copy:</span> <input
-                                                                            type="file" name="image" value="">
+                                                                    <span>Upload Cheque Scan copy </span><span style="color:red">(jpg,jpeg Allowed and Size upto 2MB):</span> <input
+                                                                            type="file" name="image" value="" id='image'>
                                                                     </div>
                                                                 </div>
                                                             </div>
@@ -224,8 +224,18 @@ $('input[type="radio"]').click(function() {
     // }
     if (check == 'Q') {
         $('#chque_detail').show();
+        $("#cheque_no").prop('required',true);
+        $("#cheque_dt").prop('required',true);
+        $("#bank_name").prop('required',true);
+        $("#ifs_code").prop('required',true);
+        $("#image").prop('required',true);
     } else {
         $('#chque_detail').hide();
+        $("#cheque_no").prop('required',false);
+        $("#cheque_dt").prop('required',false);
+        $("#bank_name").prop('required',false);
+        $("#ifs_code").prop('required',false);
+        $("#image").prop('required',false);
     }
 
 });

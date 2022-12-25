@@ -116,6 +116,7 @@
                                                             <th>Payment Amount (In words)</th>
                                                             <td>{{ Helper::displaywords($payment->amount)}}</td>
                                                         </tr>
+                                                        @if ($payment->payment_type == 'I')
                                                         <tr>
                                                             <th>Order ID</th>
                                                             <td><?php echo $payment->order_id; ?></td>
@@ -124,6 +125,7 @@
                                                             <th>Payment ID</th>
                                                             <td><?php echo $payment->payment_id; ?></td>
                                                         </tr>
+                                                        @endif
                                                         <?php   if($payment->payment_mode == 'Q'){   ?>
                                                         <tr>
                                                             <th>Cheque no</th>
@@ -131,15 +133,19 @@
                                                         </tr>
                                                         <tr>
                                                             <th>Cheque dt</th>
-                                                            <td><?php echo $payment->cheque_dt; ?></td>
+                                                            <td><?php echo date("d/m/Y",strtotime($payment->cheque_dt)) ; ?></td>
                                                         </tr>
                                                         <tr>
                                                             <th>Bank name</th>
                                                             <td><?php echo $payment->bank_name; ?></td>
                                                         </tr>
                                                         <tr>
-                                                            <th>Ifs code no</th>
+                                                            <th>Ifs code</th>
                                                             <td><?php echo $payment->ifs_code; ?></td>
+                                                        </tr>
+                                                        <tr>
+                                                            <th>Cheque Image</th>
+                                                            <td><img src="{{url('public/images')}}{{'/'.$payment->cheque_img}}" alt="Cheque Image"></td>
                                                         </tr>
                                                         <?php } ?>
                                                         <?php   if($payment->payment_mode == 'I'){   ?>

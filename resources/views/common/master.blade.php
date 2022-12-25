@@ -139,6 +139,24 @@
     $(document).ready(function() {
         $('#example').DataTable();
     });
+    $(document).ready(function() {
+        $('#chque_detail').on('change', '#image', function(){
+
+            var ext = $(this).val().split('.').pop().toLowerCase();
+            if($.inArray(ext, ['jpg','jpeg']) == -1) {
+                    
+                alert('invalid extension!');        
+                $(this).val('');
+            }else{
+                    //  2000000  => 2MB  File size 
+                if(this.files[0].size > 2000000) {
+                    
+                alert('Please upload file up to 2MB. Thanks!!');        
+                $(this).val('');
+                }
+                }
+        });
+    })
     </script>
     <script>
     function generatePDF() {
