@@ -116,7 +116,7 @@
                                                             <th>Payment Amount (In words)</th>
                                                             <td>{{ Helper::displaywords($payment->amount)}}</td>
                                                         </tr>
-                                                        @if ($payment->payment_type == 'I')
+                                                        @if ($payment->payment_mode == 'I')
                                                         <tr>
                                                             <th>Order ID</th>
                                                             <td><?php echo $payment->order_id; ?></td>
@@ -145,7 +145,9 @@
                                                         </tr>
                                                         <tr>
                                                             <th>Cheque Image</th>
-                                                            <td><img src="{{url('public/images')}}{{'/'.$payment->cheque_img}}" alt="Cheque Image"></td>
+                                                            <td>
+                                                                <img src="{{url('public/images')}}{{'/'.$payment->cheque_img}}" alt="Cheque Image" style="height: 200px ! important" /></img>
+                                                            </td>
                                                         </tr>
                                                         <?php } ?>
                                                         <?php   if($payment->payment_mode == 'I'){   ?>
