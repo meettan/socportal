@@ -145,7 +145,7 @@
             var ext = $(this).val().split('.').pop().toLowerCase();
             if($.inArray(ext, ['jpg','jpeg']) == -1) {
                     
-                alert('invalid extension!');        
+                alert('invalid Image type!');        
                 $(this).val('');
             }else{
                     //  2000000  => 2MB  File size 
