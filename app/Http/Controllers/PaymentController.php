@@ -55,8 +55,8 @@ class PaymentController extends Controller
 
    
     public function paymentlist(){
-
-        $payment_list = PaymentModel::orderBy('id', 'DESC')->get();
+        $soc_id =   Auth::user()->soc_id;
+        $payment_list = PaymentModel::where('soc_id',$soc_id)->orderBy('id', 'DESC')->get();
         return view('payment.payment_list', ['payment_list' => $payment_list]);
 
     }
