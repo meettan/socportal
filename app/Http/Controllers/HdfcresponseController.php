@@ -14,7 +14,7 @@ class HdfcresponseController extends Controller
         $key = config('payu.merchant_key');
         $salt = config('payu.salt_key');
         $command = "get_settlement_details";
-        $var1 = "2023-01-03"; // Transaction ID
+        $var1 = "2022-12-27"; // Transaction ID
         $hash_str = $key  . '|' . $command . '|' . $var1 . '|' . $salt ;
         $hash = strtolower(hash('sha512', $hash_str));
         $r = array('key' => $key , 'hash' =>$hash , 'var1' => $var1, 'command' => $command);
