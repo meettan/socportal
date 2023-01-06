@@ -85,6 +85,12 @@ Route::get('/payhistory' ,[App\Http\Controllers\PaymentController::class,'payhis
 
 // Payment detail  route End
 
+//   Payment Web response  
+
+Route::get('/settlementdetails' ,[App\Http\Controllers\HdfcresponseController::class,'settlementdetails'])->name('settlementdetails');
+
+//
+
 
 
 Route::get('/logout', 'UserController@logout')->name('logout');
