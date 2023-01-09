@@ -87,8 +87,8 @@ Route::get('/payhistory' ,[App\Http\Controllers\PaymentController::class,'payhis
 
 //   Payment Web response  
 
-Route::get('/settlementdetails' ,[App\Http\Controllers\HdfcresponseController::class,'settlementdetails'])->name('settlementdetails');
-
+Route::get('/settlementdetails/{id?}' ,[App\Http\Controllers\HdfcresponseController::class,'settlementdetails'])->name('settlementdetails');
+//Route::get('/settlementdetails' ,[App\Http\Controllers\HdfcresponseController::class,'settlementdetails'])->name('settlementdetails');
 //
 
 
