@@ -23,8 +23,9 @@ class HdfcresponseController extends Controller
         $r = array('key' => $key , 'hash' =>$hash , 'var1' => $var1, 'command' => $command);
             
         $qs= http_build_query($r);
-        //$wsUrl = "https://info.payu.in/merchant/postservice.php?form=1";
-        $wsUrl = "https://info.payu.in/merchant/postservice.php?form=2";
+        print_r($r);
+        $wsUrl = "https://info.payu.in/merchant/postservice.php?form=1";
+        //$wsUrl = "https://info.payu.in/merchant/postservice.php?form=2";
 
         $c = curl_init();
         curl_setopt($c, CURLOPT_URL, $wsUrl);
