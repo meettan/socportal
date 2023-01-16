@@ -46,9 +46,9 @@ class SaleController extends Controller
 
     public function saleinvoice_rep(Request $request)
 	{
-		
+		DB::enableQueryLog();
 			//$trans_do =$request->trans_do;
-			$trans_do = 'INV/HOG/IFFCO/01/22-23/4635_1';
+			echo $trans_do = 'INV/HOG/IFFCO/01/22-23/4635_1';
 			$data = DB::select("SELECT a.trans_do ,b.prod_desc ,b.hsn_code,b.gst_rt,c.soc_name,c.soc_add,
 		                           c.gstin,c.mfms,a.trans_no,a.do_dt,a.sale_due_dt,a.trans_type,a.soc_id,
 								   a.comp_id, a.sale_ro,a.stock_point,a.gov_sale_rt,a.qty,a.sale_rt,
@@ -61,7 +61,7 @@ class SaleController extends Controller
 								   and a.gst_type_flag='N'
 								   and a.soc_id=c.soc_id
 								   and a.trans_do='$trans_do'");
-
+dd(DB::getQueryLog());
 			$sum_data = DB::select("SELECT a.trans_do ,sum(a.qty)as qty,sum(a.base_price) as base_price,
 									sum(a.taxable_amt)as taxable_amt,sum(a.cgst)as cgst,sum(a.sgst)as sgst,
 									sum(a.cgst+a.sgst)as tot_gst,sum(a.dis)as dis,sum(a.tot_amt)as tot_amt,
