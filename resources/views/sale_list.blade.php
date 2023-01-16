@@ -37,7 +37,8 @@
                         foreach($sales as $value) {
                         $disable_prnt=$value->irn? 'hidden' : '';
                         $disable_btn = $value->irn ||$value->pay_cnt ? 'hidden' : '';
-                        $enable_btn = $value->irn ? '' : 'hidden';
+                        //$enable_btn = $value->irn ? '' : 'hidden';
+                        $enable_btn ='';
                 ?>
         <tr>
             <td><?php echo ++$i; ?></td>
