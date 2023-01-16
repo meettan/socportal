@@ -1,15 +1,3 @@
-<link href="https://benfed.in/benfed_fertilizer/assets/css/bootstrap.min.css" rel="stylesheet">
-		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-		<link rel="stylesheet" href="https://benfed.in/benfed_fertilizer/assets/css/sb-admin.css">
-		<link rel="stylesheet" href="https://benfed.in/benfed_fertilizer/assets/css/select2.css">
-		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-		<script type="text/javascript" src="https://benfed.in/benfed_fertilizer/assets/js/validation.js"></script>
-		<script type="text/javascript" src="https://benfed.in/benfed_fertilizer/assets/js/select2.js"></script>
-		<!-- <script type="text/javascript" src=""></script> -->
-		<link href="https://benfed.in/benfed_fertilizer/assets/css/bootstrap-toggle.css" rel="stylesheet">
-		<script type="text/javascript" src="https://benfed.in/benfed_fertilizer/assets/js/table2excel.js"></script>
-		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
-		<script src="https://benfed.in/benfed_fertilizer/assets/js/bootstrap-toggle.js" ></script> 
 <?php 
 $qr = 'https://chart.googleapis.com/chart?chs=150x150&cht=qr&chl='."Invoice".':'.$data->trans_do. ','."GSTIN".':'.$data->gstin. ','."Society".':' .$data->soc_name.','."Total:".$sum_data->tot_amt_rnd;
 ?>

@@ -61,15 +61,14 @@ class SaleController extends Controller
 								   and a.gst_type_flag='N'
 								   and a.soc_id=c.soc_id
 								   and a.trans_do='$trans_do'");
-//dd(DB::getQueryLog());
-        var_dump($data[0]);
+
 			$sum_data = DB::select("SELECT a.trans_do ,sum(a.qty)as qty,sum(a.base_price) as base_price,
 									sum(a.taxable_amt)as taxable_amt,sum(a.cgst)as cgst,sum(a.sgst)as sgst,
 									sum(a.cgst+a.sgst)as tot_gst,sum(a.dis)as dis,sum(a.tot_amt)as tot_amt,
 									sum(a.paid_amt) as paid_amt,ROUND(sum(a.round_tot_amt))as tot_amt_rnd
 									from v_sale a 
 									where  a.trans_do='$trans_do'");				   
-		 var_dump($sum_data[0]);
+		 
 			return view('sale_invoice.blade', ['data' => $data[0],'sum_data' => $sum_data[0],'trans_do' =>$trans_do ]);
 			
 	}
