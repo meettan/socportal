@@ -46,28 +46,30 @@ class SaleController extends Controller
 
     public function saleinvoice_rep(Request $request)
 	{
-			
-			$trans_do =$request->trans_do;
+		
+			//$trans_do =$request->trans_do;
+			$trans_do = 'INV/HOG/IFFCO/01/22-23/4635_1';
 			$data = DB::select("SELECT a.trans_do ,b.prod_desc ,b.hsn_code,b.gst_rt,c.soc_name,c.soc_add,
 		                           c.gstin,c.mfms,a.trans_no,a.do_dt,a.sale_due_dt,a.trans_type,a.soc_id,
 								   a.comp_id, a.sale_ro,a.stock_point,a.gov_sale_rt,a.qty,a.sale_rt,
 								   a.base_price,a.taxable_amt,a.cgst,a.sgst,a.dis,a.tot_amt,
 								   a.round_tot_amt,a.paid_amt,d.ro_no,d.ro_dt
-								   from td_sale a  ,mm_product b,mm_ferti_soc c,td_purchase d
+								   from v_sale a  ,v_product b,v_ferti_soc c,v_purchase d
 								   where a.prod_id=b.prod_id
 								   and a.sale_ro=d.ro_no
 								   and a.irn is NULL
 								   and a.gst_type_flag='N'
 								   and a.soc_id=c.soc_id
 								   and a.trans_do='$trans_do'");
+
 			$sum_data = DB::select("SELECT a.trans_do ,sum(a.qty)as qty,sum(a.base_price) as base_price,
 									sum(a.taxable_amt)as taxable_amt,sum(a.cgst)as cgst,sum(a.sgst)as sgst,
 									sum(a.cgst+a.sgst)as tot_gst,sum(a.dis)as dis,sum(a.tot_amt)as tot_amt,
 									sum(a.paid_amt) as paid_amt,ROUND(sum(a.round_tot_amt))as tot_amt_rnd
-									from td_sale a 
+									from v_sale a 
 									where  a.trans_do='$trans_do'");				   
 		 
-			return view('sale_invoice.blade', ['data' => $sale_rep[0],'sum_data' => $sum_data[0],'trans_do' =>$trans_do ]);
+			return view('sale_invoice.blade', ['data' => $data[0],'sum_data' => $sum_data[0],'trans_do' =>$trans_do ]);
 			
 	}
    
