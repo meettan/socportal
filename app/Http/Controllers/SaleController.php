@@ -69,7 +69,7 @@ class SaleController extends Controller
 									from v_sale a 
 									where  a.trans_do='$trans_do'");				   
 		 
-			return view('sale_invoice.blade', ['data' => $data[0],'sum_data' => $sum_data[0],'trans_do' =>$trans_do ]);
+			return view('sale_invoice', ['data' => $data[0],'sum_data' => $sum_data[0],'trans_do' =>$trans_do ]);
 			
 	}
    
