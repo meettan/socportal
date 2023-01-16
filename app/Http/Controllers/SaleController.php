@@ -48,7 +48,7 @@ class SaleController extends Controller
 	{
 		DB::enableQueryLog();
 			//$trans_do =$request->trans_do;
-			echo $trans_do = 'INV/HOG/IFFCO/01/22-23/4635_1';
+			$trans_do = 'INV/HOG/IFFCO/01/22-23/4635_1';
 			$data = DB::select("SELECT a.trans_do ,b.prod_desc ,b.hsn_code,b.gst_rt,c.soc_name,c.soc_add,
 		                           c.gstin,c.mfms,a.trans_no,a.do_dt,a.sale_due_dt,a.trans_type,a.soc_id,
 								   a.comp_id, a.sale_ro,a.stock_point,a.gov_sale_rt,a.qty,a.sale_rt,
