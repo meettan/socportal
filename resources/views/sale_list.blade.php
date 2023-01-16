@@ -46,7 +46,7 @@
             <td><?php echo $value->trans_do; ?></td>
             <td>
                 <?php if($value->irn == '') {  ?>
-
+                    nvnvbnvbnvb
                     <a href="{{ route('saleinvoice_rep',['trans_do'=>$value->trans_do])}}" target="_blank" title="Download"><i class="fa fa-download fa-2x" style="color:green;"></i></a>
 
                 <?php }else { ?>

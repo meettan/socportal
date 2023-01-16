@@ -1,6 +1,20 @@
 <?php 
+
 $qr = 'https://chart.googleapis.com/chart?chs=150x150&cht=qr&chl='."Invoice".':'.$data->trans_do. ','."GSTIN".':'.$data->gstin. ','."Society".':' .$data->soc_name.','."Total:".$sum_data->tot_amt_rnd;
-?>
+
+?> 
+<link href="https://benfed.in/benfed_fertilizer/assets/css/bootstrap.min.css" rel="stylesheet">
+		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+		<link rel="stylesheet" href="https://benfed.in/benfed_fertilizer/assets/css/sb-admin.css">
+		<link rel="stylesheet" href="https://benfed.in/benfed_fertilizer/assets/css/select2.css">
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+		<script type="text/javascript" src="https://benfed.in/benfed_fertilizer/assets/js/validation.js"></script>
+		<script type="text/javascript" src="https://benfed.in/benfed_fertilizer/assets/js/select2.js"></script>
+		<!-- <script type="text/javascript" src=""></script> -->
+		<link href="https://benfed.in/benfed_fertilizer/assets/css/bootstrap-toggle.css" rel="stylesheet">
+		<script type="text/javascript" src="https://benfed.in/benfed_fertilizer/assets/js/table2excel.js"></script>
+		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+<script src="https://benfed.in/benfed_fertilizer/assets/js/bootstrap-toggle.js" ></script> 
 <style>
 table {
     border-collapse: collapse;
@@ -112,7 +126,7 @@ tr:hover {background-color: #f5f5f5;}
   </head> -->
 
   <div class="row">
-    <div class="logoSec"><img src="<?php echo base_url("/benfed.png");?>" class="pull-left" /></div>
+    <div class="logoSec"><img src="{{ url('public/images/logo.png') }}" class="pull-left" /></div>
     <div class="pageTitle"><h3><center>Tax Invoice</center></h3></div>
     <div class="barcodePage"><img src="<?= $qr; ?>" class="pull-right" alt=""></div>
   </div>
@@ -244,12 +258,12 @@ tr:hover {background-color: #f5f5f5;}
         <tbody>
           <tr>
             <td scope="row" class="border_right">1</td>
-            <td align="left" valign="top" class="border_right"><strong><?php echo  $data->prod_desc;?><br>
+            <td align="left" valign="top" class="border_right"><strong><?php echo  $data->PROD_DESC;?><br>
               <!-- Godown: 316545455 -->
               </strong>
               <!-- <p><strong>Batch: EFFFFFLOKO</strong></p> -->
               </td>
-            <td align="left" valign="top" class="border_right"><?php echo  $data->hsn_code;?></td>
+            <td align="left" valign="top" class="border_right"><?php echo  $data->HSN_CODE;?></td>
             <td align="left" valign="top" class="border_right"><strong><?php echo  $data->qty;?>
               </strong>
               <!-- 0.254 Mt. -->
@@ -284,7 +298,7 @@ tr:hover {background-color: #f5f5f5;}
 			  <td align="left" valign="top" class="border_right"><table width="100%" border="0" cellspacing="0" cellpadding="0" class="table10" id="example">
 			    <tbody>
 			      <tr>
-			        <td width="50%" class="col_50Per"><?php echo  $data->gst_rt/2;?>%</td>
+			        <td width="50%" class="col_50Per"><?php echo  $data->GST_RT/2;?>%</td>
 			        <td class="col_50Per"><?php echo  $data->cgst;?></td>
 			        </tr>
 			      </tbody>
@@ -292,7 +306,7 @@ tr:hover {background-color: #f5f5f5;}
                 <td align="left" valign="top" class="border_right"><table width="100%" border="0" cellspacing="0" cellpadding="0" class="table11" id="example">
                   <tbody>
                     <tr>
-                      <td width="50%" class="col_50Per"><?php echo  $data->gst_rt/2;?>%</td>
+                      <td width="50%" class="col_50Per"><?php echo  $data->GST_RT/2;?>%</td>
                       <td class="col_50Per"><?php echo  $data->cgst;?></td>
                     </tr>
                   </tbody>
@@ -349,7 +363,7 @@ tr:hover {background-color: #f5f5f5;}
       </table></td>
     </tr>
     <tr>
-      <td align="left" valign="top" class="formDurkBack border_bottom"><div style="padding: 0; margin: 0; float: left">Amount Chargable(in words)INR <?php echo getIndianCurrency($sum_data->tot_amt_rnd);?></div>
+      <td align="left" valign="top" class="formDurkBack border_bottom"><div style="padding: 0; margin: 0; float: left">Amount Chargable(in words)INR {{ Helper::displaywords($sum_data->tot_amt_rnd)}}</div>
 		<div style="padding: 0; margin: 0; float: right; text-align: right">E.&amp; O.	E</div>
 		</td>
     </tr>
@@ -413,7 +427,7 @@ tr:hover {background-color: #f5f5f5;}
             <table width="100%" border="0" cellspacing="0" cellpadding="0" class="table19" id="example">
               <tbody>
                 <tr>
-                  <td width="50%" class="col_50Per"><?php echo  $data->gst_rt/2;?></td>
+                  <td width="50%" class="col_50Per"><?php echo  $data->GST_RT/2;?></td>
                   <td class="col_50Per"><?php echo  $sum_data->cgst;?></td>
                 </tr>
               </tbody>
@@ -423,7 +437,7 @@ tr:hover {background-color: #f5f5f5;}
             <table width="100%" border="0" cellspacing="0" cellpadding="0" class="table20" id="example">
               <tbody>
                 <tr>
-                  <td width="50%" class="col_50Per"><?php echo  $data->gst_rt/2;?></td>
+                  <td width="50%" class="col_50Per"><?php echo  $data->GST_RT/2;?></td>
                   <td class="col_50Per"><?php echo  $sum_data->sgst;?></td>
                 </tr>
               </tbody>
@@ -464,7 +478,7 @@ tr:hover {background-color: #f5f5f5;}
   <tbody>
    
     <tr>
-      <td class="formDurkBack border_bottom border_top"><p style="padding: 0; margin: 0; float: left">Tax Amount(in words)INR <?php echo getIndianCurrency($sum_data->tot_amt_rnd);?></p></td>
+      <td class="formDurkBack border_bottom border_top"><p style="padding: 0; margin: 0; float: left">Tax Amount(in words)INR {{ Helper::displaywords($sum_data->tot_amt_rnd)}}</p></td>
       <td class="formDurkBack border_bottom border_top" align="right">Total: <strong><?php echo  $sum_data->tot_amt_rnd;?></strong></td>
     </tr>
     <tr>
@@ -498,8 +512,8 @@ We declare that this invoice shows the actual price of goods described and parti
   </div>
 
 <div class="billDateGroop">
-  <!-- <div class="crmBill"><strong><?php echo "**"."&#2352;".$data->adv_amt."/-";?></strong></div>	 -->
-<!-- <div class="dateTop">Date: <strong><?php echo  date("d-m-Y", strtotime($data->trans_dt));?></strong></div></div> -->
+  
+
 <br clear="all">
   <p style="padding:0; margin:0; float:left; font-size:12px;">**Subjet to Realisation</p>  <p style="padding:0; margin:0; font-size:12px; float:right;">Authorised Signatory</p>
 <br>
