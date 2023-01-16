@@ -43,6 +43,7 @@ Route::any('/socpayment', [App\Http\Controllers\MoneyreceiptController::class,'s
 Route::get('/moneyrecpt', [App\Http\Controllers\MoneyreceiptController::class,'moneyrecpt'])->name('moneyrecpt');
 Route::any('/salesfilter', [App\Http\Controllers\SaleController::class,'salesfilter'])->name('salesfilter');
 Route::get('/print_receipt', [App\Http\Controllers\SaleController::class,'print_receipt'])->name('print_receipt');
+Route::get('/saleinvoice_rep', [App\Http\Controllers\SaleController::class,'saleinvoice_rep'])->name('saleinvoice_rep');
 Route::post('/socledgerrep', [App\Http\Controllers\SocietyController::class,'socledgerrep'])->name('socledgerrep');
 Route::any('socledger', 'SocietyController@socledger')->name('socledger');
 Route::any('purrep', 'SocietyController@purrep')->name('purrep');

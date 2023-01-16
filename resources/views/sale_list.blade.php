@@ -45,9 +45,16 @@
             <td ><?php echo date("d/m/Y",strtotime($value->do_dt)); ?></td>
             <td><?php echo $value->trans_do; ?></td>
             <td>
+                <?php if($value->irn == '') {  ?>
+
+                    <a href="{{ route('saleinvoice_rep',['trans_do'=>$value->trans_do])}}" target="_blank" title="Download"><i class="fa fa-download fa-2x" style="color:green;"></i></a>
+
+                <?php }else { ?>
                 <button type="button" name="download_<?= $i ?>" class="btn download_custom" id="download"    
                 data-toggle="tooltip" data-placement="bottom" title="download_" <?= $enable_btn; ?>>
                 <a href="{{ route('print_receipt',['irn'=>$value->irn])}}" id="down_clk_td_<?= $i ?>" title="Download"><i class="fa fa-download fa-2x" style="color:green;"></i></a>
+
+                <?php } ?>
             </td>
         </tr>
 
