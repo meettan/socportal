@@ -12,6 +12,9 @@ $qr = 'https://chart.googleapis.com/chart?chs=150x150&cht=qr&chl='."Invoice".':'
 		<script type="text/javascript" src="https://benfed.in/benfed_fertilizer/assets/js/select2.js"></script>
 		<!-- <script type="text/javascript" src=""></script> -->
 		<link href="https://benfed.in/benfed_fertilizer/assets/css/bootstrap-toggle.css" rel="stylesheet">
+    <link href="https://benfed.in/benfed_fertilizer/assets/css/apps.css" rel="stylesheet">
+    <link href="https://benfed.in/benfed_fertilizer/assets/css/apps_newDashboard.css" rel="stylesheet">
+    <link href="https://benfed.in/benfed_fertilizer/assets/css/res.css" rel="stylesheet">
 		<script type="text/javascript" src="https://benfed.in/benfed_fertilizer/assets/js/table2excel.js"></script>
 		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
 <script src="https://benfed.in/benfed_fertilizer/assets/js/bootstrap-toggle.js" ></script> 
@@ -501,10 +504,10 @@ We declare that this invoice shows the actual price of goods described and parti
 <table width="100%" border="0" cellspacing="0" cellpadding="0" class="table23" id="example">
   <tbody>
    
-    <tr>
+    <!-- <tr>
       <td class="padding_topNew padding_botNew">Prepared By</td>
       <td class="padding_topNew padding_botNew">Verified By</td>
-      <td class="padding_topNew padding_botNew">Authorised Signature</td></tr>
+      <td class="padding_topNew padding_botNew">Authorised Signature</td></tr> -->
       </tbody>
       </table>
 </div>
@@ -515,7 +518,9 @@ We declare that this invoice shows the actual price of goods described and parti
   
 
 <br clear="all">
-  <p style="padding:0; margin:0; float:left; font-size:12px;">**Subjet to Realisation</p>  <p style="padding:0; margin:0; font-size:12px; float:right;">Authorised Signatory</p>
+  <p style="padding:0; margin:0; float:left; font-size:12px;">**Subjet to Realisation</p> <br>
+   <!-- <p style="padding:0; margin:0; font-size:12px; float:right;">Authorised Signatory</p> -->
+   <p style="padding:0; margin:0; float:left; font-size:12px;">**This is system generated invoice no signature required.</p>
 <br>
 
 </div>
@@ -553,10 +558,3 @@ We declare that this invoice shows the actual price of goods described and parti
 // ]
    });
 </script>
-<!-- <script type="text/javascript">
-        function print_page() {
-            var ButtonControl = document.getElementById("printbtn");
-            ButtonControl.style.visibility = "hidden";
-            window.print();
-        }
-    </script> -->

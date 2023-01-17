@@ -47,8 +47,8 @@ class SaleController extends Controller
     public function saleinvoice_rep(Request $request)
 	{
 		DB::enableQueryLog();
-			//$trans_do =$request->trans_do;
-			$trans_do = 'INV/BNK/CIL/02/20-21/102_1';
+			$trans_do =$request->trans_do;
+			//$trans_do = 'INV/BNK/CIL/02/20-21/102_1';
 			$data = DB::select("SELECT a.trans_do ,b.prod_desc ,b.hsn_code,b.gst_rt,c.soc_name,c.soc_add,
 		                           c.gstin,c.mfms,a.trans_no,a.do_dt,a.sale_due_dt,a.trans_type,a.soc_id,
 								   a.comp_id, a.sale_ro,a.stock_point,a.gov_sale_rt,a.qty,a.sale_rt,
