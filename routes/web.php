@@ -28,6 +28,10 @@ Route::post('/validatesocdetail',[App\Http\Controllers\UserController::class,'va
 Route::get('/panvalidate', [App\Http\Controllers\UserController::class, 'panvalidate']);
 Route::get('/registerse/{id?}', [App\Http\Controllers\UserController::class,'register_second'])->name('registerse');
 Route::post('/registercomplete',[App\Http\Controllers\UserController::class,'registercomplete']);
+Route::get('/basic_email',[App\Http\Controllers\UserController::class,'basic_email'])->name('basic_email');
+Route::get('/forgotpassword',[App\Http\Controllers\UserController::class,'forgotpassword'])->name('forgotpassword');
+Route::get('/setuppassword',[App\Http\Controllers\UserController::class,'setuppassword'])->name('setuppassword');
+
 Route::get('/dashboard', [App\Http\Controllers\DashboardController::class,'dashboard'])->name('dashboard');
 Route::get('/profile', [App\Http\Controllers\DashboardController::class,'profile'])->name('profile');
 Route::post('/profile_update', [App\Http\Controllers\DashboardController::class,'profile_update'])->name('profile_update');
