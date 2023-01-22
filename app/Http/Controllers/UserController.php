@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 use Session;
 use Illuminate\Http\Request;
+use Mail;
 use Illuminate\Support\Facades\Validator;
 use App\userModel;
 use App\SocietyModel;
@@ -23,6 +24,14 @@ class UserController extends Controller
     public function register_second($id)
     {
         return view('signup2',['id'=>$id]);
+    }
+    public function forgotpassword()
+    {
+        return view('forgotpassword');
+        
+    }
+    public function setuppassword(){
+        return view('setuppassword');
     }
     // Here PAN is using as Uniquie Identifier,Using table v_ferti_soc for validating 
     // society exist or not . After that checking society already register or 
@@ -148,6 +157,25 @@ class UserController extends Controller
     public function termcondition(){
         return view('outer_page/termcondition');
     }
+    public function basic_email() {
+        $data = array('name'=>"Virat Gandhi");
+     
+       
+        // echo "Basic Email Sent. Check your inbox.";
+        // Mail::send([], [], function ($message) { 
+        //     $message->to('lk60588@gmail.com', 'Tutorials Point')
+        //        ->subject('subject')
+        //        ->from('lokesh@synergicsoftek.com','Virat Gandhi') 
+        //        ->setBody('some body', 'text/html'); 
+        // });
+
+        $to = "lk60588@gmail.com";
+        $subject = "My subject";
+        $txt = "Hello world!";
+        $headers = "From: lokesh@synergicsoftek.com" . "\r\n";
+        //"CC: somebodyelse@example.com"
+        mail($to,$subject,$txt,$headers);
+     }
     
 
 }

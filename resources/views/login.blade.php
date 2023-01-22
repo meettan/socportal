@@ -57,7 +57,7 @@
                             class="TextInputBase SizedTextInput SizedTextInput--medium TextInput ValidatedTextInput-input OnBlurValidatedTextInput-input LoginEmailPasswordForm-passwordInput"
                             name="password" value="" autocomplete="username" autofocus="">
                     </div>
-                    <span class="Typography Typography--colorDarkGray1 Typography--s"><a href="#">Forgot your
+                    <span class="Typography Typography--colorDarkGray1 Typography--s"><a href="{{route('forgotpassword')}}">Forgot your
                             password?</a></span>
                     <div class="captureSec">
 
