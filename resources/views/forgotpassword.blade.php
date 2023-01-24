@@ -8,13 +8,14 @@
                 {{ Session::get('error')}}
             </div>
             @endif
-            <p>Please put your registered Email.</p>
-            <form method="POST" action="{{ url('validatesocdetail') }}" id='signupForm' class="validatedForm">
+            <p>Please put your registered PAN .</p>
+            <form method="POST" action="{{ url('forgotpassword') }}" id='signupForm' class="validatedForm">
                 @csrf
                 
                 <label class="full_fieldSign">
-                    <span>Email Id</span>
-                    <input type="email" name="email" required>
+                    <span>PAN No</span>
+                    <input type="text" name="pan" required id="pan">
+                    <span class="error_p" style="color:red;font-size: 14px;"></span>
                 </label>
                 <input type="submit" value="Submit" class="signUpBtn" id="submit">
         </div>
@@ -86,19 +87,18 @@ $('#pan').change(function() {
     var pan = $(this).val();
     $.ajax({
         type: 'GET',
-        url: 'panvalidate',
+        url: 'panvalidateforpassword',
         data: {
             pan: pan
         },
         success: function(data) {
 
             if (data.status == 1) {
-                console.log('sdsdfds');
-                $(".error_p").html("You already registered.");
-                $("#pan").val("");
-            } else if (data.status == 2) {
+               // $(".error_p").html("You already registered.");
+               $('#submit').attr("type", "submit");
+            } else if (data.status == 0) {
                 $(".error_p").html("Pan not available");
-                //$("#pan").val("");
+                $('#submit').attr("type", "button");
             } else {
                 $(".error_p").html("");
 

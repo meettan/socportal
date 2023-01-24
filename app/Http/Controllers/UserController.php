@@ -125,6 +125,21 @@ class UserController extends Controller
             return response()->json(['status'=> 2]);
         }
     }
+    public function panvalidateforpassword(Request $request){
+        $pan = $request->pan;
+        // $panexist = SocietyModel::where(['pan'=> $request->pan])->get();
+        // if (count($panexist) > 0) {
+            $user = userModel::where(['pan'=> $request->pan])->get();
+            if (count($user) > 0) {
+                return response()->json(['status'=> 1]);
+            }else{
+                return response()->json(['status'=> 0]);
+            }
+        // }else{
+        //     return response()->json(['status'=> 2]);
+        // }
+    }
+    
     // Here logout operation happen and destroying session using Laravel 
     // Predefined AUTH middleware. 
     public function logout(){

@@ -30,6 +30,7 @@ Route::get('/registerse/{id?}', [App\Http\Controllers\UserController::class,'reg
 Route::post('/registercomplete',[App\Http\Controllers\UserController::class,'registercomplete']);
 Route::get('/basic_email',[App\Http\Controllers\UserController::class,'basic_email'])->name('basic_email');
 Route::get('/forgotpassword',[App\Http\Controllers\UserController::class,'forgotpassword'])->name('forgotpassword');
+Route::get('/panvalidateforpassword',[App\Http\Controllers\UserController::class,'panvalidateforpassword'])->name('panvalidateforpassword');
 Route::get('/setuppassword',[App\Http\Controllers\UserController::class,'setuppassword'])->name('setuppassword');
 
 Route::get('/dashboard', [App\Http\Controllers\DashboardController::class,'dashboard'])->name('dashboard');

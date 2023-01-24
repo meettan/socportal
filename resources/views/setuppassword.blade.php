@@ -9,7 +9,7 @@
             </div>
             @endif
             <p>BY Setup Password, I agree to the Benfed Privacy Policy and Terms of Service.</p>
-            <form method="POST" action="{{ url('validatesocdetail') }}" id='signupForm' class="validatedForm">
+            <form method="POST" action="{{ url('setuppassword') }}" id='signupForm' class="validatedForm">
                 @csrf
                 <label class="full_fieldSign">
                     <span>Pan No.</span>
