@@ -33,16 +33,15 @@ class UserController extends Controller
             if($user[0]->pan !=''){
 
                 DB::table('td_users')->where('pan', $user[0]->pan)->update(['forgot_pass_otp' => sha1($user[0]->pan),'otp_date'=>date('Y-m-d')]);
-                $link = '<!DOCTYPE html><html><head><title>Password Change Email</title></head><body>';
-                $link .='<h2>Welcome to the Benfed</h2><br/>Your registered email-id is "'.$user[0]->email.'" , Please click on the below link to Chnage your Password <br/>';
+        
                 $url = route('setuppassword',['pan'=>$user[0]->pan,'emailid'=>$user[0]->email,'token'=>sha1($user[0]->pan)]);
-                $link .= '<a href="'.$url.'" target="_blank">Verify Link</a>';
-                $link .= '</body></html>';
-                //$data = array('name'=>"Virat Gandhi");
-                Mail::send('mail', $link, function($message) {
-                    $message->to('lk60588@gmail.com', 'Benfed')->subject
-                        ('Change Password');
-                    $message->from('lokesh@synergicsoftek.com','Lokesh');
+                $template_data = ['email' => $user[0]->email, 'link' => $url];
+                $email =$user[0]->email;
+                Mail::send(['html' => 'email.change_password'], $template_data,
+                        function ($message) use ($email) {
+                            $message->from('lokesh@synergicsoftek.com','Lokesh');
+                            $message->to($email)
+                            ->subject('Account verification');
                 });
                 if (Mail::failures()) {
                     Session::flash('error_msg','Mail not sent ! Failed');
@@ -52,10 +51,7 @@ class UserController extends Controller
                     return redirect()->route('login');
                 }
                 
-                
             }
-            
-            //echo $user[0]->email;
 
         }else{
             return view('forgotpassword');
@@ -223,29 +219,14 @@ class UserController extends Controller
         return view('outer_page/termcondition');
     }
     public function basic_email() {
-        $data = array('name'=>"Virat Gandhi");
-     
-       
-        // echo "Basic Email Sent. Check your inbox.";
-        // Mail::send([], [], function ($message) { 
-        //     $message->to('lk60588@gmail.com', 'Tutorials Point')
-        //        ->subject('subject')
-        //        ->from('lokesh@synergicsoftek.com','Virat Gandhi') 
-        //        ->setBody('some body', 'text/html'); 
-        // });
-
-        $to = "lk60588@gmail.com";
-        $subject = "My subject";
-        $txt = "Hello world!";
-        $headers = "From: lokesh@synergicsoftek.com" . "\r\n";
-        //"CC: somebodyelse@example.com"
-        
-        $result = mail($to,$subject,$txt,$headers);
-        if(!$result) {   
-            echo "Error";   
-        } else {
-            echo "Success";
-        }
+        $template_data = ['otp' => '123', 'name' => '123'];
+        //send verification code
+        $email ='lk60588@gmail.com';
+        Mail::send(['html' => 'email.account_verification'], $template_data,
+                  function ($message) use ($email) {
+                     $message->to($email)
+                     ->subject('Account verification');
+        });
      }
     
 
