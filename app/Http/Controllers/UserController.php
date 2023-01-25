@@ -39,17 +39,20 @@ class UserController extends Controller
                 $link .= '<a href="'.$url.'" target="_blank">Verify Link</a>';
                 $link .= '</body></html>';
                 //$data = array('name'=>"Virat Gandhi");
-                $result = Mail::send('mail', $link, function($message) {
+                Mail::send('mail', $link, function($message) {
                     $message->to('lk60588@gmail.com', 'Benfed')->subject
                         ('Change Password');
                     $message->from('lokesh@synergicsoftek.com','Lokesh');
                 });
-                if($result){
+                if (Mail::failures()) {
+                    Session::flash('error_msg','Mail not sent ! Failed');
+                    return redirect()->route('login');
+                }else{
                     Session::flash('msg','Mail Sent successfully');
                     return redirect()->route('login');
                 }
-                Session::flash('error_msg','Mail not sent ! Failed');
-                return redirect()->route('login');
+                
+                
             }
             
             //echo $user[0]->email;
