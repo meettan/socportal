@@ -13,12 +13,13 @@
                 @csrf
                 <label class="full_fieldSign">
                     <span>Pan No.</span>
-                    <input type="text" placeholder="Pan No." name="pan" required id="pan" readonly>
+                    <input type="hidden" value="{{$datas->token}}" name="token">
+                    <input type="text" placeholder="Pan No." name="pan" required id="pan" readonly value="{{$datas->pan}}">
                     <span class="error_p" style="color:red;font-size: 14px;"></span>
                 </label>
                 <label class="full_fieldSign">
                     <span>Email Id</span>
-                    <input type="email" name="email" required readonly>
+                    <input type="email" name="email" required readonly value="{{$datas->emailid}}">
                 </label>
                 <label class="full_fieldSign">
                     <span>Password</span>
