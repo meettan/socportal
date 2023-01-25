@@ -39,7 +39,7 @@ class UserController extends Controller
                 $email =$user[0]->email;
                 Mail::send(['html' => 'email.change_password'], $template_data,
                         function ($message) use ($email) {
-                            $message->from('lokesh@synergicsoftek.com','Lokesh');
+                            $message->from('lokesh@synergicsoftek.com','Benfed');
                             $message->to($email)
                             ->subject('Account verification');
                 });
