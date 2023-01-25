@@ -25,13 +25,60 @@ class UserController extends Controller
     {
         return view('signup2',['id'=>$id]);
     }
-    public function forgotpassword()
+    public function forgotpassword(Request $request)
     {
-        return view('forgotpassword');
+        if ($request->isMethod('post')) {
+
+            $user = userModel::where(['pan'=> $request->pan])->get();
+            if($user[0]->pan !=''){
+
+                DB::table('td_users')->where('pan', $user[0]->pan)->update(['forgot_pass_otp' => sha1($user[0]->pan),'otp_date'=>date('Y-m-d')]);
+                $link = '<!DOCTYPE html><html><head><title>Password Change Email</title></head><body>';
+                $link .='<h2>Welcome to the Benfed</h2><br/>Your registered email-id is "'.$user[0]->email.'" , Please click on the below link to Chnage your Password <br/>';
+                $url = route('setuppassword',['pan'=>$user[0]->pan,'emailid'=>$user[0]->email,'token'=>sha1($user[0]->pan)]);
+                $link .= '<a href="'.$url.'" target="_blank">Verify Link</a>';
+                $link .= '</body></html>';
+                //$data = array('name'=>"Virat Gandhi");
+                $result = Mail::send('mail', $link, function($message) {
+                    $message->to('lk60588@gmail.com', 'Benfed')->subject
+                        ('Change Password');
+                    $message->from('lokesh@synergicsoftek.com','Lokesh');
+                });
+                if($result){
+                    Session::flash('msg','Mail Sent successfully');
+                    return redirect()->route('login');
+                }
+                Session::flash('error_msg','Mail not sent ! Failed');
+                return redirect()->route('login');
+            }
+            
+            //echo $user[0]->email;
+
+        }else{
+            return view('forgotpassword');
+        }
         
     }
-    public function setuppassword(){
-        return view('setuppassword');
+    public function setuppassword(Request $request){
+        if($request->isMethod('post')) {
+            $token = $request->token;
+            $user = userModel::where(['pan'=> $request->pan])->get();
+            if($token == $user[0]->forgot_pass_otp){
+                $pass = Hash::make(request('password'));
+                DB::table('td_users')->where('pan', $request->pan)->update(['password' => $pass,'forgot_pass_otp'=>'' ]);
+                Session::flash('msg','Password change successfully');
+                return redirect()->route('login');
+            }else{
+                Session::flash('error_msg','Token mismatch ! Failed');
+                return redirect()->route('login');
+            }
+            
+        }else{
+            $pan = $request->pan;
+            $token = $request->token;
+           return view('setuppassword',['datas'=>$request]);
+        }
+         
     }
     // Here PAN is using as Uniquie Identifier,Using table v_ferti_soc for validating 
     // society exist or not . After that checking society already register or 
@@ -189,7 +236,13 @@ class UserController extends Controller
         $txt = "Hello world!";
         $headers = "From: lokesh@synergicsoftek.com" . "\r\n";
         //"CC: somebodyelse@example.com"
-        mail($to,$subject,$txt,$headers);
+        
+        $result = mail($to,$subject,$txt,$headers);
+        if(!$result) {   
+            echo "Error";   
+        } else {
+            echo "Success";
+        }
      }
     
 

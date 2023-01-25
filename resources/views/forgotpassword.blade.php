@@ -95,13 +95,13 @@ $('#pan').change(function() {
 
             if (data.status == 1) {
                // $(".error_p").html("You already registered.");
+               $(".error_p").html("");
                $('#submit').attr("type", "submit");
             } else if (data.status == 0) {
                 $(".error_p").html("Pan not available");
                 $('#submit').attr("type", "button");
             } else {
                 $(".error_p").html("");
-
             }
 
         }
