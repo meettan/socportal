@@ -8,7 +8,7 @@
                 {{ Session::get('error')}}
             </div>
             @endif
-            <p>Please put your registered PAN .</p>
+            <p>Please supply your PAN .</p>
             <form method="POST" action="{{ url('forgotpassword') }}" id='signupForm' class="validatedForm">
                 @csrf
                 
@@ -98,7 +98,7 @@ $('#pan').change(function() {
                $(".error_p").html("");
                $('#submit').attr("type", "submit");
             } else if (data.status == 0) {
-                $(".error_p").html("Pan not available");
+                $(".error_p").html("Invalid PAN");
                 $('#submit').attr("type", "button");
             } else {
                 $(".error_p").html("");

@@ -35,19 +35,19 @@ class UserController extends Controller
                 DB::table('td_users')->where('pan', $user[0]->pan)->update(['forgot_pass_otp' => sha1($user[0]->pan),'otp_date'=>date('Y-m-d')]);
         
                 $url = route('setuppassword',['pan'=>$user[0]->pan,'emailid'=>$user[0]->email,'token'=>sha1($user[0]->pan)]);
-                $template_data = ['email' => $user[0]->email, 'link' => $url];
+                $template_data = ['email' => $user[0]->email,'link' => $url,'soc_name'=> $user[0]->soc_name];
                 $email =$user[0]->email;
                 Mail::send(['html' => 'email.change_password'], $template_data,
                         function ($message) use ($email) {
                             $message->from('lokesh@synergicsoftek.com','Benfed');
                             $message->to($email)
-                            ->subject('Account verification');
+                            ->subject('Password Reset');
                 });
                 if (Mail::failures()) {
                     Session::flash('error_msg','Mail not sent ! Failed');
                     return redirect()->route('login');
                 }else{
-                    Session::flash('msg','Mail Sent successfully');
+                    Session::flash('msg','A mail has been send to your registered mail id.Please check your mail.');
                     return redirect()->route('login');
                 }
                 
