@@ -90,12 +90,19 @@ class DashboardController extends Controller
 
     if ($count > 0 ){
 
-      $rtndata = DB::select("select sum((tot_amt))cr_amt
-      from   v_dr_cr_note
-      where  soc_id 	= '".$soc."'
-      and    trans_flag = 'R'
-      and    recpt_no like '%Crnote%'
-      and    trans_dt  between '".$maxdate."' and '".$date."'");
+      // $rtndata = DB::select("select sum((tot_amt))cr_amt
+      // from   v_dr_cr_note
+      // where  soc_id 	= '".$soc."'
+      // and    trans_flag = 'R'
+      // and    recpt_no like '%Crnote%'
+      // and    trans_dt  between '".$maxdate."' and '".$date."'");
+      $rtndata = DB::select("select sum((v_dr_cr_note.tot_amt))cr_amt
+      from   v_dr_cr_note,v_sale
+      where  v_dr_cr_note.soc_id = '".$soc."'
+      and v_dr_cr_note.invoice_no = v_sale.trans_do
+      and    v_dr_cr_note.trans_flag = 'R'
+      and    v_dr_cr_note.recpt_no like '%Crnote%'
+      and    v_dr_cr_note.trans_dt  between '".$maxdate."' and '".$date."'");
                                                       
       $cr_amt=$rtndata[0]->cr_amt;
     }else{
