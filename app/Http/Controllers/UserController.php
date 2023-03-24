@@ -141,7 +141,14 @@ class UserController extends Controller
                     ->first();
                     session(['socuserdtls' => $userdtl]);
                     Session::put('raw_password', $request->password);
-
+                    $auditdata = array(
+                                    'login_dt' => date("Y-m-d H:i:s"),
+                                    'user_id' => $request->pan,
+                                    'terminal_name' => $_SERVER['REMOTE_ADDR']
+                                );
+                    $audti_trail = DB::table('td_audit_trail')->insert($auditdata);
+                    $id = DB::getPdo()->lastInsertId();
+                    Session::put('audit_trail_id', $id);
                     return redirect()->route('dashboard');
                 }else{
                     return redirect()->back()->with('login_error','error')->withInput($request->only('email', 'remember'));
@@ -189,8 +196,8 @@ class UserController extends Controller
     // Here logout operation happen and destroying session using Laravel 
     // Predefined AUTH middleware. 
     public function logout(){
-
-        
+        $id = Session::get('audit_trail_id');
+        DB::table('td_audit_trail')->where('id', $id)->update(['logout' => date("Y-m-d H:i:s")]);
         Auth::logout();
         Session::flush();
         return redirect()->route('login');
