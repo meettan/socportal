@@ -60,6 +60,14 @@ class SocietyController extends Controller
             and c.soc_id=b.soc_id and b.soc_id = '$soc_id'
             and c.sale_ro = d.ro_no and c.do_dt between '$frmDt' and '$toDt' 
             and c.prod_id=e.prod_id
+            Union
+            SELECT MAX(trans_dt),'' prod,'' as inv_no, c.soc_id soc_id,soc_name,0 as paid_amt,sum(c.tot_amt),0,0,''as ro_no,trans_dt as ro_dt,0 as qty ,0,'TCS' remarks
+         FROM v_drnote_tcs c,v_ferti_soc b
+         where c.soc_id=b.soc_id
+         and c.soc_id = '$soc_id'
+         and c.branch_id='$branch'
+         and c.trans_dt between '$frmDt' and '$toDt'
+         and c.trans_dt and c.tot_amt>0
            )a
            
            group by trans_dt,prod,inv_no,soc_id,soc_name,ro_no,ro_dt,remarks
