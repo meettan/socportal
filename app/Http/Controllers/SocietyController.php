@@ -65,7 +65,6 @@ class SocietyController extends Controller
          FROM v_drnote_tcs c,v_ferti_soc b
          where c.soc_id=b.soc_id
          and c.soc_id = '$soc_id'
-         and c.branch_id='$branch'
          and c.trans_dt between '$frmDt' and '$toDt'
          and c.trans_dt and c.tot_amt>0
            )a
