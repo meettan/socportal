@@ -67,6 +67,7 @@ class SocietyController extends Controller
          and c.soc_id = '$soc_id'
          and c.trans_dt between '$frmDt' and '$toDt'
          and c.trans_dt and c.tot_amt>0
+         group by c.soc_id,soc_name,trans_dt
            )a
            
            group by trans_dt,prod,inv_no,soc_id,soc_name,ro_no,ro_dt,remarks
