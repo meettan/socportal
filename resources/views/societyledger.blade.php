@@ -187,7 +187,7 @@
                                            
                                         }
 
-                                    }elseif( $prodtls->remarks=='NEFT Adj' || $prodtls->remarks=='Pay Order Adj' || $prodtls->remarks=='Draft Adj'|| $prodtls->remarks=='Cheque Adj'){
+                                    }elseif( $prodtls->remarks=='NEFT Adj' || $prodtls->remarks=='Pay Order Adj' || $prodtls->remarks=='Draft Adj'|| $prodtls->remarks=='Cheque Adj' || $prodtls->remarks=='Net Banking' ){
                                         
 										$totalamt -= (($prodtls->tot_recv));
                                         if($totalamt>0){
@@ -219,6 +219,21 @@
                                            
                                         }
                                      }
+                                     elseif($prodtls->remarks=='TCS'){
+                                        
+                                        $totalamt += $prodtls->tot_payble ;
+                                        if($totalamt>0){
+                                        $totVal=round($totalamt, 2);
+                                         echo"<td>".abs( $totVal)."</td>";
+                                         echo"<td></td>";
+                                        }
+                                        if($totalamt<0){
+                                         echo"<td></td>";
+                                         $totVal=round($totalamt, 2);
+                                         echo"<td>".abs( $totVal)."</td>";
+                                        
+                                         }
+                                        }
                                      ?>
                                                     </tr>
                                                     <?php  
