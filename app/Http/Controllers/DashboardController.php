@@ -151,7 +151,7 @@ class DashboardController extends Controller
     $cls_amt = 0;
     $cls_amt = ($opn_amt + $adv_amt + $cr_amt + $oth_amt) - $sale_amt;
    // $soc_balance_amt = $cls_amt;
-     $soc_balance_amt = $tcs_amt;
+     $soc_balance_amt = $count;
     if ($soc_balance_amt < 0) {
 			$soc_balance_amt_data = "Dr.";
 		} else {
