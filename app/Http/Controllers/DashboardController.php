@@ -142,16 +142,16 @@ class DashboardController extends Controller
       from   v_drnote_tcs
       where  soc_id   = '".$soc."'
      and    trans_dt   between '".$maxdate."' and '".$date."'");                         
-      $tcs_amt=$tcsdata[0]->tcs_amt;
+      $tcs_amt= $tcsdata[0]->tcs_amt;
     }else{
       $tcs_amt = 0;
     
     }
 
     $cls_amt = 0;
-    $cls_amt = ($opn_amt + $adv_amt + $cr_amt + $oth_amt) - ($sale_amt + $tcs_amt);
-    $soc_balance_amt = $cls_amt;
-    
+    $cls_amt = ($opn_amt + $adv_amt + $cr_amt + $oth_amt) - $sale_amt;
+   // $soc_balance_amt = $cls_amt;
+     $soc_balance_amt = $tcs_amt;
     if ($soc_balance_amt < 0) {
 			$soc_balance_amt_data = "Dr.";
 		} else {
