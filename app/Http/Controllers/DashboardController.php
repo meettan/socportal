@@ -136,22 +136,27 @@ class DashboardController extends Controller
     
     }
 
-    if ($count > 0 ){
+   // if ($count > 0 ){
      
       $tcsdata = DB::select("select sum(((tot_amt)))tcs_amt
       from   v_drnote_tcs
       where  soc_id   = '".$soc."'
-     and    trans_dt   between '".$maxdate."' and '".$date."'");                         
+     and    trans_dt   between '".$maxdate."' and '".$date."'");  
+     if($tcsdata[0]) {
       $tcs_amt= $tcsdata[0]->tcs_amt;
-    }else{
-      $tcs_amt = 0;
+     }else{
+      $tcs_amt= 0;
+     }                      
+      
+   // }else{
+   //   $tcs_amt = 0;
     
-    }
+   // }
 
     $cls_amt = 0;
-    $cls_amt = ($opn_amt + $adv_amt + $cr_amt + $oth_amt) - $sale_amt;
-   // $soc_balance_amt = $cls_amt;
-     $soc_balance_amt = $count;
+    $cls_amt = ($opn_amt + $adv_amt + $cr_amt + $oth_amt) - ($sale_amt + $tcs_amt) ;
+    $soc_balance_amt = $cls_amt;
+    // $soc_balance_amt = $count;
     if ($soc_balance_amt < 0) {
 			$soc_balance_amt_data = "Dr.";
 		} else {
