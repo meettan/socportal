@@ -65,12 +65,16 @@
                 <li>
                     <div class="link"><a href="{{route('drcrnote')}}"><i class="fa fa-tachometer"></i>Credit Note</a></div>
                 </li>
-                <li>
+
+                <!-- <li>
                     <div class="link"><a href="{{route('advancefilter')}}"><i class="fa fa-tachometer"></i>Advance</a></div>
-                </li>
+                </li> -->
                 <li>
-                    <div class="link"><a href="{{route('socpayment')}}"><i class="fa fa-tachometer"></i>Money Receipt</a></div>
+                    <div class="link"><a href="{{route('advancefilter')}}"><i class="fa fa-tachometer"></i>Money Receipt</a></div>
                 </li>
+                <!-- <li>
+                    <div class="link"><a href="{{route('socpayment')}}"><i class="fa fa-tachometer"></i>Money Receipt</a></div>
+                </li> -->
                 <li>
                     <div class="link"><a href="{{route('socledger')}}"><i class="fa fa-tachometer"></i>Society Ledger</a></div>
                 </li>
