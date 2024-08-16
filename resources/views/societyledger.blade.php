@@ -20,14 +20,29 @@
                             <form method="POST" action="{{ url('socledger') }}" id='signupForm' class="validatedForm">
                                 @csrf
                                 <div class="row groupDataStatFrom">
-                                    <label for="to_date" class="col-sm-2 col-form-label">From Date:</label>
-                                    <div class="col-md-3">
-                                        <input type="date" name="from_date" class="form-control required" value="<?=$financial_yearst?>"
+                                    <label for="to_date" class="col-sm-1 col-form-label">YEAR</label>
+                                    <div class="col-md-2">
+                                    <select name="year" class='form-control' required id="year">
+                                         <option value="">Select Year</option>
+                                        <option value="2023">2023</option>
+                                        <option value="2024">2024</option>
+                                        <option value="2025">2025</option>
+					<option value="2026">2026</option>
+					<option value="2027">2027</option>
+					<option value="2028">2028</option>
+					<option value="2029">2029</option>
+					<option value="2030">2030</option>
+
+                                    </select>   
+                                    </div>
+                                    <label for="to_date" class="col-sm-1 col-form-label">From Date:</label>
+                                    <div class="col-md-2">
+                                        <input type="date" name="from_date" id="from_date" class="form-control required" value="<?=$financial_yearst?>"
                                             min='' readonly/>
                                     </div>
-                                    <label for="to_date" class="col-sm-2 col-form-label">To Date:</label>
-                                    <div class="col-md-3">
-                                        <input type="date" name="to_date" id='to_date' class="form-control" value="<?=$toDt?>"  required/>
+                                    <label for="to_date" class="col-sm-1 col-form-label">To Date:</label>
+                                    <div class="col-md-2">
+                                        <input type="date" name="to_date" id='to_date' class="form-control" value="<?=$toDt?>"  max="" required/>
                                     </div>
                                     <div class="col-md-2"><input type="submit"
                                             class="btn btn-primary form-control required"></div>
@@ -289,6 +304,16 @@
         @endsection
         @section('script')
         <script>
+            $("#year").change(function(){
+              var years = $(this).val();
+                $("#year").rom_date
+                $(this).attr('value');
+                var srtdt = years+'-04-01';
+                var nextyer = parseInt(years)+parseInt(1);
+                var todt  = nextyer+'-03-30';
+                $('#from_date').val(srtdt)
+                $('#to_date').attr('max', todt)
+                });
         function printDiv() {
             var divToPrint = document.getElementById('divToPrint');
             var WindowObject = window.open('', 'Print-Window');
