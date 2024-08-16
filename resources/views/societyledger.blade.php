@@ -23,7 +23,8 @@
                                     <label for="to_date" class="col-sm-1 col-form-label">YEAR</label>
                                     <div class="col-md-2">
                                     <select name="year" class='form-control' required id="year">
-                                         <option value="">Select Year</option>
+                                        <option value="">Select Year</option>
+                                        <option value="2022">2022</option>
                                         <option value="2023">2023</option>
                                         <option value="2024">2024</option>
                                         <option value="2025">2025</option>
@@ -33,7 +34,7 @@
 					<option value="2029">2029</option>
 					<option value="2030">2030</option>
 
-                                    </select>   
+                                    </select>
                                     </div>
                                     <label for="to_date" class="col-sm-1 col-form-label">From Date:</label>
                                     <div class="col-md-2">
@@ -107,8 +108,8 @@
 
                                                     <?php
 
-                                if($all_data){ 
-									
+                                if($all_data){
+
                                     $i = 1;
                                     $total = 0.00;
                                     $tot_sale = 0.00;
@@ -141,13 +142,13 @@
                                                         <!--Invoice/Receipt no.--->
                                                         <td class="report sale" id="sale">
                                                             <!--Total Amount--->
-                                                            <?php  echo  $prodtls->tot_payble +$prodtls->cgst + $prodtls->sgst;  
+                                                            <?php  echo  $prodtls->tot_payble +$prodtls->cgst + $prodtls->sgst;
                                                 $totalamount += $prodtls->tot_payble +$prodtls->cgst + $prodtls->sgst;
                                                 $saleAmt += $prodtls->tot_payble +$prodtls->cgst + $prodtls->sgst; ?>
                                                         </td>
                                                         <td>
                                                             <!--Advance/Credit Note Amount--->
-                                                            <?php  if($prodtls->remarks=='Opening'){                          
+                                                            <?php  if($prodtls->remarks=='Opening'){
 										        echo '0.00';
 									          }else{
 										        echo round(abs($prodtls->tot_paid),2) ; $advCrnote+=$prodtls->tot_paid;}
@@ -164,28 +165,28 @@
 
                                                         </td>
 
-                                                        <?php 
-										
+                                                        <?php
+
                                      if($prodtls->remarks=='Opening'){
-                                       	 
+
                                         $totalamt = (($prodtls->tot_recv) +($prodtls->tot_paid));
-                                       
+
                                         if($totalamt>0){
                                             $totalamt =$totalamt;
                                             $totVal=round($totalamt, 2);
                                             echo"<td>".abs($totVal)."</td>";
                                             echo"<td></td>";
-                                          
+
                                         }
                                         if($totalamt<0){
                                             $totalamt =$totalamt;
                                             echo"<td></td>";
                                             $totVal=round($totalamt, 2);
                                             echo"<td>".abs( $totVal)."</td>";
-                                          
-                                           
+
+
                                         }
-                                       
+
                                      }elseif($prodtls->remarks=='Advance'||$prodtls->remarks=='Cr note'){
 
                                         $totalamt -= (($prodtls->tot_paid));
@@ -199,11 +200,11 @@
                                             echo"<td></td>";
                                             $totVal=round($totalamt, 2);
                                             echo"<td>".abs( $totVal)."</td>";
-                                           
+
                                         }
 
                                     }elseif( $prodtls->remarks=='NEFT Adj' || $prodtls->remarks=='Pay Order Adj' || $prodtls->remarks=='Draft Adj'|| $prodtls->remarks=='Cheque Adj' || $prodtls->remarks=='Net Banking' ){
-                                        
+
 										$totalamt -= (($prodtls->tot_recv));
                                         if($totalamt>0){
                                             $totVal=round($totalamt, 2);
@@ -214,15 +215,15 @@
                                             echo"<td></td>";
                                             $totVal=round($totalamt, 2);
                                             echo"<td>".abs( $totVal)."</td>";
-                                           
+
                                         }
 
                                      }elseif($prodtls->remarks=='Sale'){
-                                      
+
                                       $totalamt += $prodtls->tot_payble +$prodtls->cgst + $prodtls->sgst;
-  
+
                                         if($totalamt>0){
-                                           
+
                                             $totVal=round($totalamt, 2);
                                             echo"<td>".abs( $totVal)."</td>";
                                             echo"<td></td>";
@@ -231,11 +232,11 @@
                                             echo"<td></td>";
                                             $totVal=round($totalamt, 2);
                                             echo"<td>".abs( $totVal)."</td>";
-                                           
+
                                         }
                                      }
                                      elseif($prodtls->remarks=='TCS'){
-                                        
+
                                         $totalamt += $prodtls->tot_payble ;
                                         if($totalamt>0){
                                         $totVal=round($totalamt, 2);
@@ -246,15 +247,15 @@
                                          echo"<td></td>";
                                          $totVal=round($totalamt, 2);
                                          echo"<td>".abs( $totVal)."</td>";
-                                        
+
                                          }
                                         }
                                      ?>
                                                     </tr>
-                                                    <?php  
+                                                    <?php
                                     }
                                 ?>
-                                                    <?php 
+                                                    <?php
                                        }
                                 else{
 
@@ -264,7 +265,7 @@
                                     <td></td><td  style='text-align:center;'>No Data Found</td>
                                      <td></td><td></td><td></td>
                                      </tr>";
-                                }   
+                                }
                             ?>
                                                     <tr style="font-weight: bold;">
                                                         <td></td>
@@ -272,7 +273,7 @@
                                                         <td></td>
                                                         <td class="report" style="text-align:right">Total</td>
                                                         <!-- <td class="report"><?=$taxable?></td>
-                                <td class="report"><?=$tot_cgst?></td>  
+                                <td class="report"><?=$tot_cgst?></td>
                                 <td class="report"><?=$tot_sgst?></td>   -->
                                                         <td class="report"><?=$totalamount?></td>
                                                         <td class="report"><?=$advCrnote?></td>
