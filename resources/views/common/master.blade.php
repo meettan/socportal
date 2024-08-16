@@ -60,7 +60,7 @@
                     </div>
                 </li>
                 <li>
-                    <div class="link"><a href="{{route('salesfilter')}}"><i class="fa fa-tachometer"></i>Sale</a></div>
+                    <div class="link"><a href="{{route('salesfilter')}}"><i class="fa fa-tachometer"></i>Purchase</a></div>
                 </li>
                 <li>
                     <div class="link"><a href="{{route('drcrnote')}}"><i class="fa fa-tachometer"></i>Credit Note</a></div>
@@ -78,9 +78,9 @@
                 <li>
                     <div class="link"><a href="{{route('socledger')}}"><i class="fa fa-tachometer"></i>Society Ledger</a></div>
                 </li>
-                <li>
+                <!-- <li>
                     <div class="link"><a href="{{route('purrep')}}"><i class="fa fa-tachometer"></i>Purchase History</a></div>
-                </li>
+                </li> -->
                 <li>
                     <div class="link"><a href="{{route('paymentlist')}}"><i class="fa fa-tachometer"></i>Payment History</a>
                     </div>
