@@ -62,7 +62,7 @@
                                                 <h4>HEAD OFFICE: SOUTHEND CONCLAVE, 3RD FLOOR, <br>
                                                     1582 RAJDANGA MAIN ROAD,
                                                     KOLKATA-700107.</h4>
-                                                <h4 class="h4CustomPrintTop">Society Ledger Between:
+                                                <h4 class="h4CustomPrintTop">Insecticide Ledger Between:
                                                     <?php echo date('d/m/Y',strtotime($frmDt)); ?>
                                                     To <?php echo date('d/m/Y',strtotime($toDt)); ?></h4>
                                             </div>
