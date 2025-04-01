@@ -76,7 +76,10 @@
                     <div class="link"><a href="{{route('socpayment')}}"><i class="fa fa-tachometer"></i>Money Receipt</a></div>
                 </li> -->
                 <li>
-                    <div class="link"><a href="{{route('socledger')}}"><i class="fa fa-tachometer"></i>Society Ledger</a></div>
+                    <div class="link"><a href="{{route('socledger')}}"><i class="fa fa-tachometer"></i>Society Ferti Ledger</a></div>
+                </li>
+                <li>
+                    <div class="link"><a href="{{route('socledgerins')}}"><i class="fa fa-tachometer"></i>Society inseti Ledger</a></div>
                 </li>
                 <!-- <li>
                     <div class="link"><a href="{{route('purrep')}}"><i class="fa fa-tachometer"></i>Purchase History</a></div>
@@ -133,12 +136,12 @@
 
             </div> <!--  Div End For Getting Ajax data and page  -->
         </div>
-        
+
     </div>
 
-    
-       
-   
+
+
+
     <script>
     $(document).ready(function() {
         $('#example').DataTable();
@@ -148,14 +151,14 @@
 
             var ext = $(this).val().split('.').pop().toLowerCase();
             if($.inArray(ext, ['jpg','jpeg']) == -1) {
-                    
-                alert('invalid Image type!');        
+
+                alert('invalid Image type!');
                 $(this).val('');
             }else{
-                    //  2000000  => 2MB  File size 
+                    //  2000000  => 2MB  File size
                 if(this.files[0].size > 2000000) {
-                    
-                alert('Please upload file up to 2MB. Thanks!!');        
+
+                alert('Please upload file up to 2MB. Thanks!!');
                 $(this).val('');
                 }
                 }
@@ -185,9 +188,9 @@
                 <li><a href="{{route('termcondition')}}">Terms &amp; Condition</a></li>
             </ul>
         </div>
-</div>       
+</div>
 </body>
-  
+
 
 
 </html>

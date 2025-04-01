@@ -51,6 +51,8 @@ Route::get('/print_receipt', [App\Http\Controllers\SaleController::class,'print_
 Route::get('/saleinvoice_rep', [App\Http\Controllers\SaleController::class,'saleinvoice_rep'])->name('saleinvoice_rep');
 Route::post('/socledgerrep', [App\Http\Controllers\SocietyController::class,'socledgerrep'])->name('socledgerrep');
 Route::any('socledger', 'SocietyController@socledger')->name('socledger');
+// Route::post('/socledgerrep', [App\Http\Controllers\SocietyController::class,'socledgerrep'])->name('socledgerrep');
+Route::any('socledgerins', 'SocietyController@socledgerins')->name('socledgerins');
 Route::any('purrep', 'SocietyController@purrep')->name('purrep');
 
 //  Payment detail  route start
@@ -91,7 +93,7 @@ Route::get('/payhistory' ,[App\Http\Controllers\PaymentController::class,'payhis
 
 // Payment detail  route End
 
-//   Payment Web response  
+//   Payment Web response
 
 Route::get('/settlementdetails/{id?}' ,[App\Http\Controllers\HdfcresponseController::class,'settlementdetails'])->name('settlementdetails');
 //Route::get('/settlementdetails' ,[App\Http\Controllers\HdfcresponseController::class,'settlementdetails'])->name('settlementdetails');
