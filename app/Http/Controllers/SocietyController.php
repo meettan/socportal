@@ -180,10 +180,10 @@ class SocietyController extends Controller
            group by trans_dt,prod,inv_no,soc_id,soc_name,ro_no,ro_dt,remarks
             ORDER BY `a`.`trans_dt`,`a`.`inv_no`");
 
-        return view('socledgerins', ['all_data' => $data,'frmDt'=>$frmDt,'toDt'=>$toDt]);
+        return view('societyledgerins', ['all_data' => $data,'frmDt'=>$frmDt,'toDt'=>$toDt]);
 
       }else{
-         return view('socledgerins', ['all_data' => '','toDt'=>'']);
+         return view('societyledgerins', ['all_data' => '','toDt'=>'']);
       }
 
 
