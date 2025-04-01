@@ -17,7 +17,7 @@
                                 }
                         ?>
                         <div class="wrapper_fixed">
-                            <form method="POST" action="{{ url('socledger') }}" id='signupForm' class="validatedForm">
+                            <form method="POST" action="{{ url('socledgerins') }}" id='signupForm' class="validatedForm">
                                 @csrf
                                 <div class="row groupDataStatFrom">
                                     <label for="to_date" class="col-sm-1 col-form-label">YEAR</label>
