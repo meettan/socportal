@@ -311,7 +311,7 @@
                 $(this).attr('value');
                 var srtdt = years+'-04-01';
                 var nextyer = parseInt(years)+parseInt(1);
-                var todt  = nextyer+'-03-30';
+                var todt  = nextyer+'-03-31';
                 $('#from_date').val(srtdt)
                 $('#to_date').attr('max', todt)
                 });
