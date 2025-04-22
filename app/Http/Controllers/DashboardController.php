@@ -15,9 +15,9 @@ class DashboardController extends Controller
     }
     public function dashboard()
     {
-      
+
     $date = date('Y-m-d');
-    $soc =   Auth::user()->soc_id; 
+    $soc =   Auth::user()->soc_id;
     $count = 0;
     $opn_amt =0;
     //Getting From date from opening balance table
@@ -25,7 +25,7 @@ class DashboardController extends Controller
     $maxdate = $rtndate[0]->date;
     //Opening Balance Retrieval
     $rtncount = DB::select("select count(*) row_count from   v_soc_opening where  op_dt = '" . $maxdate . "' and soc_id =" . $soc);
- 
+
     if (count($rtncount) > 0) {
    // if ($count > 0 ){
         $rtndata = DB::select("select (-1) * sum(balance) opn_amt
@@ -44,7 +44,7 @@ class DashboardController extends Controller
     $rtncount = DB::select("select count(*) row_count from   v_advance  where  soc_id 	= '".$soc."'
     and    trans_type = 'I'
     and    trans_dt between '".$maxdate."' and '".$date."'");
-    
+
     $count = $rtncount[0]->row_count;
 
     if ($count > 0 ){
@@ -56,7 +56,7 @@ class DashboardController extends Controller
 
     }else{
       $adv_amt = 0;
-    
+
     }
     //Sale Amount Retrieval
     $count    = 0;
@@ -81,7 +81,7 @@ class DashboardController extends Controller
     $rtncount = 0;
     $rtndata  = 0;
     $cr_amt   = 0;
-  
+
     $rtncount = DB::select("select count(*) row_count from   v_dr_cr_note  where  soc_id 	= '".$soc."'
     and    trans_flag = 'R' and  recpt_no like '%Crnote%'
     and    trans_dt   between '".$maxdate."' and '".$date."'");
@@ -103,11 +103,11 @@ class DashboardController extends Controller
       and    v_dr_cr_note.trans_flag = 'R'
       and    v_dr_cr_note.recpt_no like '%Crnote%'
       and    v_dr_cr_note.trans_dt  between '".$maxdate."' and '".$date."'");
-                                                      
+
       $cr_amt=$rtndata[0]->cr_amt;
     }else{
       $cr_amt = 0;
-    
+
     }
 
     //Other Adjustment Amount Retrieval
@@ -117,40 +117,40 @@ class DashboardController extends Controller
     $oth_amt   = 0;
 
     $rtncount = DB::select("select count(*) row_count from   v_payment_recv  where  soc_id 	= '".$soc."'
-    and    pay_type not in (2,6)
+    and    pay_type not in (2,6,8)
     and    paid_dt    between '".$maxdate."' and '".$date."'");
-  
+
 
     $count = $rtncount[0]->row_count;
 
     if ($count > 0 ){
-     
+
       $rtndata = DB::select("select sum(((paid_amt)))oth_amt
       from   v_payment_recv
       where  soc_id 	= '".$soc."'
-      and    pay_type not in (2,6)
-      and    paid_dt   between '".$maxdate."' and '".$date."'");                         
+      and    pay_type not in (2,6,8)
+      and    paid_dt   between '".$maxdate."' and '".$date."'");
       $oth_amt=$rtndata[0]->oth_amt;
     }else{
       $oth_amt = 0;
-    
+
     }
 
    // if ($count > 0 ){
-     
+
       $tcsdata = DB::select("select sum(((tot_amt)))tcs_amt
       from   v_drnote_tcs
       where  soc_id   = '".$soc."'
-     and    trans_dt   between '".$maxdate."' and '".$date."'");  
+     and    trans_dt   between '".$maxdate."' and '".$date."'");
      if($tcsdata[0]) {
       $tcs_amt= $tcsdata[0]->tcs_amt;
      }else{
       $tcs_amt= 0;
-     }                      
-      
+     }
+
    // }else{
    //   $tcs_amt = 0;
-    
+
    // }
 
     $cls_amt = 0;
@@ -162,7 +162,7 @@ class DashboardController extends Controller
 		} else {
 			$soc_balance_amt_data =  "Cr.";
 		}
-   
+
         return view('dashboard',['soc_balance_amt_data'=>$soc_balance_amt_data,'amt'=>abs($soc_balance_amt)]);
     }
     public function profile()
@@ -181,7 +181,7 @@ class DashboardController extends Controller
         $User->mfms =request('mfms');
         $User->ph_number =request('ph_number');
         $User->updated_by =Auth::user()->pan;
-        $User->save();                        
+        $User->save();
         Session::flash('msg','Registration is successfully');
         return redirect()->route('profile');
     }
