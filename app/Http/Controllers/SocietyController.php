@@ -72,13 +72,7 @@ class SocietyController extends Controller
              and c.soc_id = '$soc_id' and c.ro_no = d.ro_no and c.pay_type=7
              and c.paid_dt between '$frmDt' and '$toDt' group by soc_name,c.soc_id,c.paid_id,d.ro_dt,paid_dt
             union
-            SELECT paid_dt,'' prod,c.paid_id as inv_no, c.soc_id soc_id,soc_name,0 as paid_amt,0 paybl,0,0,'' ro_no,
-            d.ro_dt as ro_dt,0 as qty ,sum(c.paid_amt) tot_recv ,'Net Banking' remarks
-            FROM v_payment_recv c,v_ferti_soc b,v_purchase d where c.soc_id=b.soc_id
-            and c.soc_id = '$soc_id' and c.ro_no = d.ro_no and c.pay_type=8
-            and c.paid_dt between '$frmDt' and '$toDt' group by soc_name,c.soc_id,c.paid_id,d.ro_dt,paid_dt
-            Union
-            SELECT MAX(trans_dt),'' prod,'' as inv_no, c.soc_id soc_id,soc_name,0 as paid_amt,sum(c.tot_amt),0,0,''as ro_no,
+           SELECT MAX(trans_dt),'' prod,'' as inv_no, c.soc_id soc_id,soc_name,0 as paid_amt,sum(c.tot_amt),0,0,''as ro_no,
             trans_dt as ro_dt,0 as qty ,0,'TCS' remarks
          FROM v_drnote_tcs c,v_ferti_soc b
          where c.soc_id=b.soc_id
