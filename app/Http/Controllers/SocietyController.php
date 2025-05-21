@@ -192,7 +192,7 @@ UNION
          group by c.soc_id,soc_name,trans_dt
            )a
            group by trans_dt,prod,inv_no,soc_id,soc_name,ro_no,ro_dt,remarks
-ORDER BY `a`.`inv_no` DESC");
+           ORDER BY `a`.`trans_dt`,`a`.`inv_no`");
 
         return view('societyledger', ['all_data' => $data,'frmDt'=>$frmDt,'toDt'=>$toDt]);
 
