@@ -19,6 +19,73 @@ class SocietyController extends Controller
         $soc_id = Auth::user()->soc_id;
         $frmDt  =   $request->from_date;
         $toDt  =   $request->to_date;
+        // $data = DB::select("select  trans_dt,prod,inv_no, soc_id,soc_name,sum(paid_amt) as tot_paid,sum(paybl) as tot_payble,sum(cgst)cgst,sum(sgst)sgst,ro_no,ro_dt,sum(qty) qty ,sum(tot_recv) tot_recv,remarks
+        // from(
+        //   SELECT c.op_dt as trans_dt,'' prod,'' as inv_no, c.soc_id soc_id,b.soc_name,if(sum(c.balance)<0,
+        //   sum(c.balance),0) as paid_amt,
+        //   0 paybl,0 cgst,0 sgst,''ro_no,'' as ro_dt,0 as qty,
+        //     if(sum(c.balance)>0,sum(c.balance),0) tot_recv ,'Opening' remarks
+        //     FROM v_soc_opening c,v_ferti_soc b
+        //     where c.soc_id=b.soc_id
+        //     and c.soc_id = '$soc_id'
+        //     and c.op_dt='$frmDt'
+        //    union
+        //     SELECT paid_dt,'' prod,c.paid_id  as inv_no, c.soc_id soc_id,soc_name,0 as paid_amt,0 paybl,0 cgst,0 sgst,''ro_no,d.ro_dt as ro_dt,0 as qty,
+        //     sum(c.paid_amt) tot_recv ,'Cheque Adj' remarks
+        //     FROM v_payment_recv c,v_ferti_soc b,v_purchase d
+        //where c.soc_id=b.soc_id and c.soc_id = '$soc_id'
+        //      and c.ro_no = d.ro_no
+        //     and c.pay_type=3
+        //     and c.paid_dt between '$frmDt' and '$toDt' group by soc_name,c.soc_id,c.paid_id,d.ro_dt,paid_dt
+        //      Union
+        //      SELECT paid_dt,'' prod,c.paid_id  as inv_no, c.soc_id soc_id,soc_name,0 as paid_amt,0 paybl,0,0,'' ro_no,d.ro_dt as ro_dt,0 as qty ,sum(c.paid_amt) tot_recv , 'Draft Adj' remarks
+        //      FROM v_payment_recv c,v_ferti_soc b,v_purchase d where c.soc_id=b.soc_id and c.soc_id = '$soc_id' and c.ro_no = d.ro_no
+        //      and c.pay_type=4
+        //      and c.paid_dt between '$frmDt' and '$toDt' group by soc_name,c.soc_id,c.paid_id,d.ro_dt,paid_dt
+        //      Union
+        //      SELECT paid_dt,'' prod,c.paid_id  as inv_no, c.soc_id soc_id,soc_name,0 as paid_amt,0 paybl,0,0,'' as ro_no,d.ro_dt as ro_dt,0 as qty,sum(c.paid_amt) tot_recv ,'Pay Order Adj' remarks
+        //      FROM v_payment_recv c,v_ferti_soc b,v_purchase d where c.soc_id=b.soc_id and c.soc_id = '$soc_id' and c.ro_no = d.ro_no and c.pay_type=5 and c.paid_dt between '$frmDt' and '$toDt' group by soc_name,c.soc_id,c.paid_id,d.ro_dt,paid_dt
+        //      Union
+        //      SELECT paid_dt,'' prod,c.paid_id as inv_no, c.soc_id soc_id,soc_name,0 as paid_amt,0 paybl,0,0,'' ro_no,d.ro_dt as ro_dt,0 as qty ,sum(c.paid_amt) tot_recv ,'NEFT Adj' remarks
+        //      FROM v_payment_recv c,v_ferti_soc b,v_purchase d where c.soc_id=b.soc_id and c.soc_id = '$soc_id' and c.ro_no = d.ro_no and c.pay_type=7 and c.paid_dt between '$frmDt' and '$toDt' group by soc_name,c.soc_id,c.paid_id,d.ro_dt,paid_dt
+        //  Union
+        //  SELECT trans_dt,'' prod,recpt_no as inv_no, c.soc_id soc_id,soc_name,sum(c.tot_amt) as paid_amt,0 paybl,0,0,c.ro as ro_no,trans_dt as ro_dt,0 as qty ,0,'Cr note' remarks
+        //     FROM v_dr_cr_note c,v_ferti_soc b,v_sale d
+        //     where c.soc_id=b.soc_id and c.soc_id = '$soc_id'
+        //     and c.invoice_no = d.trans_do and c.trans_flag='R'
+        //     and c.trans_dt between '$frmDt' and '$toDt'
+        //     group by trans_dt, c.soc_id ,soc_name,c.ro ,trans_dt
+
+        //  Union
+        //  SELECT trans_dt,'' prod,receipt_no as inv_no, c.soc_id soc_id,soc_name,c.adv_amt as paid_amt,0 paybl,0,0,''as ro_no,trans_dt as ro_dt,0 as qty ,0,'Advance' remarks
+        //     FROM v_advance c,v_ferti_soc b where c.soc_id=b.soc_id and c.soc_id = '$soc_id' and c.trans_type='I' and c.trans_dt between '$frmDt' and '$toDt'
+        //  Union
+        //  SELECT c.do_dt,e.prod_desc prod,c.trans_do as inv_no, c.soc_id,b.soc_name,0 tot_paid ,c.taxable_amt as tot_payble,c.cgst ,c.sgst,c.sale_ro,d.ro_dt,c.qty ,0,'Sale' remarks
+        //     FROM v_ferti_soc b ,v_sale c,v_purchase d ,v_product e
+        //     where c.br_cd=b.district
+        //     and c.soc_id=b.soc_id and b.soc_id = '$soc_id'
+        //     and c.sale_ro = d.ro_no and c.do_dt between '$frmDt' and '$toDt'
+        //     and c.prod_id=e.prod_id
+        //     union
+        //      SELECT paid_dt,'' prod,c.paid_id as inv_no, c.soc_id soc_id,soc_name,0 as paid_amt,0 paybl,0,0,'' ro_no,
+        //      d.ro_dt as ro_dt,0 as qty ,sum(c.paid_amt) tot_recv ,'NEFT Adj' remarks
+        //      FROM v_payment_recv c,v_ferti_soc b,v_purchase d where c.soc_id=b.soc_id
+        //      and c.soc_id = '$soc_id' and c.ro_no = d.ro_no and c.pay_type=7
+        //      and c.paid_dt between '$frmDt' and '$toDt' group by soc_name,c.soc_id,c.paid_id,d.ro_dt,paid_dt
+        //     union
+        //    SELECT MAX(trans_dt),'' prod,'' as inv_no, c.soc_id soc_id,soc_name,0 as paid_amt,sum(c.tot_amt),0,0,''as ro_no,
+        //     trans_dt as ro_dt,0 as qty ,0,'TCS' remarks
+        //  FROM v_drnote_tcs c,v_ferti_soc b
+        //  where c.soc_id=b.soc_id
+        //  and c.soc_id = '$soc_id'
+        //  and c.trans_dt between '$frmDt' and '$toDt'
+        //  and c.trans_dt and c.tot_amt>0
+        //  group by c.soc_id,soc_name,trans_dt
+        //    )a
+
+        //    group by trans_dt,prod,inv_no,soc_id,soc_name,ro_no,ro_dt,remarks
+        //     ORDER BY `a`.`trans_dt`,`a`.`inv_no`");
+
         $data = DB::select("select  trans_dt,prod,inv_no, soc_id,soc_name,sum(paid_amt) as tot_paid,sum(paybl) as tot_payble,sum(cgst)cgst,sum(sgst)sgst,ro_no,ro_dt,sum(qty) qty ,sum(tot_recv) tot_recv,remarks
         from(
           SELECT c.op_dt as trans_dt,'' prod,'' as inv_no, c.soc_id soc_id,b.soc_name,if(sum(c.balance)<0,
@@ -32,46 +99,89 @@ class SocietyController extends Controller
            union
             SELECT paid_dt,'' prod,c.paid_id  as inv_no, c.soc_id soc_id,soc_name,0 as paid_amt,0 paybl,0 cgst,0 sgst,''ro_no,d.ro_dt as ro_dt,0 as qty,
             sum(c.paid_amt) tot_recv ,'Cheque Adj' remarks
-            FROM v_payment_recv c,v_ferti_soc b,v_purchase d where c.soc_id=b.soc_id and c.soc_id = '$soc_id'
+            FROM v_payment_recv c,v_ferti_soc b,v_purchase d where c.soc_id=b.soc_id
+             and c.soc_id = '$soc_id'
              and c.ro_no = d.ro_no
             and c.pay_type=3
-            and c.paid_dt between '$frmDt' and '$toDt' group by soc_name,c.soc_id,c.paid_id,d.ro_dt,paid_dt
+            and c.paid_dt between '$frmDt' and '$toDt'
+           group by soc_name,c.soc_id,c.paid_id,d.ro_dt,paid_dt
              Union
              SELECT paid_dt,'' prod,c.paid_id  as inv_no, c.soc_id soc_id,soc_name,0 as paid_amt,0 paybl,0,0,'' ro_no,d.ro_dt as ro_dt,0 as qty ,sum(c.paid_amt) tot_recv , 'Draft Adj' remarks
-             FROM v_payment_recv c,v_ferti_soc b,v_purchase d where c.soc_id=b.soc_id and c.soc_id = '$soc_id' and c.ro_no = d.ro_no
+             FROM v_payment_recv c,v_ferti_soc b,v_purchase d where c.soc_id=b.soc_id
+             and c.soc_id = '$soc_id' and c.ro_no = d.ro_no
              and c.pay_type=4
-             and c.paid_dt between '$frmDt' and '$toDt' group by soc_name,c.soc_id,c.paid_id,d.ro_dt,paid_dt
+             and c.paid_dt between '$frmDt' and '$toDt'
+              group by soc_name,c.soc_id,c.paid_id,d.ro_dt,paid_dt
              Union
              SELECT paid_dt,'' prod,c.paid_id  as inv_no, c.soc_id soc_id,soc_name,0 as paid_amt,0 paybl,0,0,'' as ro_no,d.ro_dt as ro_dt,0 as qty,sum(c.paid_amt) tot_recv ,'Pay Order Adj' remarks
-             FROM v_payment_recv c,v_ferti_soc b,v_purchase d where c.soc_id=b.soc_id and c.soc_id = '$soc_id' and c.ro_no = d.ro_no and c.pay_type=5 and c.paid_dt between '$frmDt' and '$toDt' group by soc_name,c.soc_id,c.paid_id,d.ro_dt,paid_dt
+             FROM v_payment_recv c,v_ferti_soc b,v_purchase d
+             where c.soc_id=b.soc_id
+             and c.soc_id = '$soc_id'
+            and c.ro_no = d.ro_no and c.pay_type=5
+            and c.paid_dt between '$frmDt' and '$toDt'
+            group by soc_name,c.soc_id,c.paid_id,d.ro_dt,paid_dt
              Union
              SELECT paid_dt,'' prod,c.paid_id as inv_no, c.soc_id soc_id,soc_name,0 as paid_amt,0 paybl,0,0,'' ro_no,d.ro_dt as ro_dt,0 as qty ,sum(c.paid_amt) tot_recv ,'NEFT Adj' remarks
-             FROM v_payment_recv c,v_ferti_soc b,v_purchase d where c.soc_id=b.soc_id and c.soc_id = '$soc_id' and c.ro_no = d.ro_no and c.pay_type=7 and c.paid_dt between '$frmDt' and '$toDt' group by soc_name,c.soc_id,c.paid_id,d.ro_dt,paid_dt
+             FROM v_payment_recv c,v_ferti_soc b,v_purchase d
+             where c.soc_id=b.soc_id and c.soc_id = '$soc_id'
+             and c.ro_no = d.ro_no and c.pay_type=7
+            and c.paid_dt between '$frmDt' and '$toDt'
+           group by soc_name,c.soc_id,c.paid_id,d.ro_dt,paid_dt
          Union
          SELECT trans_dt,'' prod,recpt_no as inv_no, c.soc_id soc_id,soc_name,sum(c.tot_amt) as paid_amt,0 paybl,0,0,c.ro as ro_no,trans_dt as ro_dt,0 as qty ,0,'Cr note' remarks
             FROM v_dr_cr_note c,v_ferti_soc b,v_sale d
-            where c.soc_id=b.soc_id and c.soc_id = '$soc_id'
+            where c.soc_id=b.soc_id
+            and c.soc_id = '$soc_id'
             and c.invoice_no = d.trans_do and c.trans_flag='R'
             and c.trans_dt between '$frmDt' and '$toDt'
             group by trans_dt, c.soc_id ,soc_name,c.ro ,trans_dt
+union
+  SELECT trans_dt,'' prod,recpt_no as inv_no, c.soc_id soc_id,soc_name,sum(c.tot_amt) as paid_amt,0 paybl,0,0,c.ro as ro_no,trans_dt as ro_dt,0 as qty ,0,'Cr note' remarks
+            FROM v_dr_cr_note c,v_ferti_soc b
+            where c.soc_id=b.soc_id
+            and c.soc_id = '$soc_id'
+            and c.ref_invoice_no='0'
+             and c.trans_flag='R' and c.trans_dt between '2024-04-01' and '2025-03-31'
+            group by trans_dt, recpt_no,c.soc_id ,soc_id,soc_name,c.ro
 
          Union
          SELECT trans_dt,'' prod,receipt_no as inv_no, c.soc_id soc_id,soc_name,c.adv_amt as paid_amt,0 paybl,0,0,''as ro_no,trans_dt as ro_dt,0 as qty ,0,'Advance' remarks
-            FROM v_advance c,v_ferti_soc b where c.soc_id=b.soc_id and c.soc_id = '$soc_id' and c.trans_type='I' and c.trans_dt between '$frmDt' and '$toDt'
+            FROM v_advance c,v_ferti_soc b where c.soc_id=b.soc_id
+            and c.soc_id = '$soc_id'
+            and c.trans_type='I'
+            and c.trans_dt between '$frmDt' and '$toDt'
+           union
+ SELECT trans_dt,'' prod,receipt_no as inv_no, c.soc_id soc_id,soc_name,0 as paid_amt,c.adv_amt tot_payble,0,0,''as ro_no,trans_dt as ro_dt,0 as qty ,0,'TRF TO INSECT' remarks
+            FROM v_advance c,v_ferti_soc b
+           where c.soc_id=b.soc_id
+            and c.soc_id = '$soc_id'
+            and c.trans_type='O'
+            and c.transfer_flag='Y'
+            and c.trans_dt between '$frmDt' and '$toDt'
          Union
          SELECT c.do_dt,e.prod_desc prod,c.trans_do as inv_no, c.soc_id,b.soc_name,0 tot_paid ,c.taxable_amt as tot_payble,c.cgst ,c.sgst,c.sale_ro,d.ro_dt,c.qty ,0,'Sale' remarks
             FROM v_ferti_soc b ,v_sale c,v_purchase d ,v_product e
             where c.br_cd=b.district
             and c.soc_id=b.soc_id and b.soc_id = '$soc_id'
-            and c.sale_ro = d.ro_no and c.do_dt between '$frmDt' and '$toDt'
+            and c.sale_ro = d.ro_no
+            and c.do_dt between '$frmDt' and '$toDt'
             and c.prod_id=e.prod_id
-            union
+UNION
+ SELECT trans_dt,'' prod,recpt_no as inv_no, c.soc_id soc_id,soc_name,sum(a.tot_amt) as paid_amt,0 paybl,0,0,ro as ro_no,trans_dt as ro_dt,0 as qty ,0,'Cr note' remarks
+     FROM v_dr_cr_note a ,v_ferti_soc  c
+     WHERE a.remarks like '%MIGATED%' and recpt_no like '%YRLY%'
+     and a.soc_id=c.soc_id
+     and a.soc_id = '$soc_id'
+     and trans_dt between '$frmDt' and '$toDt'
+            UNION
              SELECT paid_dt,'' prod,c.paid_id as inv_no, c.soc_id soc_id,soc_name,0 as paid_amt,0 paybl,0,0,'' ro_no,
              d.ro_dt as ro_dt,0 as qty ,sum(c.paid_amt) tot_recv ,'NEFT Adj' remarks
              FROM v_payment_recv c,v_ferti_soc b,v_purchase d where c.soc_id=b.soc_id
-             and c.soc_id = '$soc_id' and c.ro_no = d.ro_no and c.pay_type=7
-             and c.paid_dt between '$frmDt' and '$toDt' group by soc_name,c.soc_id,c.paid_id,d.ro_dt,paid_dt
-            union
+             and c.soc_id = '$soc_id'
+             and c.ro_no = d.ro_no and c.pay_type=7
+             and c.paid_dt between '$frmDt' and '$toDt'
+             group by soc_name,c.soc_id,c.paid_id,d.ro_dt,paid_dt
+            UNION
            SELECT MAX(trans_dt),'' prod,'' as inv_no, c.soc_id soc_id,soc_name,0 as paid_amt,sum(c.tot_amt),0,0,''as ro_no,
             trans_dt as ro_dt,0 as qty ,0,'TCS' remarks
          FROM v_drnote_tcs c,v_ferti_soc b
@@ -81,9 +191,8 @@ class SocietyController extends Controller
          and c.trans_dt and c.tot_amt>0
          group by c.soc_id,soc_name,trans_dt
            )a
-
            group by trans_dt,prod,inv_no,soc_id,soc_name,ro_no,ro_dt,remarks
-            ORDER BY `a`.`trans_dt`,`a`.`inv_no`");
+ORDER BY `a`.`inv_no` DESC");
 
         return view('societyledger', ['all_data' => $data,'frmDt'=>$frmDt,'toDt'=>$toDt]);
 
