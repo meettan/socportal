@@ -56,7 +56,9 @@
                                         id="download" data-toggle="tooltip" data-placement="bottom" title="Print_"
                                         <?= $disable_btn; ?>>
 
-                                        <a href="{{ route('drnoteReport',['recpt_no'=>$dr->recpt_no])}}"
+                                        <!-- <a href="{{ route('drnoteReport',['invoice_no'=>$dr->invoice_no])}}"
+                                            title="Print"> -->
+                                            <a href="{{ route('drnoteReport',['recpt_no'=>$dr->recpt_no])}}"
                                             title="Print">
 
                                             <i class="fa fa-download fa-2x" style="color:green;"></i>
