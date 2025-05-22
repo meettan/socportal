@@ -7,12 +7,12 @@ use Auth;
 use DB;
 use Helper;
 class CreditnoteController extends Controller
-{   
+{
     public function __construct()
     {
         $this->middleware('auth');
     }
-    // Dispaly drcrnote date range and filter data for user using 
+    // Dispaly drcrnote date range and filter data for user using
     // v_dr_cr_note,v_ferti_soc used as view table of fertilizer softwere
     public function drcrnote(Request $request)
     {   DB::enableQueryLog();
@@ -20,16 +20,16 @@ class CreditnoteController extends Controller
         if ($request->isMethod('post')) {
         $soc_id =   Auth::user()->soc_id;
         $frmDt  =   Helper::dateformat($request->from_date);
-		$todt   =   Helper::dateformat($request->to_date);  
-        $dr_notes = DB::select("SELECT b.soc_name,a.recpt_no, 
+		$todt   =   Helper::dateformat($request->to_date);
+        $dr_notes = DB::select("SELECT b.soc_name,a.recpt_no,
          (select nwirn from v_sale_cancel where trans_do=a.invoice_no) as irn,
           a.trans_dt, a.trans_no, a.soc_id, sum(a.tot_amt) tot_amt,a.trans_flag,a.invoice_no,
           a.fwd_flag FROM v_dr_cr_note a, v_ferti_soc b
-            WHERE a.soc_id = b.soc_id 
-            AND a.trans_flag = 'R' 
+            WHERE a.soc_id = b.soc_id
+            AND a.trans_flag = 'R'
             AND a.soc_id = '$soc_id'
-            AND a.note_type = 'D' 
-            AND a.trans_dt >= '$frmDt' AND a.trans_dt <= '$todt' 
+            AND a.note_type = 'D'
+            AND a.trans_dt >= '$frmDt' AND a.trans_dt <= '$todt'
             group by a.invoice_no,a.recpt_no,a.trans_dt,a.trans_no,irn, a.soc_id,a.fwd_flag ORDER BY a.trans_dt");
            return view('drcrnote', ['dr_notes' => $dr_notes]);
         }else{
@@ -45,7 +45,7 @@ class CreditnoteController extends Controller
         $cr = DB::select("select a.trans_dt,a.recpt_no,a.trans_no,a.soc_id,b.soc_name,b.gstin,a.comp_id,a.invoice_no,a.ro,a.catg,sum(a.tot_amt) as tot_amt ,a.trans_flag,a.note_type,a.remarks,c.cat_desc
        from v_dr_cr_note a ,v_ferti_soc b,v_cr_note_category c
         where a.soc_id=b.soc_id and  a.catg = c.sl_no
-        and invoice_no ='$receipt_no'
+        and a.recpt_no ='$receipt_no'
         group by c.cat_desc,a.trans_dt,a.recpt_no,a.trans_no,a.soc_id,b.soc_name,b.gstin,a.comp_id,a.invoice_no,a.ro,a.trans_flag,a.note_type,a.remarks,a.catg");
         return view('drcrnoterp', ['data' => $cr]);
     }
