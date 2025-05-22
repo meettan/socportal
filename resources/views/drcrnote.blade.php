@@ -39,9 +39,9 @@
 						$disable_btn = '';
 						$enable_btn  = '';
 						$disable_del_btn = '';
-                        if($dr_notes) { 
+                        if($dr_notes) {
                                 foreach($dr_notes as $dr) {
-                                   
+
                                    $disable_btn = $dr->irn ? 'hidden' : '';
                                     $enable_btn = $dr->irn ? '' : 'hidden';
 		            ?>
@@ -56,7 +56,7 @@
                                         id="download" data-toggle="tooltip" data-placement="bottom" title="Print_"
                                         <?= $disable_btn; ?>>
 
-                                        <a href="{{ route('drnoteReport',['invoice_no'=>$dr->invoice_no])}}"
+                                        <a href="{{ route('drnoteReport',['recpt_no'=>$dr->recpt_no])}}"
                                             title="Print">
 
                                             <i class="fa fa-download fa-2x" style="color:green;"></i>
@@ -67,7 +67,7 @@
                             </tr>
 
                             <?php
-                            
+
                             }
 
                         }

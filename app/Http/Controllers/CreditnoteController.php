@@ -40,7 +40,8 @@ class CreditnoteController extends Controller
 
     public function drnoteReport(Request $request)
     {
-        $receipt_no = $request->invoice_no;
+        // $receipt_no = $request->invoice_no;
+        $receipt_no = $request->recpt_no;
         $cr['receipt_no'] = $receipt_no;
         $cr = DB::select("select a.trans_dt,a.recpt_no,a.trans_no,a.soc_id,b.soc_name,b.gstin,a.comp_id,a.invoice_no,a.ro,a.catg,sum(a.tot_amt) as tot_amt ,a.trans_flag,a.note_type,a.remarks,c.cat_desc
        from v_dr_cr_note a ,v_ferti_soc b,v_cr_note_category c
