@@ -141,7 +141,7 @@ union
             where c.soc_id=b.soc_id
             and c.soc_id = '$soc_id'
             and c.ref_invoice_no='0'
-             and c.trans_flag='R' and c.trans_dt between '2024-04-01' and '2025-03-31'
+             and c.trans_flag='R' and c.trans_dt between '$frmDt' and '$toDt'
             group by trans_dt, recpt_no,c.soc_id ,soc_id,soc_name,c.ro
 
          Union
