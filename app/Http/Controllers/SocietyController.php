@@ -133,6 +133,7 @@ class SocietyController extends Controller
             where c.soc_id=b.soc_id
             and c.soc_id = '$soc_id'
             and c.invoice_no = d.trans_do and c.trans_flag='R'
+            and c.catg!=7
             and c.trans_dt between '$frmDt' and '$toDt'
             group by trans_dt, c.soc_id ,soc_name,c.ro ,trans_dt
 union
