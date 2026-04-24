@@ -1,8 +1,8 @@
-<?php 
+<?php
 
 $qr = 'https://chart.googleapis.com/chart?chs=150x150&cht=qr&chl='."Invoice".':'.$data->trans_do. ','."GSTIN".':'.$data->gstin. ','."Society".':' .$data->soc_name.','."Total:".$sum_data->tot_amt_rnd;
 
-?> 
+?>
 <link href="https://benfed.in/benfed_fertilizer/assets/css/bootstrap.min.css" rel="stylesheet">
 		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 		<link rel="stylesheet" href="https://benfed.in/benfed_fertilizer/assets/css/sb-admin.css">
@@ -17,7 +17,7 @@ $qr = 'https://chart.googleapis.com/chart?chs=150x150&cht=qr&chl='."Invoice".':'
     <link href="https://benfed.in/benfed_fertilizer/assets/css/res.css" rel="stylesheet">
 		<script type="text/javascript" src="https://benfed.in/benfed_fertilizer/assets/js/table2excel.js"></script>
 		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
-<script src="https://benfed.in/benfed_fertilizer/assets/js/bootstrap-toggle.js" ></script> 
+<script src="https://benfed.in/benfed_fertilizer/assets/js/bootstrap-toggle.js" ></script>
 <style>
 table {
     border-collapse: collapse;
@@ -54,7 +54,7 @@ tr:hover {background-color: #f5f5f5;}
         var WindowObject = window.open('', 'Print-Window');
         WindowObject.document.open();
         var printButton = document.getElementById("printbtn");
-        //Set the print button visibility to 'hidden' 
+        //Set the print button visibility to 'hidden'
         printButton.style.visibility = 'hidden';
         WindowObject.document.writeln('<!DOCTYPE html>');
         WindowObject.document.writeln('<html><head><title></title><style type="text/css">');
@@ -83,7 +83,7 @@ tr:hover {background-color: #f5f5f5;}
 			'.tableBottomBorder table.table2 tbody tr td.adres_topLeft{padding:3px;}'+
 			'.tableBottomBorder .table > thead > tr > td{padding:3px; font-size: 11px;}'+
 			'.tableBottomBorder .table > tbody > tr > td{padding:3px; font-size: 11px;}'+
-			'.tableBottomBorder .table td{font-size: 11px;}'+	  
+			'.tableBottomBorder .table td{font-size: 11px;}'+
 			'.noborder{border:none !important;}'+
 			'.border_left{border-left:1px solid #dddddd !important;}'+
 			'.border_right{border-right:1px solid #dddddd !important;}'+
@@ -110,10 +110,10 @@ tr:hover {background-color: #f5f5f5;}
   }
 </script>
 
-<div class="wraper"> 
+<div class="wraper">
 
   <div class="col-lg-12 container contant-wraper">
-                    
+
 <div id="divToPrint">
 <div class="wrapper_fixed">
 
@@ -131,7 +131,9 @@ tr:hover {background-color: #f5f5f5;}
   <div class="row">
     <div class="logoSec"><img src="{{ url('public/images/logo.png') }}" class="pull-left" /></div>
     <div class="pageTitle"><h3><center>Tax Invoice</center></h3></div>
-    <div class="barcodePage"><img src="<?= $qr; ?>" class="pull-right" alt=""></div>
+    <div class="barcodePage">
+        <!-- <img src="<?= $qr; ?>" class="pull-right" alt=""> -->
+    </div>
   </div>
   <!-- <h3><img src="<?php //echo base_url("/benfed.png");?>" />Tax Invoice </h3> -->
   <div class="tableBottomBorder">
@@ -139,7 +141,7 @@ tr:hover {background-color: #f5f5f5;}
   <tbody>
   <!-- <tr><td id="qr_gen"><img src="<?php //$qr; ?>" class="pull-right" alt=""></td></tr>
 								<?php //echo '<br><hr><h2>'.$this->postCURL('https://chart.googleapis.com/chart?chs=150x150&cht=qr&chl= rvbn', 'raja').'</h2><br><hr><br>';?>
-							
+
     <tr> -->
         <td align="left" valign="top" class="border_bottom border_top"><table width="100%" cellpadding="0" cellspacing="0" class="table tableCus table2" id="example">
     <tr>
@@ -213,7 +215,7 @@ tr:hover {background-color: #f5f5f5;}
             <td scope="col" class="col_13_3 titleTd border_bottom">HSN/SAC</td>
             <td scope="col" class="col_13_4 titleTd border_bottom">Quantity</td>
             <td scope="col" class="col_13_5 titleTd border_bottom">Rate</td>
-			  
+
 			 <td scope="col" class="col_13_6 titleTd border_bottom">Per</td>
 			  <td scope="col" class="col_13_7 titleTd border_bottom">Amount</td>
 			  <td scope="col" class="col_13_8 titleTd border_bottom">Taxable Value</td>
@@ -254,7 +256,7 @@ tr:hover {background-color: #f5f5f5;}
 			          </table></td>
 			        </tr>
 			      </tbody>
-			    </table></td>  
+			    </table></td>
 			  <td scope="col" class="col_13_11 titleTd border_bottom"><strong>Total Amount</strong></td>
 			  </tr>
         </thead>
@@ -270,7 +272,7 @@ tr:hover {background-color: #f5f5f5;}
             <td align="left" valign="top" class="border_right"><strong><?php echo  $data->qty;?>
               </strong>
               <!-- 0.254 Mt. -->
-              
+
               <!-- <p><strong>0.254 Mt.</strong> <strong><br> -->
               </td>
             <td align="left" valign="top" class="border_right"><?php echo  $data->sale_rt;?></td>
@@ -347,7 +349,7 @@ tr:hover {background-color: #f5f5f5;}
                 </tr>
               </tbody>
             </table>
-				
+
 				</td>
             <td align="left" valign="top" class="border_right border_bottom">
             <table width="100%" border="0" cellspacing="0" cellpadding="0" class="table13" id="example">
@@ -360,8 +362,8 @@ tr:hover {background-color: #f5f5f5;}
             </table></td>
             <td align="left" valign="top" class="border_bottom">&nbsp;</td>
           </tr>
-          
-          
+
+
         </tbody>
       </table></td>
     </tr>
@@ -435,7 +437,7 @@ tr:hover {background-color: #f5f5f5;}
                 </tr>
               </tbody>
             </table></td>
-			  
+
             <td align="left" valign="top">
             <table width="100%" border="0" cellspacing="0" cellpadding="0" class="table20" id="example">
               <tbody>
@@ -447,7 +449,7 @@ tr:hover {background-color: #f5f5f5;}
             </table></td>
             <td align="left" valign="top"><?php echo  $sum_data->tot_amt_rnd;?></td>
           </tr>
-          
+
           <tr>
           <td align="right" valign="top"><strong>Total:</strong></td>
             <td align="left" valign="top"><?php echo  $sum_data->taxable_amt;?></td>
@@ -479,7 +481,7 @@ tr:hover {background-color: #f5f5f5;}
 
 		<table width="100%" border="0" cellspacing="0" cellpadding="0" class="table14" id="example">
   <tbody>
-   
+
     <tr>
       <td class="formDurkBack border_bottom border_top"><p style="padding: 0; margin: 0; float: left">Tax Amount(in words)INR {{ Helper::displaywords($sum_data->tot_amt_rnd)}}</p></td>
       <td class="formDurkBack border_bottom border_top" align="right">Total: <strong><?php echo  $sum_data->tot_amt_rnd;?></strong></td>
@@ -497,13 +499,13 @@ tr:hover {background-color: #f5f5f5;}
 We declare that this invoice shows the actual price of goods described and particulars are true and correct,</td>
       <td align="left" valign="top" class="formDurkBack border_bottom border_top"><p style="padding: 0; margin: 0;"><strong>For The West Bengal State Co-operative Marketing Federation Ltd</strong></p></td>
     </tr>
-    
+
   </tbody>
 </table>
 <div class="table23Main">
 <table width="100%" border="0" cellspacing="0" cellpadding="0" class="table23" id="example">
   <tbody>
-   
+
     <!-- <tr>
       <td class="padding_topNew padding_botNew">Prepared By</td>
       <td class="padding_topNew padding_botNew">Verified By</td>
@@ -515,7 +517,7 @@ We declare that this invoice shows the actual price of goods described and parti
   </div>
 
 <div class="billDateGroop">
-  
+
 
 <br clear="all">
   <p style="padding:0; margin:0; float:left; font-size:12px;">**Subjet to Realisation</p> <br>
@@ -526,14 +528,14 @@ We declare that this invoice shows the actual price of goods described and parti
 </div>
 
 
-    
+
   </div>
 
-            
+
                     <div style="text-align: center;">
-    
+
                         <button class="btn btn-primary" id=printbtn type="button" onclick="printDiv();">Print</button>
-    
+
                     </div>
    </div>
 </div>
