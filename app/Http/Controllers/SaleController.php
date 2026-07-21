@@ -10,39 +10,49 @@ use PDF;
 use Helper;
 
 class SaleController extends Controller
-{   
+{
 	public function __construct()
     {
         $this->middleware('auth');
     }
     // Dispaly sale filter form and gettting data of society on date range of Sales
 	// with using  table v_sale, v_ferti_soc, v_product  as view of fertilizer portal table
-	//td_sale ,mm_ferti_soc,mm_product . 
+	//td_sale ,mm_ferti_soc,mm_product .
     public function salesfilter(Request $request){
 
         DB::enableQueryLog();
 		if ($request->isMethod('post')) {
-			$soc_id =   Auth::user()->soc_id; 
+			$soc_id =   Auth::user()->soc_id;
 			$frmDt  =   Helper::dateformat($request->from_date);
-			$todt   =   Helper::dateformat($request->to_date);  
+			$todt   =   Helper::dateformat($request->to_date);
 
         $payrct = DB::select("select a.irn, a.ack,a.ack_dt,a.trans_do,a.do_dt,a.trans_type,b.soc_name,sum(a.tot_amt) as tot_amt,c.prod_desc,a.gst_type_flag,
         (select count(paid_id) from v_payment_recv where sale_invoice_no=a.trans_do) as pay_cnt
           from v_sale a,v_ferti_soc b,v_product c
-          where a.soc_id='$soc_id' 
+          where a.soc_id='$soc_id'
           and a.prod_id=c.prod_id
           and a.soc_id=b.soc_id
 		  and a.do_dt >='$frmDt'
 		  and a.do_dt <='$todt'
           group by a.irn,a.ack,a.ack_dt,a.trans_do,a.do_dt,a.trans_type,b.soc_name,c.prod_desc,a.gst_type_flag,pay_cnt
-          order by a.do_dt desc");
+          union
+          select a.irn, a.ack,a.ack_dt,a.trans_do,a.do_dt,a.trans_type,b.soc_name,sum(a.tot_amt) as tot_amt,c.prod_desc,a.gst_type_flag,
+        (select count(paid_id) from v_payment_recv where sale_invoice_no=a.trans_do) as pay_cnt
+          from v_ins_sale a,v_ferti_soc b,v_product c
+          where a.soc_id='$soc_id'
+          and a.prod_id=c.prod_id
+          and a.soc_id=b.soc_id
+		  and a.do_dt >='$frmDt'
+		  and a.do_dt <='$todt'
+          group by a.irn,a.ack,a.ack_dt,a.trans_do,a.do_dt,a.trans_type,b.soc_name,c.prod_desc,a.gst_type_flag,pay_cnt
+          order by do_dt desc");
             return view('sale_list', ['sales' => $payrct]);
 		}else{
 			return view('sale_list', ['sales' => '']);
 		}
     }
    // print sale receipt of society of particular sale using IRN number of sale
-   // using cleartax api 
+   // using cleartax api
 
     public function saleinvoice_rep(Request $request)
 	{
@@ -66,13 +76,13 @@ class SaleController extends Controller
 									sum(a.taxable_amt)as taxable_amt,sum(a.cgst)as cgst,sum(a.sgst)as sgst,
 									sum(a.cgst+a.sgst)as tot_gst,sum(a.dis)as dis,sum(a.tot_amt)as tot_amt,
 									sum(a.paid_amt) as paid_amt,ROUND(sum(a.round_tot_amt))as tot_amt_rnd
-									from v_sale a 
-									where  a.trans_do='$trans_do'");				   
-		 
+									from v_sale a
+									where  a.trans_do='$trans_do'");
+
 			return view('sale_invoice', ['data' => $data[0],'sum_data' => $sum_data[0],'trans_do' =>$trans_do ]);
-			
+
 	}
-   
+
     public function print_receipt(Request $request){
 
         $irns =$request->irn;
@@ -82,9 +92,9 @@ class SaleController extends Controller
         curl_setopt_array($curl, array(
             /*****************for test server ******************* */
         //CURLOPT_URL => 'https://einvoicing.internal.cleartax.co/v2/eInvoice/download?template=62cfd0a9-d1ed-47b0-b260-fe21f57e9c5e&format=PDF&irns=' . $irns,
-        
+
         CURLOPT_URL => 'https://api-einv.cleartax.in/v2/eInvoice/download?template=62cfd0a9-d1ed-47b0-b260-fe21f57e9c5e&format=PDF&irns=' . $irns,
-        
+
         CURLOPT_RETURNTRANSFER => true,
         CURLOPT_ENCODING => '',
         CURLOPT_MAXREDIRS => 10,
@@ -105,7 +115,7 @@ class SaleController extends Controller
         return response()->streamDownload(function () use ($response) {
             echo $response;
         }, $filename);
-    
+
     }
 	// print sale receipt of society of particular sale using IRN number of sale
    // using cleartax api Demo test for download pdf
@@ -119,7 +129,7 @@ class SaleController extends Controller
                 /*****************for test server ******************* */
             //CURLOPT_URL => 'https://einvoicing.internal.cleartax.co/v2/eInvoice/download?template=62cfd0a9-d1ed-47b0-b260-fe21f57e9c5e&format=PDF&irns=' . $irns,
             CURLOPT_URL => 'https://api-einv.cleartax.in/v2/eInvoice/download?template=62cfd0a9-d1ed-47b0-b260-fe21f57e9c5e&format=PDF&irns=' . $irns,
-            
+
             CURLOPT_RETURNTRANSFER => true,
             CURLOPT_ENCODING => '',
             CURLOPT_MAXREDIRS => 10,
@@ -227,7 +237,7 @@ class SaleController extends Controller
 			echo $data;
 		}
 		fclose($fp);
-		exit;    
-    }    
-    
+		exit;
+    }
+
 }
