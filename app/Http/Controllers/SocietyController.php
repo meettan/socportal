@@ -417,7 +417,15 @@ UNION
                      and    a.comp_id = c.COMP_ID
                      and    a.soc_id   = '$soc_id'
                      and    a.do_dt between '$frmDt' and '$toDt'
-                     order by c.short_name, a.do_dt");
+                     union
+                     select a.trans_do,a.do_dt,a.trans_type,a.sale_ro,a.qty,a.soc_id,b.unit,b.QTY_PER_BAG as qty_per_bag,
+      a.sale_rt,a.taxable_amt,a.cgst,a.sgst,a.dis,a.tot_amt,c.short_name,b.PROD_DESC
+                     from v_ins_sale a,v_product b,v_company_dtls c
+                     where  a.prod_id = b.PROD_ID
+                     and    a.comp_id = c.COMP_ID
+                     and    a.soc_id   = '$soc_id'
+                     and    a.do_dt between '$frmDt' and '$toDt'
+                     order by short_name, do_dt");
 
       return view('societypur', ['all_data' => $data,'frmDt'=>$frmDt,'toDt'=>$toDt]);
 
