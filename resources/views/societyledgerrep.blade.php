@@ -140,7 +140,7 @@
 
                                         }
 
-                                     }elseif($prodtls->remarks=='Advance'||$prodtls->remarks=='Cr note' ||$prodtls->remarks=='TRF TO INSECT'){
+                                     }elseif($prodtls->remarks=='Advance'||$prodtls->remarks=='Cr note'||$prodtls->remarks=='TRF TO INSECT'){
 
                                         $totalamt -= (($prodtls->tot_paid));
 
@@ -156,7 +156,7 @@
 
                                         }
 
-                                    }elseif( $prodtls->remarks=='NEFT Adj' || $prodtls->remarks=='Pay Order Adj' || $prodtls->remarks=='Draft Adj'|| $prodtls->remarks=='Cheque Adj'){
+                                    }elseif( $prodtls->remarks=='NEFT Adj' || $prodtls->remarks=='Pay Order Adj' || $prodtls->remarks=='Draft Adj'|| $prodtls->remarks=='Cheque Adj'||$prodtls->remarks=='TRF TO INSECT'){
 
 										$totalamt -= (($prodtls->tot_recv));
                                         if($totalamt>0){
