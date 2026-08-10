@@ -243,7 +243,7 @@ $data = DB::select("select  trans_dt,prod,inv_no, soc_id,soc_name,sum(paid_amt) 
   union
 
          SELECT trans_dt,'' prod,recpt_no as inv_no, c.soc_id soc_id,soc_name,sum(c.tot_amt) as paid_amt,0 paybl,0,0,c.ro as ro_no,trans_dt as ro_dt,0 as qty ,0,'Cr note' remarks
-            FROM v_dr_cr_note c,v_ferti_soc b,v_sale d where c.soc_id=b.soc_id and c.soc_id = '$soc_id'and c.branch_id='$branch' and c.invoice_no = d.trans_do and c.trans_flag='R' and c.trans_dt between '$frmDt' and '$toDt' and c.catg!=7
+            FROM v_dr_cr_note c,v_ferti_soc b,v_sale d where c.soc_id=b.soc_id and c.soc_id = '$soc_id' and c.invoice_no = d.trans_do and c.trans_flag='R' and c.trans_dt between '$frmDt' and '$toDt' and c.catg!=7
             group by trans_dt, recpt_no,c.soc_id ,soc_id,soc_name,c.ro
             union
             SELECT trans_dt,'' prod,recpt_no as inv_no, c.soc_id soc_id,soc_name,sum(c.tot_amt) as paid_amt,0 paybl,0,0,c.ro as ro_no,trans_dt as ro_dt,0 as qty ,0,'Cr note' remarks
