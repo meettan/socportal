@@ -1,5 +1,5 @@
 <div class="col-lg-12 contant-wraper">
-
+                
                 <div id="divToPrint" class="divToPrintClass">
 
                     <div style="text-align:center;">
@@ -12,7 +12,7 @@
 						<h5 style="text-align:left"><label>Gst No: </label> <?php if($all_data) ?></h5>
 
                     </div>
-                    <br>
+                    <br>  
 
                     <table style="width: 100%;" id="example">
                         <thead>
@@ -28,15 +28,15 @@
                                 <th>RO/
                                     Deposit Date</th>
                                 <th>Qty</th>
-                                <th>Taxable
+                                <th>Taxable 
                                     Amount</th>
                                 <th>CGST</th>
                                 <th>SGST</th>
-								<th>Total
+								<th>Total 
                                     Amount</th>
                                 <th>Advance/
 								    Credit Note</th>
-                                <th>Adjusted
+                                <th>Adjusted 
                                     Amount
                                     (Cheque/Draft/
                                     Payorder/NEFT/
@@ -44,7 +44,7 @@
                                  </th>
                                  <th>Dr</th>
                                  <th>Cr</th>
-
+                                
                             </tr>
 
                         </thead>
@@ -53,8 +53,8 @@
 
                             <?php
 
-                                if($all_data){
-
+                                if($all_data){ 
+									
                                     $i = 1;
                                     $total = 0.00;
                                     $tot_sale = 0.00;
@@ -79,7 +79,7 @@
                                      <td class="report opening" id="opening">                               <!--Date--->
                                         <?php echo date('d/m/Y',strtotime($prodtls->trans_dt)); ?>
 									 </td>
-                                     <td><?php echo $prodtls->prod; ?></td>
+                                     <td><?php echo $prodtls->prod; ?></td>                               
                                      <td><?= $prodtls->inv_no; ?></td>                                      <!--Invoice/Receipt no.--->
                                      <td class="report"><?php echo $prodtls->ro_no; ?></td>                 <!--RO--->
                                      <td class="report opening" id="opening">                               <!--Ro Date/Deposit Date--->
@@ -93,20 +93,20 @@
                                               $taxable += $prodtls->tot_payble  ?>
                                      </td>
 									 <td class="report sale" id="sale">                                     <!--CGST--->
-                                        <?php echo $prodtls->cgst;
+                                        <?php echo $prodtls->cgst; 
                                             $tot_cgst += $prodtls->cgst;?>
                                      </td>
                                      <td class="report sale" id="sale">                                     <!--SGST--->
-                                        <?php echo $prodtls->sgst;
+                                        <?php echo $prodtls->sgst; 
                                         $tot_sgst += $prodtls->sgst ;?>
                                      </td>
                                      <td class="report sale" id="sale">                                     <!--Total Amount--->
-                                        <?php  echo  $prodtls->tot_payble +$prodtls->cgst + $prodtls->sgst;
+                                        <?php  echo  $prodtls->tot_payble +$prodtls->cgst + $prodtls->sgst;  
                                                 $totalamount += $prodtls->tot_payble +$prodtls->cgst + $prodtls->sgst;
                                                 $saleAmt += $prodtls->tot_payble +$prodtls->cgst + $prodtls->sgst; ?>
                                      </td>
                                      <td>                                                                   <!--Advance/Credit Note Amount--->
-                                        <?php  if($prodtls->remarks=='Opening'){
+                                        <?php  if($prodtls->remarks=='Opening'){                          
 										        echo '0.00';
 									          }else{
 										        echo round(abs($prodtls->tot_paid),2) ; $advCrnote+=$prodtls->tot_paid;}
@@ -120,12 +120,12 @@
 									    }
 									   ?>
                                      </td>
-                                     <?php
-
+                                     <?php 
+										
                                      if($prodtls->remarks=='Opening'){
-
+                                       	 
                                         $totalamt = (($prodtls->tot_recv) +($prodtls->tot_paid));
-
+                                       
                                         if($totalamt>0){
                                             $totalamt =$totalamt;
                                             $totVal=round($totalamt, 2);
@@ -137,10 +137,10 @@
                                             echo"<td></td>";
                                             $totVal=round($totalamt, 2);
                                             echo"<td>".abs( $totVal)."</td>";
-
+                                           
                                         }
-
-                                     }elseif($prodtls->remarks=='Advance'||$prodtls->remarks=='Cr note'||$prodtls->remarks=='TRF TO INSECT'){
+                                     
+                                     }elseif($prodtls->remarks=='Advance'||$prodtls->remarks=='Cr note'){
 
                                         $totalamt -= (($prodtls->tot_paid));
 
@@ -153,11 +153,11 @@
                                             echo"<td></td>";
                                             $totVal=round($totalamt, 2);
                                             echo"<td>".abs( $totVal)."</td>";
-
+                                           
                                         }
 
-                                    }elseif( $prodtls->remarks=='NEFT Adj' || $prodtls->remarks=='Pay Order Adj' || $prodtls->remarks=='Draft Adj'|| $prodtls->remarks=='Cheque Adj'||$prodtls->remarks=='TRF TO INSECT'){
-
+                                    }elseif( $prodtls->remarks=='NEFT Adj' || $prodtls->remarks=='Pay Order Adj' || $prodtls->remarks=='Draft Adj'|| $prodtls->remarks=='Cheque Adj'){
+                                        
 										$totalamt -= (($prodtls->tot_recv));
                                         if($totalamt>0){
                                             $totVal=round($totalamt, 2);
@@ -168,15 +168,15 @@
                                             echo"<td></td>";
                                             $totVal=round($totalamt, 2);
                                             echo"<td>".abs( $totVal)."</td>";
-
+                                           
                                         }
 
-                                     }elseif($prodtls->remarks=='Sale'||$prodtls->remarks=='TRF TO INSECT' ){
-
+                                     }elseif($prodtls->remarks=='Sale'){
+                                      
                                       $totalamt += $prodtls->tot_payble +$prodtls->cgst + $prodtls->sgst;
-
+  
                                         if($totalamt>0){
-
+                                           
                                             $totVal=round($totalamt, 2);
                                             echo"<td>".abs( $totVal)."</td>";
                                             echo"<td></td>";
@@ -185,18 +185,18 @@
                                             echo"<td></td>";
                                             $totVal=round($totalamt, 2);
                                             echo"<td>".abs( $totVal)."</td>";
-
+                                           
                                         }
                                      }
                                      ?>
                                 </tr>
-
-                                <?php
-
+ 
+                                <?php  
+                                                        
                                     }
                                 ?>
-
-                                <?php
+ 
+                                <?php 
                                        }
                                 else{
 
@@ -207,26 +207,26 @@
                                      <td></td><td></td><td></td>
                                      </tr>";
 
-                                }
+                                }   
                             ?>
 							<tr style="font-weight: bold;">
                             <td></td><td></td><td></td><td></td>
                             <td></td><td></td><td></td>
-                               <td class="report" style="text-align:right">Total</td>
+                               <td class="report" style="text-align:right">Total</td> 
                                <td class="report"><?=$taxable?></td>
-                                <td class="report"><?=$tot_cgst?></td>
-                                <td class="report"><?=$tot_sgst?></td>
-                                <td class="report"><?=$totalamount?></td>
-                                <td class="report"><?=$advCrnote?></td>
-                                <td class="report"><?=$adjustable?></td>
-                                <td></td>
+                                <td class="report"><?=$tot_cgst?></td>  
+                                <td class="report"><?=$tot_sgst?></td>  
+                                <td class="report"><?=$totalamount?></td>  
+                                <td class="report"><?=$advCrnote?></td>  
+                                <td class="report"><?=$adjustable?></td> 
+                                <td></td> 
                                 <td></td>
                             </tr>
-
+							
                         </tbody>
                     </table>
-                </div>
-
+                </div>   
+                
                 <div style="text-align: center;">
                     <button class="btn btn-primary" type="button" onclick="printDiv();">Print</button>
                    <!-- <button class="btn btn-primary" type="button" id="btnExport" >Excel</button> -->
